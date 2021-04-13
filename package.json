@@ -1,0 +1,40 @@
+{
+  "name": "s-forms-smart-components",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "webpack-dev-server --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.prod.js",
+    "lib": "babel ./src -d ./lib",
+    "build:lib": "npm run build && npm run build:css && npm pack",
+    "build:css": "cleancss --skip-rebase -d -o ./css/s-forms.min.css ./src/styles/s-forms.css"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "s-forms": "file:../s-forms/s-forms-0.2.3-smart.tgz",
+    "classnames": "^2.2.6",
+    "babel-runtime": "^6.26.0",
+    "babel-loader": "^8.1.0",
+    "react": "~16.9.0",
+    "react-bootstrap": "1.0.1",
+    "react-dom": "~16.9.0",
+    "jsonld": "^0.4.12",
+    "jsonld-utils": "https://kbss.felk.cvut.cz/dist/jsonld-utils-0.0.11.tgz",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-node-externals": "^1.7.2",
+    "query-string": "^6.13.5",
+    "html-webpack-plugin": "^4.3.0",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-export-default-from": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/register": "^7.10.3",
+    "style-loader": "^1.2.1",
+    "css-loader": "^3.5.3"
+  }
+}
