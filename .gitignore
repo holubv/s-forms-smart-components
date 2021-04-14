@@ -1,3 +1,7 @@
+.parcel-cache
+.cache
 .idea
 node_modules
 .DS_Store
+dist
+*.tgz

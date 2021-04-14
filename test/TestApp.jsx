@@ -13,7 +13,7 @@ ComponentRegistry.registerComponent(
   q => JsonLdUtils.getJsonAttValue(q, Constants.COMPOSITE_PATTERN)
 );
 
-const advancedQuestionMap = q => {
+const hasAdvancedQuestion = q => {
 
   if (!FormUtils.isSection(q) && !FormUtils.isAnswerable(q)) {
     return false;
@@ -30,8 +30,12 @@ const advancedQuestionMap = q => {
 
 };
 
-ComponentRegistry.registerComponent(QuestionWithAdvanced, advancedQuestionMap);
-ComponentRegistry.registerWizardStep(WizardStepWithAdvanced, advancedQuestionMap);
+ComponentRegistry.registerComponent(QuestionWithAdvanced, q => {
+  return hasAdvancedQuestion(q) && !FormUtils.isWizardStep(q);
+});
+ComponentRegistry.registerComponent(WizardStepWithAdvanced, q => {
+  return hasAdvancedQuestion(q) && FormUtils.isWizardStep(q);
+});
 
 
 import 's-forms/css/s-forms.min.css';
