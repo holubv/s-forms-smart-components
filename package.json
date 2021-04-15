@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "parcel serve ./test/index.html"
+    "dev": "parcel serve ./test/index.html --port 8080",
+    "build:lib": "npm pack"
   },
   "main": "src/lib.js",
   "files": [
