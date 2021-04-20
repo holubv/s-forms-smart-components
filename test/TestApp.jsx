@@ -1,48 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SForms from 's-forms';
-import JsonLdUtils from 'jsonld-utils';
-import {ComponentRegistry, Constants as SConstants, FormUtils} from "s-forms";
-import Constants from "../src/Constants";
-import CompositeQuestion from "../src/components/CompositeQuestion";
-import QuestionWithAdvanced from "../src/components/QuestionWithAdvanced";
-import WizardStepWithAdvanced from "../src/components/WizardStepWithAdvanced";
-
-ComponentRegistry.registerComponent(
-  CompositeQuestion,
-  q => JsonLdUtils.getJsonAttValue(q, Constants.COMPOSITE_PATTERN)
-);
-
-const hasAdvancedQuestion = q => {
-
-  if (!FormUtils.isSection(q) && !FormUtils.isAnswerable(q)) {
-    return false;
-  }
-  let subQuestions = q[SConstants.HAS_SUBQUESTION];
-  if (subQuestions && subQuestions.length) {
-    for (let subQuestion of subQuestions) {
-      if (JsonLdUtils.hasValue(subQuestion, Constants.SHOW_ADVANCED_QUESTION, true)) {
-        return true;
-      }
-    }
-  }
-  return false;
-
-};
-
-ComponentRegistry.registerComponent(QuestionWithAdvanced, q => {
-  return hasAdvancedQuestion(q) && !FormUtils.isWizardStep(q);
-});
-ComponentRegistry.registerComponent(WizardStepWithAdvanced, q => {
-  return hasAdvancedQuestion(q) && FormUtils.isWizardStep(q);
-});
-
+import queryString from 'query-string';
+import SmartComponents from "../src/SmartComponents";
 
 import 's-forms/css/s-forms.min.css';
 import '../src/styles/components.css';
-
 import 'react-datepicker/dist/react-datepicker.css';
-import queryString from 'query-string';
+
+const componentMapping = SmartComponents.getComponentMapping();
 
 const form1 = require('./form1.json'); // form with wizard steps
 const form2 = require('./form2.json'); // form without wizard steps (proudly assembled in Semantic Form Web Editor)
@@ -111,6 +77,7 @@ class TestApp extends React.Component {
                     options={options}
                     fetchTypeAheadValues={this.fetchTypeAheadValues}
                     isFormValid={(isFormValid) => this.setState({isFormValid})}
+                    componentMapRules={componentMapping}
                 />
                 <button
                     disabled={!this.state.isFormValid}
