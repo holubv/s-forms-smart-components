@@ -182,26 +182,15 @@ export default class QuestionWithAdvanced extends Question {
 
     const answer = this._getAnswers()[0];
 
-    let isTextarea =
-      FormUtils.isTextarea(question, FormUtils.resolveValue(answer)) ||
-      FormUtils.isSparqlInput(question) ||
-      FormUtils.isTurtleInput(question);
-    let cls = classNames(Question._getAnswerClass(question, isTextarea), Question._getQuestionCategoryClass(question));
+    let cls = classNames(
+      'answer',
+      Question._getQuestionCategoryClass(question),
+      Question.getEmphasizedOnRelevantClass(question)
+    );
 
     return [(
-      <div className="row" key={'question-row-0'}>
-        <div key={'row-item-0'} className={cls} id={question['@id']}>
-          <div className="row">
-            <div className="col-10">
-              <Answer index={0} answer={answer} question={question} onChange={this.onAnswerChange}/>
-            </div>
-            <div>
-              {this._renderUnits()}
-              {this._renderQuestionHelp()}
-              {this._renderPrefixes()}
-            </div>
-          </div>
-        </div>
+      <div key={'row-item-0'} className={cls} id={question['@id']}>
+        <Answer index={0} answer={answer} question={question} onChange={this.onAnswerChange} />
         {this._renderSwitch()}
       </div>
     )];
