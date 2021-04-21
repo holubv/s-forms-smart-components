@@ -39,6 +39,6 @@
 }
 
 .question-with-unit > .unit-question {
-    max-width: 40%;
+    width: 240px;
     margin-left: 20px;
 }

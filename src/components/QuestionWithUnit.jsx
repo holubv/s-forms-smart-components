@@ -25,7 +25,10 @@ class _QuestionWithUnit extends Question {
     }
 
     const question = this.props.question;
-    const unitId = question[Constants.HAS_UNIT_OF_MEASURE];
+    let unitId = question[Constants.HAS_UNIT_OF_MEASURE];
+    if (unitId['@id']) {
+      unitId = unitId['@id'];
+    }
 
     const parent = Utils.findParent(this.props.formData.root, question['@id']);
     if (!parent) {

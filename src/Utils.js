@@ -64,10 +64,8 @@ export default class Utils {
           return true;
         }
 
-        if (Array.isArray(propertyValue)) {
-          if (propertyValue.includes(referencedQuestionId)) {
-            return true;
-          }
+        if (propertyValue['@id'] === referencedQuestionId) {
+          return true;
         }
       }
     }
