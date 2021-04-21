@@ -4,11 +4,25 @@
   "private": true,
   "scripts": {
     "dev": "parcel serve ./test/index.html --port 8080",
+    "build": "parcel build ./src/lib.js --target browser",
     "build:lib": "npm pack"
   },
   "main": "src/lib.js",
+  "browser": "dist/lib.js",
+  "targets": {
+    "browser": {
+      "distDir": "dist",
+      "outputFormat": "commonjs",
+      "optimize": false
+    }
+  },
+  "browserslist": [
+    "> 0.2%",
+    "not dead"
+  ],
   "files": [
-    "src/"
+    "src/",
+    "dist/"
   ],
   "dependencies": {},
   "devDependencies": {
@@ -26,6 +40,6 @@
     "react": "~16.9.0",
     "react-bootstrap": "1.0.1",
     "react-dom": "~16.9.0",
-    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.2.3.tgz"
+    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.2.5.tgz"
   }
 }
