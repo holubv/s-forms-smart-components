@@ -32,7 +32,7 @@ class TestApp extends React.Component {
         super(props);
         this.state = {
             isFormValid: false,
-            selectedForm: form1
+            selectedForm: form2
         };
         this.refForm = React.createRef();
     }

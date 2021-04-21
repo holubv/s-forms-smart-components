@@ -4,6 +4,8 @@ import Constants from "./Constants";
 import QuestionWithAdvanced from "./components/QuestionWithAdvanced";
 import {Constants as SConstants, FormUtils} from "s-forms";
 import WizardStepWithAdvanced from "./components/WizardStepWithAdvanced";
+import QuestionWithUnit from "./components/QuestionWithUnit";
+import NullQuestion from "./components/NullQuestion";
 
 export default class SmartComponents {
 
@@ -23,6 +25,18 @@ export default class SmartComponents {
         component: WizardStepWithAdvanced,
         mapRule: q => {
           return SmartComponents._hasAdvancedQuestion(q) && FormUtils.isWizardStep(q);
+        }
+      },
+      {
+        component: NullQuestion,
+        mapRule: q => {
+          return !!q['http://onto.fel.cvut.cz/ontologies/form/is-unit-of-measure']
+        }
+      },
+      {
+        component: QuestionWithUnit,
+        mapRule: q => {
+          return !!q[Constants.HAS_UNIT_OF_MEASURE]
         }
       }
     ];
