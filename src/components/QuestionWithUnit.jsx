@@ -3,6 +3,7 @@ import { Question, Answer, Constants as SConstants, FormQuestionsContext } from 
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Constants from "../Constants";
+import Utils from "../Utils";
 
 
 class _QuestionWithUnit extends Question {
@@ -10,61 +11,6 @@ class _QuestionWithUnit extends Question {
   constructor(props) {
     super(props);
 
-  }
-
-  // static _findQuestion(question, id) {
-  //
-  //   if (question['@id'] === id) {
-  //     return question;
-  //   }
-  //
-  //   const subQuestions = question[SConstants.HAS_SUBQUESTION];
-  //   if (subQuestions && subQuestions.length) {
-  //
-  //     for (const subQuestion of subQuestions) {
-  //       const found = _QuestionWithUnit._findQuestion(subQuestion, id);
-  //       if (found) {
-  //         return found;
-  //       }
-  //     }
-  //   }
-  //
-  //   return null;
-  // }
-
-  static _findParent(root, id) {
-
-    const subQuestions = root[SConstants.HAS_SUBQUESTION];
-    if (subQuestions && subQuestions.length) {
-
-      for (const subQuestion of subQuestions) {
-
-        if (subQuestion['@id'] === id) {
-          return root;
-        }
-
-        const found = _QuestionWithUnit._findParent(subQuestion, id);
-        if (found) {
-          return found;
-        }
-      }
-    }
-
-    return null;
-  }
-
-  static _findDirectChild(parent, id) {
-    const subQuestions = parent[SConstants.HAS_SUBQUESTION];
-    if (subQuestions && subQuestions.length) {
-
-      for (let i = 0; i < subQuestions.length; i++) {
-        if (subQuestions[i]['@id'] === id) {
-          return { q: subQuestions[i], index: i };
-        }
-      }
-    }
-
-    return null;
   }
 
   _onUnitQuestionChange = (index, change) => {
@@ -81,12 +27,12 @@ class _QuestionWithUnit extends Question {
     const question = this.props.question;
     const unitId = question[Constants.HAS_UNIT_OF_MEASURE];
 
-    const parent = _QuestionWithUnit._findParent(this.props.formData.root, question['@id']);
+    const parent = Utils.findParent(this.props.formData.root, question['@id']);
     if (!parent) {
       return null;
     }
 
-    const unitQuestion = _QuestionWithUnit._findDirectChild(parent, unitId);
+    const unitQuestion = Utils.findDirectChild(parent, unitId);
     if (!unitQuestion) {
       console.error('question with unit: cannot find question ' + unitId);
       return null;

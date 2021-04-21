@@ -6,6 +6,7 @@ import {Constants as SConstants, FormUtils} from "s-forms";
 import WizardStepWithAdvanced from "./components/WizardStepWithAdvanced";
 import QuestionWithUnit from "./components/QuestionWithUnit";
 import NullQuestion from "./components/NullQuestion";
+import Utils from "./Utils";
 
 export default class SmartComponents {
 
@@ -29,8 +30,13 @@ export default class SmartComponents {
       },
       {
         component: NullQuestion,
-        mapRule: q => {
-          return !!q['http://onto.fel.cvut.cz/ontologies/form/is-unit-of-measure']
+        mapRule: (q, form) => {
+          const parent = Utils.findParent(form?.root, q['@id']);
+          if (parent && Utils.isReferencedBySibling(parent, q['@id'], Constants.HAS_UNIT_OF_MEASURE)) {
+            return true;
+          }
+
+          return false;
         }
       },
       {
