@@ -5,6 +5,6 @@ export default class Constants {
     static PATTERN = 'http://onto.fel.cvut.cz/ontologies/form/has-pattern';
     static COMPOSITE_VARIABLES = 'http://onto.fel.cvut.cz/ontologies/form/has-composite-variables';
     static SHOW_ADVANCED_QUESTION = 'http://onto.fel.cvut.cz/ontologies/form/show-advanced-question';
-    static HAS_UNIT_OF_MEASURE = 'http://onto.fel.cvut.cz/ontologies/form/has-unit-of-measure';
+    static HAS_UNIT_OF_MEASURE = 'http://onto.fel.cvut.cz/ontologies/form/has-unit-of-measure-question';
 
 }
