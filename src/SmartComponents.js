@@ -10,6 +10,25 @@ import Utils from "./Utils";
 
 export default class SmartComponents {
 
+  static componentCache = {};
+
+  static _cached(q, form, componentName, mapRule) {
+
+    let cachedQuestion = SmartComponents.componentCache[q['@id']];
+    if (cachedQuestion === undefined) {
+      cachedQuestion = {};
+      SmartComponents.componentCache[q['@id']] = {};
+    }
+
+    let cachedValue = cachedQuestion[componentName];
+    if (cachedValue === undefined) {
+      cachedValue = mapRule(q, form);
+      SmartComponents.componentCache[q['@id']][componentName] = cachedValue;
+    }
+
+    return cachedValue;
+  }
+
   static getComponentMapping() {
     return [
       {
@@ -30,14 +49,10 @@ export default class SmartComponents {
       },
       {
         component: NullQuestion,
-        mapRule: (q, form) => {
+        mapRule: (q, form) => SmartComponents._cached(q, form, 'NullQuestion', () => {
           const parent = Utils.findParent(form?.root, q['@id']);
-          if (parent && Utils.isReferencedBySibling(parent, q['@id'], Constants.HAS_UNIT_OF_MEASURE)) {
-            return true;
-          }
-
-          return false;
-        }
+          return !!(parent && Utils.isReferencedBySibling(parent, q['@id'], Constants.HAS_UNIT_OF_MEASURE));
+        })
       },
       {
         component: QuestionWithUnit,
