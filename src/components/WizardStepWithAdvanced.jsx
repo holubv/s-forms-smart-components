@@ -7,14 +7,6 @@ import QuestionWithAdvanced from "./QuestionWithAdvanced";
 
 export default class WizardStepWithAdvanced extends WizardStep {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showAdvanced: QuestionWithAdvanced.isShowAdvanced(QuestionWithAdvanced.findShowAdvancedQuestion(this.props.step))
-    }
-  }
-
   _toggleAdvanced = (e) => {
     e.stopPropagation();
 
@@ -25,8 +17,6 @@ export default class WizardStepWithAdvanced extends WizardStep {
     question[SConstants.HAS_ANSWER] = [{}];
     question[SConstants.HAS_ANSWER][0][SConstants.HAS_DATA_VALUE] = {'@value': !value}
     question[SConstants.HAS_VALID_ANSWER] = true;
-
-    this.state.showAdvanced = !value;
 
     this.onChange(this.props.stepIndex, this.props.step);
   };
@@ -54,7 +44,7 @@ export default class WizardStepWithAdvanced extends WizardStep {
 
     const advancedQuestion = QuestionWithAdvanced.findShowAdvancedQuestion(this.props.step).question;
     const advancedQuestionLabel = JsonLdUtils.getLocalized(advancedQuestion[SConstants.RDFS_LABEL], this.props.options.intl);
-
+    const showAdvancedState = QuestionWithAdvanced.isShowAdvanced(advancedQuestion);
 
     return (
       <div className="wizard-step">
@@ -68,7 +58,7 @@ export default class WizardStepWithAdvanced extends WizardStep {
                 onChange={this._toggleAdvanced}
                 id={'--switch-' + this.props.step['@id']}
                 label={advancedQuestionLabel}
-                checked={this.state.showAdvanced}
+                checked={showAdvancedState}
                 inline
               />
 

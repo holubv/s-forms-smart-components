@@ -38,8 +38,6 @@ export default class QuestionWithAdvanced extends Question {
 
   constructor(props) {
     super(props);
-
-    this.state.showAdvanced = this._getShowAdvancedState();
   }
 
   onSubQuestionChange = (subQuestionIndex, change) => {
@@ -75,8 +73,6 @@ export default class QuestionWithAdvanced extends Question {
     question[SConstants.HAS_ANSWER][0][SConstants.HAS_DATA_VALUE] = {'@value': !value}
     question[SConstants.HAS_VALID_ANSWER] = true;
 
-    this.state.showAdvanced = !value;
-
     this._onChange(SConstants.HAS_SUBQUESTION, index, question);
   };
 
@@ -102,6 +98,7 @@ export default class QuestionWithAdvanced extends Question {
     const question = this.props.question;
     const showAdvancedQuestion = this._getShowAdvancedQuestion(question).question;
     const advancedQuestionLabel = JsonldUtils.getLocalized(showAdvancedQuestion[SConstants.RDFS_LABEL], this.context.options.intl);
+    const switchState = this._getShowAdvancedState();
 
     return (
       <div className="show-advanced-switch" style={{float: 'right'}}>
@@ -109,7 +106,7 @@ export default class QuestionWithAdvanced extends Question {
           onChange={this._toggleAdvanced}
           id={'--switch-' + showAdvancedQuestion['@id']}
           label={advancedQuestionLabel}
-          checked={this.state.showAdvanced}
+          checked={switchState}
           inline
         />
 
