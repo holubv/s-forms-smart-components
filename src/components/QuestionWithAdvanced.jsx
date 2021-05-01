@@ -44,15 +44,6 @@ export default class QuestionWithAdvanced extends Question {
     this._onChange(SConstants.HAS_SUBQUESTION, subQuestionIndex, change);
   };
 
-  renderSubQuestions() {
-    const children = super.renderSubQuestions();
-
-    return children.filter(component => {
-      const q = component.props.question;
-      return !JsonLdUtils.hasValue(q, Constants.SHOW_ADVANCED_QUESTION, true);
-    });
-  }
-
   _getShowAdvancedQuestion() {
     return QuestionWithAdvanced.findShowAdvancedQuestion(this.props.question);
   }

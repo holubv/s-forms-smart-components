@@ -55,6 +55,12 @@ export default class SmartComponents {
         })
       },
       {
+        component: NullQuestion,
+        mapRule: q => {
+          return !!q[Constants.SHOW_ADVANCED_QUESTION]
+        }
+      },
+      {
         component: QuestionWithUnit,
         mapRule: q => {
           return !!q[Constants.HAS_UNIT_OF_MEASURE]
