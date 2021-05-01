@@ -1,12 +1,10 @@
 import React from 'react';
-import {Accordion, Card, Form} from 'react-bootstrap';
-import JsonLdUtils from 'jsonld-utils';
-import {Question, FormUtils, Constants as SConstants, HelpIcon, Answer, ConfigurationContext} from 's-forms';
+import {Question, FormUtils, Constants as SConstants, Answer, ConfigurationContext} from 's-forms';
 import Constants from "../Constants";
 import classNames from 'classnames';
-import JsonldUtils from 'jsonld-utils';
 import SmartComponents from "../SmartComponents";
-import {QuestionWithAdvanced} from "../lib";
+import QuestionWithAdvanced from "./QuestionWithAdvanced";
+import TypeQuestionAnswer from "./TypeQuestionAnswer";
 
 export default class AnswerableSectionComposite extends Question {
 
@@ -31,6 +29,23 @@ export default class AnswerableSectionComposite extends Question {
     );
   }
 
+  _renderAnswer(index, answer) {
+    const question = this.props.question;
+
+    let component = Answer;
+
+    if (TypeQuestionAnswer.mappingRule(question)) {
+      component = TypeQuestionAnswer;
+    }
+
+    return React.createElement(component, {
+      index: index,
+      answer: answer,
+      question: question,
+      onChange: this.onAnswerChange
+    });
+  }
+
   renderAnswers() {
     const question = this.props.question,
       children = [],
@@ -51,7 +66,7 @@ export default class AnswerableSectionComposite extends Question {
       children.push(
         <div key={'row-item-' + i} className={cls} id={question['@id']}>
           <div className="answer-content" style={this._getAnswerWidthStyle()}>
-            <Answer index={i} answer={answers[i]} question={question} onChange={this.onAnswerChange}/>
+            {this._renderAnswer(i, answers[i])}
           </div>
           {this._renderUnits()}
           {this._renderPrefixes()}

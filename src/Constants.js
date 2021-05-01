@@ -7,4 +7,5 @@ export default class Constants {
     static SHOW_ADVANCED_QUESTION = 'http://onto.fel.cvut.cz/ontologies/form/show-advanced-question';
     static HAS_UNIT_OF_MEASURE = 'http://onto.fel.cvut.cz/ontologies/form/has-unit-of-measure-question';
 
+    static LAYOUT_TYPE_QUESTION = 'type-question';
 }

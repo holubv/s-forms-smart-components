@@ -1,3 +1,7 @@
+.answerable-section.accordion > .card {
+    overflow: visible;
+}
+
 .card-header.bg-primary .custom-control-input:checked ~ .custom-control-label::before {
     color: #fff;
     border-color: #c6c6c6;
@@ -41,4 +45,29 @@
 .question-with-unit > .unit-question {
     width: 240px;
     margin-left: 20px;
+}
+
+.answerable-section > .card > .card-header .answer > .answer-content {
+    position: relative;
+    min-height: 24px;
+}
+
+.type-answer-group {
+    display: flex;
+    position: absolute;
+    width: 100%;
+}
+
+.type-answer-group .Select {
+    margin-top: -6px;
+    flex-grow: 1;
+    margin-left: 15px;
+}
+
+.type-answer-group .Select-control {
+    height: 37px;
+}
+
+.type-answer-group .Select--multi .Select-value {
+    margin-top: 4px;
 }

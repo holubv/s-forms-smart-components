@@ -119,6 +119,17 @@
   },
   "@graph": [
     {
+      "@id": "x:zvire",
+      "label": "Zvíře"
+    },
+    {
+      "@id": "x:pes",
+      "label": "Pes",
+      "broader": {
+        "@id": "x:zvire"
+      }
+    },
+    {
       "@id": "_:b0",
       "accepts-answer-value": true,
       "has-tested-question": "show-advanced-fields-4248"
@@ -179,6 +190,7 @@
       "@id": "x:form-root",
       "@type": "doc:question",
       "has_related_question": [
+        "provozovatel-section-666",
         "age-1063",
         "first-name-6663",
         "middle-name-4161",
@@ -189,6 +201,35 @@
         "test-section-666"
       ],
       "has-layout-class": "form"
+    },
+    {
+      "@id": "provozovatel-section-666",
+      "@type": "doc:question",
+      "has_related_question": [
+        "as-show-advanced-888",
+        "as-checkbox-452"
+      ],
+      "has-layout-class": [
+        "answerable",
+        "section",
+        "type-question"
+      ],
+      "label": "Provozovatel"
+    },
+    {
+      "@id": "as-show-advanced-888",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "checkbox",
+      "label": "show advanced",
+      "show-advanced-question": true
+    },
+    {
+      "@id": "as-checkbox-452",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "checkbox",
+      "label": "as checkbox"
     },
     {
       "@id": "checkbox-test-452",

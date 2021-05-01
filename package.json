@@ -1,6 +1,6 @@
 {
   "name": "s-forms-smart-components",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": true,
   "scripts": {
     "dev": "parcel serve ./test/index.html --port 8080",
@@ -24,7 +24,9 @@
     "src/",
     "dist/"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "intelligent-tree-select": "^0.8.0"
+  },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-export-default-from": "^7.8.3",
@@ -40,6 +42,6 @@
     "react": "~16.9.0",
     "react-bootstrap": "1.0.1",
     "react-dom": "~16.9.0",
-    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.2.5.tgz"
+    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.2.6.tgz"
   }
 }
