@@ -5,6 +5,7 @@ import {Question, FormUtils, Constants as SConstants, HelpIcon, Answer, Configur
 import Constants from "../Constants";
 import classNames from 'classnames';
 import JsonldUtils from 'jsonld-utils';
+import PropTypes from "prop-types";
 
 export default class QuestionWithAdvanced extends Question {
 
@@ -107,6 +108,11 @@ export default class QuestionWithAdvanced extends Question {
   }
 
   render() {
+
+    if (this.props.switchOnly === true) {
+      return this._renderSwitch();
+    }
+
     const question = this.props.question;
 
     if (FormUtils.isHidden(question)) {
@@ -186,3 +192,5 @@ export default class QuestionWithAdvanced extends Question {
 }
 
 QuestionWithAdvanced.contextType = ConfigurationContext;
+
+QuestionWithAdvanced.propTypes.switchOnly = PropTypes.bool;

@@ -7,6 +7,7 @@ import WizardStepWithAdvanced from "./components/WizardStepWithAdvanced";
 import QuestionWithUnit from "./components/QuestionWithUnit";
 import NullQuestion from "./components/NullQuestion";
 import Utils from "./Utils";
+import AnswerableSectionComposite from "./components/AnswerableSectionComposite";
 
 export default class SmartComponents {
 
@@ -31,6 +32,10 @@ export default class SmartComponents {
 
   static getComponentMapping() {
     return [
+      {
+        component: AnswerableSectionComposite,
+        mapRule: q => FormUtils.isSection(q) && FormUtils.isAnswerable(q)
+      },
       {
         component: CompositeQuestion,
         mapRule: q => JsonLdUtils.getJsonAttValue(q, Constants.COMPOSITE_PATTERN)
