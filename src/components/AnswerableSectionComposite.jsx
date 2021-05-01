@@ -10,6 +10,8 @@ import {QuestionWithAdvanced} from "../lib";
 
 export default class AnswerableSectionComposite extends Question {
 
+  static mappingRule = q => FormUtils.isSection(q) && FormUtils.isAnswerable(q);
+
   constructor(props) {
     super(props);
   }
@@ -17,7 +19,7 @@ export default class AnswerableSectionComposite extends Question {
   _renderShowAdvanced() {
     const question = this.props.question;
 
-    if (!SmartComponents._hasAdvancedQuestion(question)) {
+    if (!QuestionWithAdvanced.mappingRule(question)) {
       return null;
     }
 

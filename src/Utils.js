@@ -1,4 +1,5 @@
 import {Constants as SConstants} from "s-forms";
+import JsonLdUtils from "jsonld-utils";
 
 export default class Utils {
 
@@ -65,6 +66,20 @@ export default class Utils {
         }
 
         if (propertyValue['@id'] === referencedQuestionId) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  static hasSubQuestionWithValue(parent, property, value) {
+
+    let subQuestions = parent[SConstants.HAS_SUBQUESTION];
+    if (subQuestions && subQuestions.length) {
+      for (let subQuestion of subQuestions) {
+        if (JsonLdUtils.hasValue(subQuestion, property, value)) {
           return true;
         }
       }

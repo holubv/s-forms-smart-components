@@ -6,8 +6,22 @@ import Constants from "../Constants";
 import classNames from 'classnames';
 import JsonldUtils from 'jsonld-utils';
 import PropTypes from "prop-types";
+import Utils from "../Utils";
 
 export default class QuestionWithAdvanced extends Question {
+
+  static mappingRule = q => {
+
+    if (FormUtils.isWizardStep(q)) {
+      return false;
+    }
+
+    if (!FormUtils.isSection(q) && !FormUtils.isAnswerable(q)) {
+      return false;
+    }
+
+    return Utils.hasSubQuestionWithValue(q, Constants.SHOW_ADVANCED_QUESTION, true);
+  }
 
   static findShowAdvancedQuestion(parent) {
 

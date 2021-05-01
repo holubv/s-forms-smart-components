@@ -1,11 +1,22 @@
 import React from 'react';
-import {WizardStep, Question, Constants as SConstants, HelpIcon} from 's-forms';
+import {WizardStep, Question, Constants as SConstants, HelpIcon, FormUtils} from 's-forms';
 import {Card, Form} from 'react-bootstrap';
 import JsonLdUtils from 'jsonld-utils';
 import QuestionWithAdvanced from "./QuestionWithAdvanced";
+import Utils from "../Utils";
+import Constants from "../Constants";
 
 
 export default class WizardStepWithAdvanced extends WizardStep {
+
+  static mappingRule = q => {
+
+    if (!FormUtils.isWizardStep(q)) {
+      return false;
+    }
+
+    return Utils.hasSubQuestionWithValue(q, Constants.SHOW_ADVANCED_QUESTION, true);
+  }
 
   _toggleAdvanced = (e) => {
     e.stopPropagation();

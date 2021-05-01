@@ -6,6 +6,8 @@ import Constants from "../Constants";
 
 export default class CompositeQuestion extends Question {
 
+  static mappingRule = q => JsonLdUtils.getJsonAttValue(q, Constants.COMPOSITE_PATTERN);
+
   constructor(props) {
     super(props);
   }

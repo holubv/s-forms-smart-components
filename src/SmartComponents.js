@@ -34,23 +34,19 @@ export default class SmartComponents {
     return [
       {
         component: AnswerableSectionComposite,
-        mapRule: q => FormUtils.isSection(q) && FormUtils.isAnswerable(q)
+        mapRule: AnswerableSectionComposite.mappingRule
       },
       {
         component: CompositeQuestion,
-        mapRule: q => JsonLdUtils.getJsonAttValue(q, Constants.COMPOSITE_PATTERN)
+        mapRule: CompositeQuestion.mappingRule
       },
       {
         component: QuestionWithAdvanced,
-        mapRule: q => {
-          return SmartComponents._hasAdvancedQuestion(q) && !FormUtils.isWizardStep(q);
-        }
+        mapRule: QuestionWithAdvanced.mappingRule
       },
       {
         component: WizardStepWithAdvanced,
-        mapRule: q => {
-          return SmartComponents._hasAdvancedQuestion(q) && FormUtils.isWizardStep(q);
-        }
+        mapRule: WizardStepWithAdvanced.mappingRule
       },
       {
         component: NullQuestion,
@@ -73,22 +69,5 @@ export default class SmartComponents {
       }
     ];
   }
-
-  static _hasAdvancedQuestion(q) {
-
-    if (!FormUtils.isSection(q) && !FormUtils.isAnswerable(q)) {
-      return false;
-    }
-    let subQuestions = q[SConstants.HAS_SUBQUESTION];
-    if (subQuestions && subQuestions.length) {
-      for (let subQuestion of subQuestions) {
-        if (JsonLdUtils.hasValue(subQuestion, Constants.SHOW_ADVANCED_QUESTION, true)) {
-          return true;
-        }
-      }
-    }
-    return false;
-
-  };
 
 }
