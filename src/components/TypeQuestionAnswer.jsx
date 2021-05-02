@@ -178,6 +178,12 @@ export default class TypeQuestionAnswer extends React.Component {
       }
     }
 
+    const pushDisjoint = (a, b) => {
+      if (!options[a].disjoint.includes(b)) {
+        options[a].disjoint.push(b);
+      }
+    }
+
     for (let relation of relations) {
 
       if (relation.type === 'parent-child') {
@@ -186,8 +192,8 @@ export default class TypeQuestionAnswer extends React.Component {
 
       if (relation.type === 'disjoint') {
         if (options[relation.a] && options[relation.b]) {
-          options[relation.a].disjoint.push(relation.b);
-          options[relation.b].disjoint.push(relation.a);
+          pushDisjoint(relation.a, relation.b);
+          pushDisjoint(relation.b, relation.a);
         }
       }
     }
