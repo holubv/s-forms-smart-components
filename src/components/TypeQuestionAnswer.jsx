@@ -100,15 +100,15 @@ export default class TypeQuestionAnswer extends React.Component {
 
   _isTotalDisjoint(tree) {
 
-    let remaining = {...tree};
+    const options = Object.values(tree);
 
-    for (let option of Object.values(tree)) {
-      for (let disjoint of option.disjoint) {
-        delete remaining[disjoint];
+    for (let option of options) {
+      if (options.length - 1 !== option.disjoint.length) {
+        return false;
       }
     }
 
-    return Object.values(remaining).length === 0;
+    return true;
   }
 
   _isRegenerationNeeded(previousQuestion) {
