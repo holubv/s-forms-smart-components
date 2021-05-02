@@ -88,6 +88,39 @@ export default class Utils {
     return false;
   }
 
+  /**
+   * @param {string[]} arr1
+   * @param {string[]} arr2
+   */
+  static hasArraySameValues(arr1, arr2) {
+
+    if (!arr1 || !arr2) {
+      return false;
+    }
+
+    if (arr1.length === undefined) {
+      return false;
+    }
+
+    if (arr1.length !== arr2.length) {
+      return false;
+    }
+
+    const set = {};
+    for (let el of arr1) {
+      set[el] = 1;
+    }
+
+    for (let el of arr2) {
+      if (!set[el]) {
+        return false;
+      }
+      set[el] = 2;
+    }
+
+    return Object.values(set).every(el => el === 2);
+  }
+
   // static _findQuestion(question, id) {
   //
   //   if (question['@id'] === id) {

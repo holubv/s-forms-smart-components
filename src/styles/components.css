@@ -47,6 +47,14 @@
     margin-left: 20px;
 }
 
+.answerable-section > .card > .card-header .answer {
+    justify-content: space-between;
+}
+
+.answerable-section > .card > .card-header .answer .show-advanced-switch {
+    flex-grow: 0;
+}
+
 .answerable-section > .card > .card-header .answer > .answer-content {
     position: relative;
     min-height: 24px;
@@ -55,7 +63,7 @@
 .type-answer-group {
     display: flex;
     position: absolute;
-    width: 100%;
+    min-width: 370px;
 }
 
 .type-answer-group .Select {

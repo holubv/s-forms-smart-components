@@ -8,6 +8,7 @@
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "xml": "http://www.w3.org/XML/1998/namespace",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
     "label": {
       "@id": "http://www.w3.org/2000/01/rdf-schema#label"
     },
@@ -119,15 +120,56 @@
   },
   "@graph": [
     {
-      "@id": "x:zvire",
-      "label": "Zvíře"
+      "@id": "pravnicka-osoba",
+      "label": "Právnická osoba"
     },
     {
-      "@id": "x:pes",
-      "label": "Pes",
-      "broader": {
-        "@id": "x:zvire"
-      }
+      "@id": "fyzicka-osoba",
+      "label": "Fyzická osoba",
+      "owl:disjointWith": [
+        {
+          "@id": "pravnicka-osoba"
+        }
+      ]
+    },
+    {
+      "@id": "fyzicka-osoba--nezletila",
+      "label": "Fyzická osoba nezletilá",
+      "skos:broader": {
+        "@id": "fyzicka-osoba"
+      },
+      "owl:disjointWith": [
+        {
+          "@id": "pravnicka-osoba"
+        }
+      ]
+    },
+    {
+      "@id": "fyzicka-osoba--chytra",
+      "label": "Fyzická osoba chytrá",
+      "skos:broader": {
+        "@id": "fyzicka-osoba"
+      },
+      "owl:disjointWith": [
+        {
+          "@id": "pravnicka-osoba"
+        }
+      ]
+    },
+    {
+      "@id": "fyzicka-osoba--hloupa",
+      "label": "Fyzická osoba hloupá",
+      "skos:broader": {
+        "@id": "fyzicka-osoba"
+      },
+      "owl:disjointWith": [
+        {
+          "@id": "pravnicka-osoba"
+        },
+        {
+          "@id": "fyzicka-osoba--chytra"
+        }
+      ]
     },
     {
       "@id": "_:b0",
@@ -213,6 +255,13 @@
         "answerable",
         "section",
         "type-question"
+      ],
+      "has-possible-value": [
+        "fyzicka-osoba",
+        "pravnicka-osoba",
+        "fyzicka-osoba--nezletila",
+        "fyzicka-osoba--chytra",
+        "fyzicka-osoba--hloupa"
       ],
       "label": "Provozovatel"
     },

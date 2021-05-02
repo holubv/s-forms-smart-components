@@ -8,4 +8,7 @@ export default class Constants {
     static HAS_UNIT_OF_MEASURE = 'http://onto.fel.cvut.cz/ontologies/form/has-unit-of-measure-question';
 
     static LAYOUT_TYPE_QUESTION = 'type-question';
+
+    static BROADER = 'http://www.w3.org/2004/02/skos/core#broader';
+    static DISJOINT_WITH = 'http://www.w3.org/2002/07/owl#disjointWith';
 }

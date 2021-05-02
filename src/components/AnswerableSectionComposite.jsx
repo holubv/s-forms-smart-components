@@ -46,6 +46,16 @@ export default class AnswerableSectionComposite extends Question {
     });
   }
 
+  _getAnswerWidthStyle() {
+    if (TypeQuestionAnswer.mappingRule(this.props.question)) {
+      return {
+        maxWidth: 'none'
+      }
+    }
+
+    return super._getAnswerWidthStyle();
+  }
+
   renderAnswers() {
     const question = this.props.question,
       children = [],
