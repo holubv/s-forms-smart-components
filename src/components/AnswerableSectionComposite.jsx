@@ -42,7 +42,8 @@ export default class AnswerableSectionComposite extends Question {
       index: index,
       answer: answer,
       question: question,
-      onChange: this.onAnswerChange
+      onChange: this.onAnswerChange,
+      isInSectionHeader: true
     });
   }
 

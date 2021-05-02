@@ -8,6 +8,7 @@ import QuestionWithUnit from "./components/QuestionWithUnit";
 import NullQuestion from "./components/NullQuestion";
 import Utils from "./Utils";
 import AnswerableSectionComposite from "./components/AnswerableSectionComposite";
+import TypeQuestion from "./components/TypeQuestion";
 
 export default class SmartComponents {
 
@@ -47,6 +48,10 @@ export default class SmartComponents {
       {
         component: WizardStepWithAdvanced,
         mapRule: WizardStepWithAdvanced.mappingRule
+      },
+      {
+        component: TypeQuestion,
+        mapRule: TypeQuestion.mappingRule
       },
       {
         component: NullQuestion,

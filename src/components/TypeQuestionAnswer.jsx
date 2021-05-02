@@ -75,7 +75,9 @@ export default class TypeQuestionAnswer extends React.Component {
     if (selected) {
       for (let selectedOption of selected) {
         for (let d of selectedOption.disjoint) {
-          tree[d].disabled = true;
+          if (tree[d]) {
+            tree[d].disabled = true;
+          }
         }
       }
     }
@@ -153,12 +155,14 @@ export default class TypeQuestionAnswer extends React.Component {
     for (let relation of relations) {
 
       if (relation.type === 'parent-child') {
-        options[relation.parent].children.push(relation.child);
+        options[relation.parent]?.children.push(relation.child);
       }
 
       if (relation.type === 'disjoint') {
-        options[relation.a].disjoint.push(relation.b);
-        options[relation.b].disjoint.push(relation.a);
+        if (options[relation.a] && options[relation.b]) {
+          options[relation.a].disjoint.push(relation.b);
+          options[relation.b].disjoint.push(relation.a);
+        }
       }
     }
 
@@ -222,12 +226,21 @@ export default class TypeQuestionAnswer extends React.Component {
 
   render() {
 
+    if (this.props.isInSectionHeader) {
+      return (
+        <div className="type-answer-group">
+          {this._renderLabel()}
+          {this._renderSelect()}
+        </div>
+      );
+    }
+
     return (
-      <div className="type-answer-group">
+      <FormGroup>
         {this._renderLabel()}
         {this._renderSelect()}
-      </div>
-    )
+      </FormGroup>
+    );
   }
 
 }
@@ -238,5 +251,6 @@ TypeQuestionAnswer.propTypes = {
   index: PropTypes.number.isRequired,
   answer: PropTypes.object.isRequired,
   question: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  isInSectionHeader: PropTypes.bool
 }
