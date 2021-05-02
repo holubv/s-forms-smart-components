@@ -32,11 +32,21 @@ export default class TypeQuestionAnswer extends React.Component {
       // ],
       tree: {},
       selected: [],
+      singleSelect: false,
       update: 0
     }
   }
 
   _onChange = value => {
+
+    if (!value) {
+      value = [];
+    }
+
+    if (value.length === undefined) {
+      value = [value];
+    }
+
     console.log(value);
 
     //console.log(JsonLdObjectMap.objectMap);
@@ -48,9 +58,12 @@ export default class TypeQuestionAnswer extends React.Component {
       '@value': !!(value && value.length)
     };
 
+    if (!this.state.singleSelect) {
+      this.setState({tree: this._checkDisjointOptions(this.state.tree, value)});
+    }
+
     this.setState({
       selected: value,
-      tree: this._checkDisjointOptions(this.state.tree, value),
       update: this.state.update + 1
     });
 
@@ -83,6 +96,19 @@ export default class TypeQuestionAnswer extends React.Component {
     }
 
     return tree;
+  }
+
+  _isTotalDisjoint(tree) {
+
+    let remaining = {...tree};
+
+    for (let option of Object.values(tree)) {
+      for (let disjoint of option.disjoint) {
+        delete remaining[disjoint];
+      }
+    }
+
+    return Object.values(remaining).length === 0;
   }
 
   _isRegenerationNeeded(previousQuestion) {
@@ -166,12 +192,16 @@ export default class TypeQuestionAnswer extends React.Component {
       }
     }
 
-    this._checkDisjointOptions(options);
+    const totalDisjoint = this._isTotalDisjoint(options);
+    if (!totalDisjoint) {
+      this._checkDisjointOptions(options);
+    }
 
     console.log(options);
 
     this.setState({
       tree: options,
+      singleSelect: totalDisjoint,
       update: this.state.update + 1
     });
   }
@@ -182,15 +212,20 @@ export default class TypeQuestionAnswer extends React.Component {
       return null;
     }
 
+    let selectedValue = this.state.selected;
+    if (this.state.singleSelect) {
+      selectedValue = selectedValue?.[0];
+    }
+
     return (
       <VirtualizedTreeSelect
-        value={this.state.selected}
+        value={selectedValue}
         valueKey="value"
         labelKey="label"
         childrenKey="children"
         options={Object.values(this.state.tree)}
         expanded={true}
-        closeOnSelect={false}
+        closeOnSelect={this.state.singleSelect}
         onChange={this._onChange}
         // onChange={opt => {
         //   console.log(opt);
@@ -201,7 +236,7 @@ export default class TypeQuestionAnswer extends React.Component {
         //   tree[1].disabled = true;
         //   this.setState({tree: tree});
         // }}
-        multi={true}
+        multi={!this.state.singleSelect}
       />
     );
 
