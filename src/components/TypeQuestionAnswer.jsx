@@ -49,8 +49,7 @@ export default class TypeQuestionAnswer extends React.Component {
 
     console.log(value);
 
-    //console.log(JsonLdObjectMap.objectMap);
-    //console.log(JsonLdObjectMap.getObject('x:zvire'));
+    this._setAnswers(value);
 
     const change = {...this.props.answer};
 
@@ -67,12 +66,96 @@ export default class TypeQuestionAnswer extends React.Component {
       update: this.state.update + 1
     });
 
-    // const tree = this.state.tree;
-    // tree[1].checked = false;
-    // tree[1].disabled = true;
-    // this.setState({tree: tree});
-
     this.props.onChange(this.props.index, change);
+  }
+
+  _setAnswers(answers) {
+
+    let typeQuestions = this._findTypeQuestions();
+
+    for (let i = 0; i < typeQuestions.length; i++) {
+      const typeQuestion = typeQuestions[i].question;
+      const answer = answers[i];
+
+      if (answer) {
+        typeQuestion[SConstants.HAS_ANSWER] = [{
+          [SConstants.HAS_DATA_VALUE]: {
+            '@value': answer.value
+          }
+        }];
+      } else {
+        typeQuestion[SConstants.HAS_ANSWER] = [];
+      }
+
+      this.props.onSubChange(typeQuestions[i].index, typeQuestion);
+    }
+  }
+
+  _loadAnswers(options) {
+
+    let values = [];
+    let typeQuestions = this._findTypeQuestions();
+
+    for (let typeQuestion of typeQuestions) {
+      let question = typeQuestion.question;
+      let answer = question[SConstants.HAS_ANSWER];
+      if (answer && answer.length) {
+        answer = answer[0];
+
+        if (answer[SConstants.HAS_DATA_VALUE]) {
+          values.push(answer[SConstants.HAS_DATA_VALUE]['@value']);
+        }
+      }
+    }
+
+    return values.map(id => options[id]).filter(v => !!v);
+  }
+
+  _findTypeQuestions() {
+    const question = this.props.question;
+    const ids = question[Constants.HAS_TYPE_QUESTION];
+    const subQuestions = question[SConstants.HAS_SUBQUESTION];
+    const typeQuestions = [];
+
+    for (let i = 0; i < subQuestions.length; i++) {
+      const subQuestion = subQuestions[i];
+      if (ids.includes(subQuestion['@id'])) {
+        typeQuestions.push({
+          index: i,
+          question: subQuestion
+        });
+      }
+    }
+
+    return typeQuestions;
+  }
+
+  _getMaxNumberOfAnswers() {
+    const question = this.props.question;
+    const typeQuestions = question[Constants.HAS_TYPE_QUESTION];
+    if (!typeQuestions) {
+      return 0;
+    }
+
+    if (Array.isArray(typeQuestions)) {
+      return typeQuestions.length;
+    }
+
+    return 1;
+  }
+
+  _checkMaxNumberOfAnswers(tree, selected) {
+    const maxAnswerCount = this._getMaxNumberOfAnswers();
+
+    selected = selected.map(o => o.value);
+
+    if (selected.length >= maxAnswerCount) {
+      for (let o of Object.values(tree)) {
+        if (!selected.includes(o.value)) {
+          o.disabled = true;
+        }
+      }
+    }
   }
 
   _checkDisjointOptions(tree, selected) {
@@ -93,6 +176,8 @@ export default class TypeQuestionAnswer extends React.Component {
           }
         }
       }
+
+      this._checkMaxNumberOfAnswers(tree, selected);
     }
 
     return tree;
@@ -198,9 +283,17 @@ export default class TypeQuestionAnswer extends React.Component {
       }
     }
 
-    const totalDisjoint = this._isTotalDisjoint(options);
+    const answers = this._loadAnswers(options);
+
+    let totalDisjoint = this._isTotalDisjoint(options);
+
+    if (this._getMaxNumberOfAnswers() <= 1) {
+      // single answer allowed
+      totalDisjoint = true;
+    }
+
     if (!totalDisjoint) {
-      this._checkDisjointOptions(options);
+      this._checkDisjointOptions(options, answers);
     }
 
     console.log(options);
@@ -208,7 +301,8 @@ export default class TypeQuestionAnswer extends React.Component {
     this.setState({
       tree: options,
       singleSelect: totalDisjoint,
-      update: this.state.update + 1
+      update: this.state.update + 1,
+      selected: answers
     });
   }
 
@@ -233,15 +327,6 @@ export default class TypeQuestionAnswer extends React.Component {
         expanded={true}
         closeOnSelect={this.state.singleSelect}
         onChange={this._onChange}
-        // onChange={opt => {
-        //   console.log(opt);
-        //   this.setState({selected: opt.map(o => o.value).filter(v => v !== '1-1')});
-        //
-        //   const tree = this.state.tree;
-        //   tree[1].checked = false;
-        //   tree[1].disabled = true;
-        //   this.setState({tree: tree});
-        // }}
         multi={!this.state.singleSelect}
       />
     );
@@ -293,5 +378,6 @@ TypeQuestionAnswer.propTypes = {
   answer: PropTypes.object.isRequired,
   question: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
+  onSubChange: PropTypes.func.isRequired,
   isInSectionHeader: PropTypes.bool
 }

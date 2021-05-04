@@ -43,6 +43,7 @@ export default class AnswerableSectionComposite extends Question {
       answer: answer,
       question: question,
       onChange: this.onAnswerChange,
+      onSubChange: this.onSubQuestionChange,
       isInSectionHeader: true
     });
   }

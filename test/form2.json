@@ -116,6 +116,9 @@
     },
     "has-unit-of-measure-question": {
       "@id": "http://onto.fel.cvut.cz/ontologies/form/has-unit-of-measure-question"
+    },
+    "has-type-question": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-type-question"
     }
   },
   "@graph": [
@@ -248,9 +251,15 @@
       "@id": "provozovatel-section-666",
       "@type": "doc:question",
       "has_related_question": [
+        "ps-type-1",
+        "ps-type-2",
         "as-show-advanced-888",
         "as-checkbox-452",
         "provozovatel-no-section-888"
+      ],
+      "has-type-question": [
+        "ps-type-1",
+        "ps-type-2"
       ],
       "has-layout-class": [
         "answerable",
@@ -265,6 +274,16 @@
         "fyzicka-osoba--hloupa"
       ],
       "label": "Provozovatel"
+    },
+    {
+      "@id": "ps-type-1",
+      "@type": "doc:question",
+      "label": "PS type 1"
+    },
+    {
+      "@id": "ps-type-2",
+      "@type": "doc:question",
+      "label": "PS type 2"
     },
     {
       "@id": "as-show-advanced-888",
