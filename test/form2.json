@@ -119,6 +119,9 @@
     },
     "has-type-question": {
       "@id": "http://onto.fel.cvut.cz/ontologies/form/has-type-question"
+    },
+    "has-non-selectable-value": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-non-selectable-value"
     }
   },
   "@graph": [
@@ -254,8 +257,7 @@
         "ps-type-1",
         "ps-type-2",
         "as-show-advanced-888",
-        "as-checkbox-452",
-        "provozovatel-no-section-888"
+        "as-checkbox-452"
       ],
       "has-type-question": [
         "ps-type-1",
@@ -272,6 +274,9 @@
         "fyzicka-osoba--nezletila",
         "fyzicka-osoba--chytra",
         "fyzicka-osoba--hloupa"
+      ],
+      "has-non-selectable-value": [
+        "fyzicka-osoba"
       ],
       "label": "Provozovatel"
     },
@@ -292,18 +297,6 @@
       "has-layout-class": "checkbox",
       "label": "show advanced",
       "show-advanced-question": true
-    },
-    {
-      "@id": "provozovatel-no-section-888",
-      "@type": "doc:question",
-      "has_related_question": [],
-      "has-layout-class": "type-question",
-      "has-possible-value": [
-        "fyzicka-osoba--nezletila",
-        "fyzicka-osoba--chytra",
-        "fyzicka-osoba--hloupa"
-      ],
-      "label": "Fyzická osoba"
     },
     {
       "@id": "as-checkbox-452",

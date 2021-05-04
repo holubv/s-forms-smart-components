@@ -158,6 +158,16 @@ export default class TypeQuestionAnswer extends React.Component {
     }
   }
 
+  _checkNonSelectableOptions(tree) {
+    const question = this.props.question;
+
+    for (let o of Object.values(tree)) {
+      if (JsonLdUtils.hasValue(question, Constants.HAS_NON_SELECTABLE_VALUE, o.value)) {
+        o.disabled = true;
+      }
+    }
+  }
+
   _checkDisjointOptions(tree, selected) {
 
     for (let o of Object.values(tree)) {
@@ -179,6 +189,8 @@ export default class TypeQuestionAnswer extends React.Component {
 
       this._checkMaxNumberOfAnswers(tree, selected);
     }
+
+    this._checkNonSelectableOptions(tree);
 
     return tree;
   }
@@ -295,6 +307,8 @@ export default class TypeQuestionAnswer extends React.Component {
     if (!totalDisjoint) {
       this._checkDisjointOptions(options, answers);
     }
+
+    this._checkNonSelectableOptions(options);
 
     console.log(options);
 
