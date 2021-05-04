@@ -14,7 +14,7 @@ export default class SmartComponents {
 
   static componentCache = {};
 
-  static _cached(q, form, componentName, mapRule) {
+  static _cached(q, form, key, mapRule) {
 
     let cachedQuestion = SmartComponents.componentCache[q['@id']];
     if (cachedQuestion === undefined) {
@@ -22,10 +22,10 @@ export default class SmartComponents {
       SmartComponents.componentCache[q['@id']] = {};
     }
 
-    let cachedValue = cachedQuestion[componentName];
+    let cachedValue = cachedQuestion[key];
     if (cachedValue === undefined) {
       cachedValue = mapRule(q, form);
-      SmartComponents.componentCache[q['@id']][componentName] = cachedValue;
+      SmartComponents.componentCache[q['@id']][key] = cachedValue;
     }
 
     return cachedValue;
@@ -50,14 +50,17 @@ export default class SmartComponents {
         mapRule: WizardStepWithAdvanced.mappingRule
       },
       {
-        component: TypeQuestion,
-        mapRule: TypeQuestion.mappingRule
+        component: NullQuestion,
+        mapRule: (q, form) => SmartComponents._cached(q, form, 'NullQuestion-unit-of-measure', () => {
+          const parent = Utils.findParent(form?.root, q['@id']);
+          return !!(parent && Utils.isReferencedByProperty(parent[SConstants.HAS_SUBQUESTION], q['@id'], Constants.HAS_UNIT_OF_MEASURE));
+        })
       },
       {
         component: NullQuestion,
-        mapRule: (q, form) => SmartComponents._cached(q, form, 'NullQuestion', () => {
+        mapRule: (q, form) => SmartComponents._cached(q, form, 'NullQuestion-type-question', () => {
           const parent = Utils.findParent(form?.root, q['@id']);
-          return !!(parent && Utils.isReferencedByProperty(parent[SConstants.HAS_SUBQUESTION], q['@id'], Constants.HAS_UNIT_OF_MEASURE));
+          return Utils.hasPropertyWithValue(parent, Constants.HAS_TYPE_QUESTION, q['@id']);
         })
       },
       {

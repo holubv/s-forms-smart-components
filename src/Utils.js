@@ -52,16 +52,7 @@ export default class Utils {
     if (questions && questions.length) {
 
       for (const question of questions) {
-        const propertyValue = question[property];
-        if (!propertyValue) {
-          continue;
-        }
-
-        if (propertyValue === questionId) {
-          return true;
-        }
-
-        if (propertyValue['@id'] === questionId) {
+        if (Utils.hasPropertyWithValue(question, property, questionId)) {
           return true;
         }
       }
@@ -79,6 +70,31 @@ export default class Utils {
           return true;
         }
       }
+    }
+
+    return false;
+  }
+
+  static hasPropertyWithValue(question, property, value) {
+    if (!question) {
+      return false;
+    }
+
+    const propValue = question[property];
+    if (!propValue) {
+      return false;
+    }
+
+    if (Array.isArray(propValue) && propValue.includes(value)) {
+      return true;
+    }
+
+    if (propValue === value) {
+      return true;
+    }
+
+    if (propValue['@id'] === value) {
+      return true;
     }
 
     return false;
