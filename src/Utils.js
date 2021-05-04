@@ -47,25 +47,21 @@ export default class Utils {
     return null;
   }
 
-  static isReferencedBySibling(parent, referencedQuestionId, property) {
-    if (!parent) {
-      return false;
-    }
+  static isReferencedByProperty(questions, questionId, property) {
 
-    const subQuestions = parent[SConstants.HAS_SUBQUESTION];
-    if (subQuestions && subQuestions.length) {
+    if (questions && questions.length) {
 
-      for (const subQuestion of subQuestions) {
-        const propertyValue = subQuestion[property];
+      for (const question of questions) {
+        const propertyValue = question[property];
         if (!propertyValue) {
           continue;
         }
 
-        if (propertyValue === referencedQuestionId) {
+        if (propertyValue === questionId) {
           return true;
         }
 
-        if (propertyValue['@id'] === referencedQuestionId) {
+        if (propertyValue['@id'] === questionId) {
           return true;
         }
       }

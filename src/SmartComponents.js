@@ -57,7 +57,7 @@ export default class SmartComponents {
         component: NullQuestion,
         mapRule: (q, form) => SmartComponents._cached(q, form, 'NullQuestion', () => {
           const parent = Utils.findParent(form?.root, q['@id']);
-          return !!(parent && Utils.isReferencedBySibling(parent, q['@id'], Constants.HAS_UNIT_OF_MEASURE));
+          return !!(parent && Utils.isReferencedByProperty(parent[SConstants.HAS_SUBQUESTION], q['@id'], Constants.HAS_UNIT_OF_MEASURE));
         })
       },
       {
