@@ -12,6 +12,15 @@ export default class AnswerableSectionComposite extends Question {
 
   constructor(props) {
     super(props);
+
+    const toggleCollapseSuper = this._toggleCollapse;
+    this._toggleCollapse = (e) => {
+      let classList = e.target.classList;
+      if (!classList.contains('answer-content') && !classList.contains('card-header')) {
+        return;
+      }
+      toggleCollapseSuper();
+    }
   }
 
   _renderShowAdvanced() {
