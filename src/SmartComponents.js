@@ -3,7 +3,7 @@ import JsonLdUtils from "jsonld-utils";
 import Constants from "./Constants";
 import QuestionWithAdvanced from "./components/QuestionWithAdvanced";
 import {Constants as SConstants, FormUtils} from "s-forms";
-import WizardStepWithAdvanced from "./components/WizardStepWithAdvanced";
+import WizardStepComponent from "./components/WizardStepComponent";
 import QuestionWithUnit from "./components/QuestionWithUnit";
 import NullQuestion from "./components/NullQuestion";
 import Utils from "./Utils";
@@ -34,8 +34,8 @@ export default class SmartComponents {
   static getComponentMapping() {
     return [
       {
-        component: WizardStepWithAdvanced,
-        mapRule: WizardStepWithAdvanced.mappingRule
+        component: WizardStepComponent,
+        mapRule: WizardStepComponent.mappingRule
       },
       {
         component: SectionComponent,
@@ -44,10 +44,6 @@ export default class SmartComponents {
       {
         component: CompositeQuestion,
         mapRule: CompositeQuestion.mappingRule
-      },
-      {
-        component: QuestionWithAdvanced,
-        mapRule: QuestionWithAdvanced.mappingRule
       },
       {
         component: NullQuestion,

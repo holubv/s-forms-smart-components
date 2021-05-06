@@ -3,7 +3,7 @@ import Constants from "./Constants";
 
 import CompositeQuestion from "./components/CompositeQuestion";
 import QuestionWithAdvanced from "./components/QuestionWithAdvanced";
-import WizardStepWithAdvanced from "./components/WizardStepWithAdvanced";
+import WizardStepComponent from "./components/WizardStepComponent";
 
 
 export default SmartComponents;
@@ -13,5 +13,5 @@ export {
 
   CompositeQuestion,
   QuestionWithAdvanced,
-  WizardStepWithAdvanced
+  WizardStepComponent
 };

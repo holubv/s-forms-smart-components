@@ -115,6 +115,11 @@ export default class SectionComponent extends Question {
     return children;
   }
 
+  _getSubQuestions() {
+    const sub = super._getSubQuestions();
+    return sub;
+  }
+
 }
 
 SectionComponent.contextType = ConfigurationContext;
