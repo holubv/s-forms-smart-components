@@ -58,12 +58,12 @@ export default class SmartComponents {
           return Utils.hasPropertyWithValue(parent, Constants.HAS_TYPE_QUESTION, q['@id']);
         })
       },
-      // {
-      //   component: NullQuestion,
-      //   mapRule: q => {
-      //     return !!q[Constants.SHOW_ADVANCED_QUESTION]
-      //   }
-      // },
+      {
+        component: NullQuestion,
+        mapRule: q => {
+          return !!q[Constants.SHOW_ADVANCED_QUESTION]
+        }
+      },
       {
         component: QuestionWithUnit,
         mapRule: q => {
