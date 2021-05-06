@@ -2,7 +2,7 @@ import React from 'react';
 import {WizardStep, Question, Constants as SConstants, HelpIcon, FormUtils, FormQuestionsContext} from 's-forms';
 import {Card, Form} from 'react-bootstrap';
 import JsonLdUtils from 'jsonld-utils';
-import QuestionWithAdvanced from "./QuestionWithAdvanced";
+import ShowAdvancedSwitch from "./ShowAdvancedSwitch";
 import Utils from "../Utils";
 import Constants from "../Constants";
 
@@ -14,16 +14,15 @@ export default class WizardStepComponent extends WizardStep {
   _renderShowAdvanced() {
     const question = this.props.step;
 
-    if (!QuestionWithAdvanced.mappingRule(question)) {
+    if (!ShowAdvancedSwitch.mappingRule(question)) {
       return null;
     }
 
     return (
-      <QuestionWithAdvanced
+      <ShowAdvancedSwitch
         question={this.props.step}
         onChange={this.onChange}
         index={this.props.stepIndex}
-        switchOnly={true}
       />
     );
   }

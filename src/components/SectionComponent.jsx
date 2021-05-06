@@ -5,7 +5,7 @@ import {Question, FormUtils, Constants as SConstants, Answer, ConfigurationConte
 import Constants from "../Constants";
 import classNames from 'classnames';
 import SmartComponents from "../SmartComponents";
-import QuestionWithAdvanced from "./QuestionWithAdvanced";
+import ShowAdvancedSwitch from "./ShowAdvancedSwitch";
 import TypeQuestionAnswer from "./TypeQuestionAnswer";
 
 export default class SectionComponent extends Question {
@@ -28,15 +28,12 @@ export default class SectionComponent extends Question {
   _renderShowAdvanced() {
     const question = this.props.question;
 
-    if (!QuestionWithAdvanced.mappingRule(question)) {
+    if (!ShowAdvancedSwitch.mappingRule(question)) {
       return null;
     }
 
     return (
-      <QuestionWithAdvanced
-        {...this.props}
-        switchOnly={true}
-      />
+      <ShowAdvancedSwitch {...this.props} />
     );
   }
 
@@ -117,6 +114,7 @@ export default class SectionComponent extends Question {
 
   _getSubQuestions() {
     const sub = super._getSubQuestions();
+
     return sub;
   }
 

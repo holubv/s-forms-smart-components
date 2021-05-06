@@ -8,7 +8,7 @@ import JsonldUtils from 'jsonld-utils';
 import PropTypes from "prop-types";
 import Utils from "../Utils";
 
-export default class QuestionWithAdvanced extends Question {
+export default class ShowAdvancedSwitch extends Question {
 
   static mappingRule = q => Utils.hasSubQuestionWithValue(q, Constants.SHOW_ADVANCED_QUESTION, true);
 
@@ -49,12 +49,12 @@ export default class QuestionWithAdvanced extends Question {
   };
 
   _getShowAdvancedQuestion() {
-    return QuestionWithAdvanced.findShowAdvancedQuestion(this.props.question);
+    return ShowAdvancedSwitch.findShowAdvancedQuestion(this.props.question);
   }
 
   _getShowAdvancedState() {
     let {question} = this._getShowAdvancedQuestion();
-    return QuestionWithAdvanced.isShowAdvanced(question);
+    return ShowAdvancedSwitch.isShowAdvanced(question);
   }
 
   _toggleAdvanced = (e) => {
@@ -111,89 +111,8 @@ export default class QuestionWithAdvanced extends Question {
   }
 
   render() {
-
-    if (this.props.switchOnly === true) {
-      return this._renderSwitch();
-    }
-
-    const question = this.props.question;
-
-    if (FormUtils.isHidden(question)) {
-      return null;
-    }
-
-    if (!FormUtils.isRelevant(question)) {
-      return null;
-    }
-
-    const {collapsible, withoutCard} = this.props;
-    const categoryClass = Question._getQuestionCategoryClass(question);
-
-    if (withoutCard) {
-      return <div>{this._renderQuestionContent()}</div>;
-    }
-    const label = JsonLdUtils.getLocalized(question[JsonLdUtils.RDFS_LABEL], this.context.options.intl);
-
-    const headerClassName = classNames(
-      FormUtils.isEmphasised(question) ? Question.getEmphasizedClass(question) : 'bg-info',
-      collapsible ? 'cursor-pointer' : '',
-      this.state.expanded ? 'section-expanded' : 'section-collapsed'
-    );
-
-    if (FormUtils.isAnswerable(question)) {
-      return this.renderAnswerableSection();
-    }
-
-    const cardBody = (
-      <Card.Body className={classNames('p-3', categoryClass)}>{this._renderQuestionContent()}</Card.Body>
-    );
-
-    return (
-      <Accordion defaultActiveKey={!this.state.expanded ? label : undefined}>
-        <Card className="mb-3">
-          <Accordion.Toggle as={Card.Header} onClick={this._toggleCollapse} className={headerClassName}>
-            <h6 className="d-inline" id={question['@id']}>
-              {collapsible && this._renderCollapseToggle()}
-              {label}
-            </h6>
-
-            {this._renderQuestionHelp()}
-
-            {this._renderSwitch()}
-
-          </Accordion.Toggle>
-          {collapsible ? <Accordion.Collapse>{cardBody}</Accordion.Collapse> : {cardBody}}
-
-        </Card>
-      </Accordion>
-    );
+    return this._renderSwitch();
   }
-
-  // renderAnswers() {
-  //   const question = this.props.question;
-  //
-  //   if (!FormUtils.isAnswerable(question)) {
-  //     return super.renderAnswers();
-  //   }
-  //
-  //   const answer = this._getAnswers()[0];
-  //
-  //   let cls = classNames(
-  //     'answer',
-  //     Question._getQuestionCategoryClass(question),
-  //     Question.getEmphasizedOnRelevantClass(question)
-  //   );
-  //
-  //   return [(
-  //     <div key={'row-item-0'} className={cls} id={question['@id']}>
-  //       <Answer index={0} answer={answer} question={question} onChange={this.onAnswerChange} />
-  //       {this._renderSwitch()}
-  //     </div>
-  //   )];
-  // }
-
 }
 
-QuestionWithAdvanced.contextType = ConfigurationContext;
-
-QuestionWithAdvanced.propTypes.switchOnly = PropTypes.bool;
+ShowAdvancedSwitch.contextType = ConfigurationContext;
