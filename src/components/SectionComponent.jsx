@@ -1,4 +1,6 @@
 import React from 'react';
+import JsonLdUtils from 'jsonld-utils';
+import { Card, Accordion } from 'react-bootstrap';
 import {Question, FormUtils, Constants as SConstants, Answer, ConfigurationContext} from 's-forms';
 import Constants from "../Constants";
 import classNames from 'classnames';
@@ -6,9 +8,9 @@ import SmartComponents from "../SmartComponents";
 import QuestionWithAdvanced from "./QuestionWithAdvanced";
 import TypeQuestionAnswer from "./TypeQuestionAnswer";
 
-export default class AnswerableSectionComposite extends Question {
+export default class SectionComponent extends Question {
 
-  static mappingRule = q => FormUtils.isSection(q) && FormUtils.isAnswerable(q);
+  static mappingRule = q => FormUtils.isSection(q) && !FormUtils.isWizardStep(q);
 
   constructor(props) {
     super(props);
@@ -36,6 +38,20 @@ export default class AnswerableSectionComposite extends Question {
         switchOnly={true}
       />
     );
+  }
+
+  _renderQuestionHelp() {
+    const advancedSwitch = this._renderShowAdvanced();
+    if (advancedSwitch) {
+      return (
+        <>
+          {super._renderQuestionHelp()}
+          {advancedSwitch}
+        </>
+      );
+    }
+
+    return super._renderQuestionHelp();
   }
 
   _renderAnswer(index, answer) {
@@ -101,4 +117,4 @@ export default class AnswerableSectionComposite extends Question {
 
 }
 
-AnswerableSectionComposite.contextType = ConfigurationContext;
+SectionComponent.contextType = ConfigurationContext;

@@ -7,7 +7,7 @@ import WizardStepWithAdvanced from "./components/WizardStepWithAdvanced";
 import QuestionWithUnit from "./components/QuestionWithUnit";
 import NullQuestion from "./components/NullQuestion";
 import Utils from "./Utils";
-import AnswerableSectionComposite from "./components/AnswerableSectionComposite";
+import SectionComponent from "./components/SectionComponent";
 import TypeQuestion from "./components/TypeQuestion";
 
 export default class SmartComponents {
@@ -34,8 +34,12 @@ export default class SmartComponents {
   static getComponentMapping() {
     return [
       {
-        component: AnswerableSectionComposite,
-        mapRule: AnswerableSectionComposite.mappingRule
+        component: WizardStepWithAdvanced,
+        mapRule: WizardStepWithAdvanced.mappingRule
+      },
+      {
+        component: SectionComponent,
+        mapRule: SectionComponent.mappingRule
       },
       {
         component: CompositeQuestion,
@@ -44,10 +48,6 @@ export default class SmartComponents {
       {
         component: QuestionWithAdvanced,
         mapRule: QuestionWithAdvanced.mappingRule
-      },
-      {
-        component: WizardStepWithAdvanced,
-        mapRule: WizardStepWithAdvanced.mappingRule
       },
       {
         component: NullQuestion,
@@ -63,12 +63,12 @@ export default class SmartComponents {
           return Utils.hasPropertyWithValue(parent, Constants.HAS_TYPE_QUESTION, q['@id']);
         })
       },
-      {
-        component: NullQuestion,
-        mapRule: q => {
-          return !!q[Constants.SHOW_ADVANCED_QUESTION]
-        }
-      },
+      // {
+      //   component: NullQuestion,
+      //   mapRule: q => {
+      //     return !!q[Constants.SHOW_ADVANCED_QUESTION]
+      //   }
+      // },
       {
         component: QuestionWithUnit,
         mapRule: q => {

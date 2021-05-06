@@ -180,28 +180,28 @@ export default class QuestionWithAdvanced extends Question {
     );
   }
 
-  renderAnswers() {
-    const question = this.props.question;
-
-    if (!FormUtils.isAnswerable(question)) {
-      return super.renderAnswers();
-    }
-
-    const answer = this._getAnswers()[0];
-
-    let cls = classNames(
-      'answer',
-      Question._getQuestionCategoryClass(question),
-      Question.getEmphasizedOnRelevantClass(question)
-    );
-
-    return [(
-      <div key={'row-item-0'} className={cls} id={question['@id']}>
-        <Answer index={0} answer={answer} question={question} onChange={this.onAnswerChange} />
-        {this._renderSwitch()}
-      </div>
-    )];
-  }
+  // renderAnswers() {
+  //   const question = this.props.question;
+  //
+  //   if (!FormUtils.isAnswerable(question)) {
+  //     return super.renderAnswers();
+  //   }
+  //
+  //   const answer = this._getAnswers()[0];
+  //
+  //   let cls = classNames(
+  //     'answer',
+  //     Question._getQuestionCategoryClass(question),
+  //     Question.getEmphasizedOnRelevantClass(question)
+  //   );
+  //
+  //   return [(
+  //     <div key={'row-item-0'} className={cls} id={question['@id']}>
+  //       <Answer index={0} answer={answer} question={question} onChange={this.onAnswerChange} />
+  //       {this._renderSwitch()}
+  //     </div>
+  //   )];
+  // }
 
 }
 
