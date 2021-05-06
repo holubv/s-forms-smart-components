@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import SmartComponents from "../SmartComponents";
 import ShowAdvancedSwitch from "./ShowAdvancedSwitch";
 import TypeQuestionAnswer from "./TypeQuestionAnswer";
+import SectionIdentifier from "./SectionIdentifier";
 
 export default class SectionComponent extends Question {
 
@@ -25,6 +26,12 @@ export default class SectionComponent extends Question {
     }
   }
 
+  _renderIdentifierText() {
+    return (
+      <SectionIdentifier question={this.props.question} />
+    );
+  }
+
   _renderShowAdvanced() {
     const question = this.props.question;
 
@@ -38,17 +45,13 @@ export default class SectionComponent extends Question {
   }
 
   _renderQuestionHelp() {
-    const advancedSwitch = this._renderShowAdvanced();
-    if (advancedSwitch) {
-      return (
-        <>
-          {super._renderQuestionHelp()}
-          {advancedSwitch}
-        </>
-      );
-    }
-
-    return super._renderQuestionHelp();
+    return (
+      <>
+        {super._renderQuestionHelp()}
+        {this._renderIdentifierText()}
+        {this._renderShowAdvanced()}
+      </>
+    );
   }
 
   _renderAnswer(index, answer) {
@@ -104,6 +107,7 @@ export default class SectionComponent extends Question {
           </div>
           {this._renderUnits()}
           {this._renderPrefixes()}
+          {this._renderIdentifierText()}
 
           {this._renderShowAdvanced()}
         </div>

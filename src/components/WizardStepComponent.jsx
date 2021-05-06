@@ -5,11 +5,18 @@ import JsonLdUtils from 'jsonld-utils';
 import ShowAdvancedSwitch from "./ShowAdvancedSwitch";
 import Utils from "../Utils";
 import Constants from "../Constants";
+import SectionIdentifier from "./SectionIdentifier";
 
 
 export default class WizardStepComponent extends WizardStep {
 
   static mappingRule = q => FormUtils.isWizardStep(q);
+
+  _renderIdentifierText() {
+    return (
+      <SectionIdentifier question={this.props.step} />
+    );
+  }
 
   _renderShowAdvanced() {
     const question = this.props.step;
@@ -38,6 +45,7 @@ export default class WizardStepComponent extends WizardStep {
             {JsonLdUtils.getLocalized(this.props.step[JsonLdUtils.RDFS_LABEL], this.props.options.intl)}
             {this._renderHelpIcon()}
 
+            {this._renderIdentifierText()}
             {this._renderShowAdvanced()}
 
           </Card.Header>

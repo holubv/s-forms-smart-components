@@ -28,6 +28,30 @@ export default class Utils {
     return null;
   }
 
+  static findChild(parent, id) {
+
+    if (!parent) {
+      return null;
+    }
+
+    if (parent['@id'] === id) {
+      return parent;
+    }
+
+    const subQuestions = parent[SConstants.HAS_SUBQUESTION];
+    if (subQuestions && subQuestions.length) {
+
+      for (let subQuestion of subQuestions) {
+        let found = Utils.findChild(subQuestion, id);
+        if (found) {
+          return found;
+        }
+      }
+    }
+
+    return null;
+  }
+
   static findDirectChild(parent, id) {
 
     if (!parent) {

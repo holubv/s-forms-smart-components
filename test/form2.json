@@ -122,6 +122,9 @@
     },
     "has-non-selectable-value": {
       "@id": "http://onto.fel.cvut.cz/ontologies/form/has-non-selectable-value"
+    },
+    "has-identifying-question": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-identifying-question"
     }
   },
   "@graph": [
@@ -353,6 +356,9 @@
       "has_related_question": [
         "test-field-3887",
         "sectionfoo-1592"
+      ],
+      "has-identifying-question": [
+        "test-field-3887"
       ],
       "has-layout-class": "section",
       "has-preceding-question": "cena-6557",

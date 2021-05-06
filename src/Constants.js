@@ -8,6 +8,7 @@ export default class Constants {
     static HAS_UNIT_OF_MEASURE = 'http://onto.fel.cvut.cz/ontologies/form/has-unit-of-measure-question';
     static HAS_TYPE_QUESTION = 'http://onto.fel.cvut.cz/ontologies/form/has-type-question';
 
+    static HAS_IDENTIFYING_QUESTION = 'http://onto.fel.cvut.cz/ontologies/form/has-identifying-question';
     static HAS_NON_SELECTABLE_VALUE = 'http://onto.fel.cvut.cz/ontologies/form/has-non-selectable-value';
 
     static LAYOUT_TYPE_QUESTION = 'type-question';

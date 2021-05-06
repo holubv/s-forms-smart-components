@@ -91,3 +91,12 @@
 .type-answer .Select--multi .Select-value {
     margin-top: 4px;
 }
+
+.section-identifier {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    pointer-events: none;
+}
