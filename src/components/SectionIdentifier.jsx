@@ -57,8 +57,6 @@ export default class SectionIdentifier extends React.Component {
       return null;
     }
 
-    console.log(answer);
-
     if (answer['@value']) {
 
       if (FormUtils.isCheckbox(identifyingQuestion)) {
