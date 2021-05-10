@@ -10,7 +10,14 @@ export default class SectionIdentifier extends React.Component {
   static contextType = ConfigurationContext;
 
   static propTypes = {
-    question: PropTypes.object.isRequired
+    question: PropTypes.object.isRequired,
+    prefix: PropTypes.string,
+    suffix: PropTypes.string
+  }
+
+  static defaultProps = {
+    prefix: '',
+    suffix: ''
   }
 
   _getIdentifyingQuestionId() {
@@ -81,7 +88,7 @@ export default class SectionIdentifier extends React.Component {
     const text = this._getLabelText();
     if (text) {
       return (
-        <span className="section-identifier">{text}</span>
+        <span className="section-identifier">{this.props.prefix}{text}{this.props.suffix}</span>
       );
     }
 

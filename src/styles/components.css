@@ -93,10 +93,21 @@
 }
 
 .section-identifier {
-    position: absolute;
-    left: 0;
-    width: 100%;
     display: inline-block;
     text-align: center;
     pointer-events: none;
+    margin-left: 30px;
+    color: #535353;
+}
+
+.text-white .section-identifier {
+    color: white;
+}
+
+.answer-content .section-identifier {
+    margin-left: 6px;
+}
+
+.card-header .answer-content .form-group {
+    display: inline-block;
 }

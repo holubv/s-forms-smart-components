@@ -362,7 +362,8 @@
       ],
       "has-layout-class": "section",
       "has-preceding-question": "cena-6557",
-      "label": "parent-section"
+      "label": "parent-section",
+      "description" : "Parent section help"
     },
     {
       "@id": "sectionfoo-1592",
@@ -454,6 +455,10 @@
         "checkbox",
         "section"
       ],
+      "has-identifying-question": [
+        "test-5278"
+      ],
+      "description": "test",
       "has-preceding-question": "parent-section-1590",
       "label": "testSection"
     },

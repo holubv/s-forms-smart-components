@@ -28,7 +28,11 @@ export default class SectionComponent extends Question {
 
   _renderIdentifierText() {
     return (
-      <SectionIdentifier question={this.props.question} />
+      <SectionIdentifier
+        question={this.props.question}
+        prefix="("
+        suffix=")"
+      />
     );
   }
 
@@ -104,10 +108,11 @@ export default class SectionComponent extends Question {
         <div key={'row-item-' + i} className={cls} id={question['@id']}>
           <div className="answer-content" style={this._getAnswerWidthStyle()}>
             {this._renderAnswer(i, answers[i])}
+            {this._renderIdentifierText()}
           </div>
           {this._renderUnits()}
           {this._renderPrefixes()}
-          {this._renderIdentifierText()}
+
 
           {this._renderShowAdvanced()}
         </div>
