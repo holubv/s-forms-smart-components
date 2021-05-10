@@ -111,3 +111,9 @@
 .card-header .answer-content .form-group {
     display: inline-block;
 }
+
+.wizard-step-header.floating {
+    position: fixed;
+    top: 0;
+    z-index: 3;
+}

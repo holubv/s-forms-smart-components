@@ -12,6 +12,7 @@ export default class Constants {
     static HAS_NON_SELECTABLE_VALUE = 'http://onto.fel.cvut.cz/ontologies/form/has-non-selectable-value';
 
     static LAYOUT_TYPE_QUESTION = 'type-question';
+    static LAYOUT_STICKY = 'sticky';
 
     static BROADER = 'http://www.w3.org/2004/02/skos/core#broader';
     static DISJOINT_WITH = 'http://www.w3.org/2002/07/owl#disjointWith';
