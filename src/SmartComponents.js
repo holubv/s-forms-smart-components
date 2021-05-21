@@ -7,7 +7,6 @@ import QuestionWithUnit from "./components/QuestionWithUnit";
 import NullQuestion from "./components/NullQuestion";
 import Utils from "./Utils";
 import SectionComponent from "./components/SectionComponent";
-import TypeQuestion from "./components/TypeQuestion";
 
 export default class SmartComponents {
 
