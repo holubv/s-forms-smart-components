@@ -7,6 +7,9 @@ Smart components
 are displayed based on structure of provided semantic form data
 and extend basic functionality of SForms.
 
+Components can be easily tested using
+example form which is located in `./example` directory
+
 ## Installation
 
 ```

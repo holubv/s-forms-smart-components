@@ -1,0 +1,476 @@
+{
+  "@context": {
+    "doc": "http://onto.fel.cvut.cz/ontologies/documentation/",
+    "x": "https://x.com/x/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "form": "http://onto.fel.cvut.cz/ontologies/form/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "xml": "http://www.w3.org/XML/1998/namespace",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "label": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "has_data_value": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/documentation/has_data_value"
+    },
+    "has_answer": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/documentation/has_answer"
+    },
+    "has-answer-origin": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-answer-origin"
+    },
+    "has-possible-values-query": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-possible-values-query"
+    },
+    "has-possible-value": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-possible-value"
+    },
+    "has-layout-class": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form-layout/has-layout-class"
+    },
+    "has_related_question": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/documentation/has_related_question",
+      "@type": "@id"
+    },
+    "has-question-origin": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-question-origin",
+      "@type": "@id"
+    },
+    "is-relevant-if": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/is-relevant-if",
+      "@type": "@id"
+    },
+    "has-tested-question": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-tested-question",
+      "@type": "@id"
+    },
+    "accepts-answer-value": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/accepts-answer-value",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "accepts-non-empty-answer-value": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/accepts-non-empty-answer-value",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "minInclusive": {
+      "@id": "http://www.w3.org/2001/XMLSchema#minInclusive"
+    },
+    "maxInclusive": {
+      "@id": "http://www.w3.org/2001/XMLSchema#maxInclusive"
+    },
+    "has-datatype": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-datatype",
+      "@type": "@id"
+    },
+    "has-preceding-question": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-preceding-question",
+      "@type": "@id"
+    },
+    "comment": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#comment"
+    },
+    "has-unit": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-unit"
+    },
+    "has-input-mask": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-input-mask"
+    },
+    "description": {
+      "@id": "http://purl.org/dc/elements/1.1/description"
+    },
+    "is-relevant-if_removed": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/is-relevant-if_removed",
+      "@type": "@id"
+    },
+    "requires-answer": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/requires-answer",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "accepts-validation-value": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/accepts-validation-value"
+    },
+    "imports": {
+      "@id": "http://www.w3.org/2002/07/owl#imports",
+      "@type": "@id"
+    },
+    "requires-answer-if": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/requires-answer-if",
+      "@type": "@id"
+    },
+    "has-media-content": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-media-content"
+    },
+    "has-composite-pattern": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-composite-pattern"
+    },
+    "has-pattern": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-pattern"
+    },
+    "has-composite-variables": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-composite-variables"
+    },
+    "show-advanced-question": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/show-advanced-question"
+    },
+    "has-unit-of-measure-question": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-unit-of-measure-question"
+    },
+    "has-type-question": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-type-question"
+    },
+    "has-non-selectable-value": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-non-selectable-value"
+    },
+    "has-identifying-question": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-identifying-question"
+    },
+    "initial-input-length": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form-layout/initial-input-length"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "pravnicka-osoba",
+      "label": "Právnická osoba"
+    },
+    {
+      "@id": "fyzicka-osoba",
+      "label": "Fyzická osoba",
+      "owl:disjointWith": [
+        {
+          "@id": "pravnicka-osoba"
+        }
+      ]
+    },
+    {
+      "@id": "fyzicka-osoba--nezletila",
+      "label": "Fyzická osoba nezletilá",
+      "skos:broader": {
+        "@id": "fyzicka-osoba"
+      },
+      "owl:disjointWith": [
+        {
+          "@id": "pravnicka-osoba"
+        }
+      ]
+    },
+    {
+      "@id": "fyzicka-osoba--chytra",
+      "label": "Fyzická osoba chytrá",
+      "skos:broader": {
+        "@id": "fyzicka-osoba"
+      },
+      "owl:disjointWith": [
+        {
+          "@id": "pravnicka-osoba"
+        }
+      ]
+    },
+    {
+      "@id": "fyzicka-osoba--hloupa",
+      "label": "Fyzická osoba hloupá",
+      "skos:broader": {
+        "@id": "fyzicka-osoba"
+      },
+      "owl:disjointWith": [
+        {
+          "@id": "pravnicka-osoba"
+        },
+        {
+          "@id": "fyzicka-osoba--chytra"
+        }
+      ]
+    },
+    {
+      "@id": "_:b0",
+      "accepts-answer-value": true,
+      "has-tested-question": "show-advanced-fields-4248"
+    },
+    {
+      "@id": "_:b1",
+      "accepts-non-empty-answer-value": true,
+      "has-tested-question": "test-2-8331"
+    },
+    {
+      "@id": "_:b2",
+      "accepts-answer-value": true,
+      "has-tested-question": "show-advanced-fields-4248"
+    },
+    {
+      "@id": "_:b3",
+      "accepts-non-empty-answer-value": true,
+      "has-tested-question": "test-3-8331"
+    },
+    {
+      "@id": "age-1063",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "text",
+      "has-datatype": "xsd:int",
+      "has-unit": "years",
+      "label": "Age"
+    },
+    {
+      "@id": "cena-6557",
+      "@type": "doc:question",
+      "has-unit-of-measure-question": "mena-8088",
+      "has-layout-class": "text",
+      "has-preceding-question": "age-1063",
+      "label": "cena",
+      "description" : "Tohle je cena s měnou"
+    },
+    {
+      "@id": "first-name-6663",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "text",
+      "has-datatype": "foaf:givenName",
+      "requires-answer": true,
+      "label": "First name"
+    },
+    {
+      "@id": "first-name-9402",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "text",
+      "has-datatype": "foaf:givenName",
+      "has-pattern": "([A-Za-z]+)",
+      "has-preceding-question": "title-7183",
+      "label": "Jméno"
+    },
+    {
+      "@id": "x:form-root",
+      "@type": "doc:question",
+      "has_related_question": [
+        "provozovatel-section-666",
+        "age-1063",
+        "first-name-6663",
+        "middle-name-4161",
+        "last-name-1495",
+        "cena-6557",
+        "mena-8088",
+        "parent-section-1590",
+        "test-section-666"
+      ],
+      "has-layout-class": "form"
+    },
+    {
+      "@id": "provozovatel-section-666",
+      "@type": "doc:question",
+      "has_related_question": [
+        "ps-type-1",
+        "ps-type-2",
+        "as-show-advanced-888",
+        "as-checkbox-452"
+      ],
+      "has-type-question": [
+        "ps-type-1",
+        "ps-type-2"
+      ],
+      "has-layout-class": [
+        "answerable",
+        "section",
+        "type-question"
+      ],
+      "has-possible-value": [
+        "fyzicka-osoba",
+        "pravnicka-osoba",
+        "fyzicka-osoba--nezletila",
+        "fyzicka-osoba--chytra",
+        "fyzicka-osoba--hloupa"
+      ],
+      "has-non-selectable-value": [
+        "fyzicka-osoba"
+      ],
+      "label": "Má provozovatele"
+    },
+    {
+      "@id": "ps-type-1",
+      "@type": "doc:question",
+      "label": "PS type 1"
+    },
+    {
+      "@id": "ps-type-2",
+      "@type": "doc:question",
+      "label": "PS type 2"
+    },
+    {
+      "@id": "as-show-advanced-888",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "checkbox",
+      "label": "show advanced",
+      "show-advanced-question": true
+    },
+    {
+      "@id": "as-checkbox-452",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "text",
+      "label": "Jméno"
+    },
+    {
+      "@id": "checkbox-test-452",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "checkbox",
+      "has-preceding-question": "test-3-8331",
+      "label": "checkbox-test"
+    },
+    {
+      "@id": "last-name-1495",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "text",
+      "has-datatype": "foaf:familyName",
+      "has-preceding-question": "middle-name-4161",
+      "requires-answer": true,
+      "label": "Příjmení"
+    },
+    {
+      "@id": "last-name-6610",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "text",
+      "has-datatype": "foaf:familyName",
+      "has-pattern": "([A-Za-z]+)",
+      "label": "Příjmení"
+    },
+    {
+      "@id": "mena-8088",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "text",
+      "label": "mena"
+    },
+    {
+      "@id": "middle-name-4161",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "text",
+      "has-preceding-question": "first-name-6663",
+      "label": "Middle name"
+    },
+    {
+      "@id": "parent-section-1590",
+      "@type": "doc:question",
+      "has_related_question": [
+        "test-field-3887",
+        "sectionfoo-1592"
+      ],
+      "has-identifying-question": [
+        "test-field-3887"
+      ],
+      "has-layout-class": "section",
+      "has-preceding-question": "cena-6557",
+      "label": "Historické místo"
+    },
+    {
+      "@id": "sectionfoo-1592",
+      "@type": "doc:question",
+      "has_related_question": [
+        "title-7183",
+        "first-name-9402",
+        "last-name-6610"
+      ],
+      "has-layout-class": "name",
+      "--has-composite-pattern": "?1 ?2 ?3",
+      "--has-composite-variables": [
+        "title-7183",
+        "first-name-9402",
+        "last-name-6610"
+      ],
+      "has-datatype": "foaf:name",
+      "has-pattern": "^(?:([A-Za-z]{1,4}\\.) )?(.+) (.+)$",
+      "has-preceding-question": "test-field-3887",
+      "requires-answer": true,
+      "label": "Celé jméno"
+    },
+    {
+      "@id": "show-advanced-fields-4248",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "checkbox",
+      "show-advanced-question": true,
+      "label": "Show advanced questions"
+    },
+    {
+      "@id": "test-2-8331",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": [
+        "text",
+        "emphasise-on-relevant"
+      ],
+      "has-preceding-question": "test-5278",
+      "is-relevant-if": [
+        "_:b0",
+        "_:b1"
+      ],
+      "label": "test 2 advanced"
+    },
+    {
+      "@id": "test-3-8331",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": [
+        "text",
+        "advanced-question",
+        "emphasise-on-relevant"
+      ],
+      "has-preceding-question": "test-2-8331",
+      "is-relevant-if": [
+        "_:b2",
+        "_:b3"
+      ],
+      "label": "test 3 advanced"
+    },
+    {
+      "@id": "test-5278",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "text",
+      "has-preceding-question": "show-advanced-fields-4248",
+      "label": "test"
+    },
+    {
+      "@id": "test-field-3887",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "text",
+      "label": "Název"
+    },
+    {
+      "@id": "test-section-666",
+      "@type": "doc:question",
+      "has_related_question": [
+        "show-advanced-fields-4248",
+        "test-5278",
+        "test-2-8331",
+        "test-3-8331",
+        "checkbox-test-452"
+      ],
+      "has-layout-class": [
+        "answerable",
+        "checkbox",
+        "section"
+      ],
+      "has-identifying-question": [
+        "test-5278"
+      ],
+      "description": "test",
+      "has-preceding-question": "parent-section-1590",
+      "label": "testSection"
+    },
+    {
+      "@id": "title-7183",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "text",
+      "label": "Titul",
+      "initial-input-length": 5
+    }
+  ]
+}

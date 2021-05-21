@@ -1,9 +1,9 @@
 {
   "name": "s-forms-smart-components",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "private": true,
   "scripts": {
-    "dev": "parcel serve ./test/index.html --port 8080",
+    "dev": "parcel serve ./example/index.html --port 8080",
     "build": "parcel build ./src/lib.js --target browser",
     "build:lib": "npm run-script build && npm pack"
   },
