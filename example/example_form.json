@@ -184,51 +184,24 @@
       ]
     },
     {
-      "@id": "_:b0",
-      "accepts-answer-value": true,
-      "has-tested-question": "show-advanced-fields-4248"
-    },
-    {
-      "@id": "_:b1",
-      "accepts-non-empty-answer-value": true,
-      "has-tested-question": "test-2-8331"
-    },
-    {
-      "@id": "_:b2",
-      "accepts-answer-value": true,
-      "has-tested-question": "show-advanced-fields-4248"
-    },
-    {
-      "@id": "_:b3",
-      "accepts-non-empty-answer-value": true,
-      "has-tested-question": "test-3-8331"
-    },
-    {
       "@id": "age-1063",
       "@type": "doc:question",
       "has_related_question": [],
       "has-layout-class": "text",
       "has-datatype": "xsd:int",
       "has-unit": "years",
-      "label": "Age"
+      "label": "Age",
+      "initial-input-length": 5
     },
     {
       "@id": "cena-6557",
       "@type": "doc:question",
       "has-unit-of-measure-question": "mena-8088",
       "has-layout-class": "text",
+      "has-datatype": "xsd:int",
       "has-preceding-question": "age-1063",
-      "label": "cena",
+      "label": "Cena",
       "description" : "Tohle je cena s měnou"
-    },
-    {
-      "@id": "first-name-6663",
-      "@type": "doc:question",
-      "has_related_question": [],
-      "has-layout-class": "text",
-      "has-datatype": "foaf:givenName",
-      "requires-answer": true,
-      "label": "First name"
     },
     {
       "@id": "first-name-9402",
@@ -246,9 +219,6 @@
       "has_related_question": [
         "provozovatel-section-666",
         "age-1063",
-        "first-name-6663",
-        "middle-name-4161",
-        "last-name-1495",
         "cena-6557",
         "mena-8088",
         "parent-section-1590",
@@ -262,8 +232,7 @@
       "has_related_question": [
         "ps-type-1",
         "ps-type-2",
-        "as-show-advanced-888",
-        "as-checkbox-452"
+        "ps-name-452"
       ],
       "has-type-question": [
         "ps-type-1",
@@ -305,29 +274,11 @@
       "show-advanced-question": true
     },
     {
-      "@id": "as-checkbox-452",
+      "@id": "ps-name-452",
       "@type": "doc:question",
       "has_related_question": [],
       "has-layout-class": "text",
       "label": "Jméno"
-    },
-    {
-      "@id": "checkbox-test-452",
-      "@type": "doc:question",
-      "has_related_question": [],
-      "has-layout-class": "checkbox",
-      "has-preceding-question": "test-3-8331",
-      "label": "checkbox-test"
-    },
-    {
-      "@id": "last-name-1495",
-      "@type": "doc:question",
-      "has_related_question": [],
-      "has-layout-class": "text",
-      "has-datatype": "foaf:familyName",
-      "has-preceding-question": "middle-name-4161",
-      "requires-answer": true,
-      "label": "Příjmení"
     },
     {
       "@id": "last-name-6610",
@@ -343,15 +294,7 @@
       "@type": "doc:question",
       "has_related_question": [],
       "has-layout-class": "text",
-      "label": "mena"
-    },
-    {
-      "@id": "middle-name-4161",
-      "@type": "doc:question",
-      "has_related_question": [],
-      "has-layout-class": "text",
-      "has-preceding-question": "first-name-6663",
-      "label": "Middle name"
+      "label": "Měna"
     },
     {
       "@id": "parent-section-1590",
@@ -365,7 +308,7 @@
       ],
       "has-layout-class": "section",
       "has-preceding-question": "cena-6557",
-      "label": "Historické místo"
+      "label": "Vlastník"
     },
     {
       "@id": "sectionfoo-1592",
@@ -376,8 +319,8 @@
         "last-name-6610"
       ],
       "has-layout-class": "name",
-      "--has-composite-pattern": "?1 ?2 ?3",
-      "--has-composite-variables": [
+      "has-composite-pattern": "?1 ?2 ?3",
+      "has-composite-variables": [
         "title-7183",
         "first-name-9402",
         "last-name-6610"
@@ -389,68 +332,24 @@
       "label": "Celé jméno"
     },
     {
-      "@id": "show-advanced-fields-4248",
-      "@type": "doc:question",
-      "has_related_question": [],
-      "has-layout-class": "checkbox",
-      "show-advanced-question": true,
-      "label": "Show advanced questions"
-    },
-    {
-      "@id": "test-2-8331",
-      "@type": "doc:question",
-      "has_related_question": [],
-      "has-layout-class": [
-        "text",
-        "emphasise-on-relevant"
-      ],
-      "has-preceding-question": "test-5278",
-      "is-relevant-if": [
-        "_:b0",
-        "_:b1"
-      ],
-      "label": "test 2 advanced"
-    },
-    {
-      "@id": "test-3-8331",
-      "@type": "doc:question",
-      "has_related_question": [],
-      "has-layout-class": [
-        "text",
-        "advanced-question",
-        "emphasise-on-relevant"
-      ],
-      "has-preceding-question": "test-2-8331",
-      "is-relevant-if": [
-        "_:b2",
-        "_:b3"
-      ],
-      "label": "test 3 advanced"
-    },
-    {
       "@id": "test-5278",
       "@type": "doc:question",
       "has_related_question": [],
       "has-layout-class": "text",
-      "has-preceding-question": "show-advanced-fields-4248",
-      "label": "test"
+      "label": "Identifikátor"
     },
     {
       "@id": "test-field-3887",
       "@type": "doc:question",
       "has_related_question": [],
       "has-layout-class": "text",
-      "label": "Název"
+      "label": "Popis vlastníka"
     },
     {
       "@id": "test-section-666",
       "@type": "doc:question",
       "has_related_question": [
-        "show-advanced-fields-4248",
-        "test-5278",
-        "test-2-8331",
-        "test-3-8331",
-        "checkbox-test-452"
+        "test-5278"
       ],
       "has-layout-class": [
         "answerable",
@@ -462,15 +361,14 @@
       ],
       "description": "test",
       "has-preceding-question": "parent-section-1590",
-      "label": "testSection"
+      "label": "Sekce s identifikátorem"
     },
     {
       "@id": "title-7183",
       "@type": "doc:question",
       "has_related_question": [],
       "has-layout-class": "text",
-      "label": "Titul",
-      "initial-input-length": 5
+      "label": "Titul"
     }
   ]
 }

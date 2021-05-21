@@ -11,6 +11,7 @@ import "intelligent-tree-select/lib/styles.css"
 const componentMapping = SmartComponents.getComponentMapping();
 
 const exampleForm = require('./example_form.json');
+const exampleFormTC = require('./example_turisticky_cil.json');
 
 const modalProps = {
   onHide: () => {
@@ -63,7 +64,19 @@ class ExampleApp extends React.Component {
           isFormValid={(isFormValid) => this.setState({isFormValid})}
           componentMapRules={componentMapping}
         />
+        <button
+          disabled={!this.state.isFormValid}
+          style={{width: '100px', margin: '8px 16px', position: 'relative', left: '50%'}}
+          onClick={() => {
+            this.setState((prevState) => (
+              {selectedForm: prevState.selectedForm === exampleFormTC ? exampleForm : exampleFormTC}
+            ));
+          }}
+        >
+          Switch form
+        </button>
       </div>
+
     );
   }
 }
