@@ -64,6 +64,10 @@ class ExampleApp extends React.Component {
           isFormValid={(isFormValid) => this.setState({isFormValid})}
           componentMapRules={componentMapping}
         />
+        <div>
+          Second form demonstrates show advanced switch and sections with answer.
+          Use the switch form button bellow to switch between individual forms.
+        </div>
         <button
           disabled={!this.state.isFormValid}
           style={{width: '100px', margin: '8px 16px', position: 'relative', left: '50%'}}
