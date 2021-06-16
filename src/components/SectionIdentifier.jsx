@@ -22,20 +22,16 @@ export default class SectionIdentifier extends React.Component {
 
   _getIdentifyingQuestionId() {
     const question = this.props.question;
-    let id = question[Constants.HAS_IDENTIFYING_QUESTION];
+    const id  = JsonLdUtils.getJsonAttValue(question, Constants.HAS_IDENTIFYING_QUESTION, '@id');
+
     if (!id) {
       return null;
-    }
-
-    if (Array.isArray(id)) {
-      id = id[0];
     }
 
     return id;
   }
 
   _getLabelText() {
-    //return "Pavel Novotný";
     const question = this.props.question;
     const id = this._getIdentifyingQuestionId();
     if (!id) {
