@@ -85,7 +85,10 @@ export default class WizardStepComponent extends WizardStep {
 
   _renderIdentifierText() {
     return (
-      <SectionIdentifier question={this.props.step}/>
+      <SectionIdentifier question={this.props.step}
+                         prefix="("
+                         suffix=")"
+      />
     );
   }
 
