@@ -7,11 +7,10 @@ import 's-forms/css/s-forms.min.css';
 import '../src/styles/components.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import "intelligent-tree-select/lib/styles.css"
+import * as exampleForm from './example_form.json';
+import * as exampleFormTC from './example_turisticky_cil.json';
 
 const componentMapping = SmartComponents.getComponentMapping();
-
-const exampleForm = require('./example_form.json');
-const exampleFormTC = require('./example_turisticky_cil.json');
 
 const modalProps = {
   onHide: () => {
