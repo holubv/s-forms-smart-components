@@ -8,7 +8,7 @@ import {
   HelpIcon,
   Answer,
   ConfigurationContext,
-  JsonLdObjectMap
+  JsonLdObjectMap, JsonLdObjectUtils
 } from 's-forms';
 import Constants from "../Constants";
 import SmartComponents from "../SmartComponents";
@@ -113,7 +113,7 @@ export default class TypeQuestionAnswer extends React.Component {
 
   _findTypeQuestions() {
     const question = this.props.question;
-    const ids = question[Constants.HAS_TYPE_QUESTION];
+    const ids = Utils.getJsonAttValues(question, Constants.HAS_TYPE_QUESTION, '@id');
     const subQuestions = question[SConstants.HAS_SUBQUESTION];
     const typeQuestions = [];
 
@@ -224,21 +224,10 @@ export default class TypeQuestionAnswer extends React.Component {
       return [];
     }
 
-    const objects = possibleValues
-      .map(id => {
-        let def = JsonLdObjectMap.getObject(id);
-        if (!def) {
-          console.warn('cannot find object ' + id);
-          return null;
-        }
-        return def;
-      })
-      .filter(o => o !== null);
-
     const options = {};
     const relations = [];
 
-    for (let def of objects) {
+    for (let def of possibleValues) {
 
       let label = JsonLdUtils.getLocalized(def[SConstants.RDFS_LABEL], this.context.options.intl);
 
