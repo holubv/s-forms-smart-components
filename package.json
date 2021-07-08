@@ -3,9 +3,12 @@
   "version": "0.0.9",
   "private": true,
   "scripts": {
-    "dev": "parcel serve ./example/index.html --port 8080",
+    "dev": "parcel serve ./example/index.html --port 8082",
     "build": "parcel build ./src/lib.js --target browser",
     "build:lib": "npm run-script build && npm pack"
+  },
+  "engines": {
+    "node": ">=14.17.1"
   },
   "main": "src/lib.js",
   "browser": "dist/lib.js",
@@ -36,7 +39,7 @@
     "classnames": "^2.2.6",
     "jsonld": "^0.4.12",
     "jsonld-utils": "https://kbss.felk.cvut.cz/dist/jsonld-utils-0.0.11.tgz",
-    "parcel": "^2.0.0-beta.2",
+    "parcel": "2.0.0-beta.3.1",
     "prop-types": "^15.7.2",
     "query-string": "^6.13.5",
     "react": "~16.9.0",
