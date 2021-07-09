@@ -36,6 +36,7 @@
     "@babel/plugin-transform-runtime": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
+    "bootstrap": "^4.6.0",
     "classnames": "^2.2.6",
     "jsonld": "^0.4.12",
     "jsonld-utils": "https://kbss.felk.cvut.cz/dist/jsonld-utils-0.0.11.tgz",
