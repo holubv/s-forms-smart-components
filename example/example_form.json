@@ -46,6 +46,10 @@
       "@id": "http://onto.fel.cvut.cz/ontologies/form/has-tested-question",
       "@type": "@id"
     },
+    "has-sub-condition": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-sub-condition",
+      "@type": "@id"
+    },
     "accepts-answer-value": {
       "@id": "http://onto.fel.cvut.cz/ontologies/form/accepts-answer-value",
       "@type": "http://www.w3.org/2001/XMLSchema#boolean"
@@ -232,7 +236,10 @@
       "has_related_question": [
         "ps-type-1",
         "ps-type-2",
-        "ps-name-452"
+        "ps-name-452",
+        "ps-age-452",
+        "ps-iq-452",
+        "ps-cin-452"
       ],
       "has-type-question": [
         "ps-type-1",
@@ -274,11 +281,37 @@
       "show-advanced-question": true
     },
     {
+      "@id": "ps-iq-452",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "text",
+      "label": "IQ",
+      "is-relevant-if": "provozovatel-fyzicka-osoba-s-iq-condition"
+    },
+    {
+      "@id": "ps-age-452",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "text",
+      "label": "Age",
+      "is-relevant-if": "provozovatel-fyzicka-osoba-s-vekom-condition"
+    },
+    {
+      "@id": "ps-cin-452",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "text",
+      "label": "CIN",
+      "is-relevant-if": "provozovatel-pravnicka-osoba-condition",
+      "description": "Company identification number"
+    },
+    {
       "@id": "ps-name-452",
       "@type": "doc:question",
       "has_related_question": [],
       "has-layout-class": "text",
-      "label": "Jméno"
+      "label": "Jméno",
+      "is-relevant-if": "provozovatel-fyzicka-osoba-condition"
     },
     {
       "@id": "last-name-6610",
@@ -369,6 +402,118 @@
       "has_related_question": [],
       "has-layout-class": "text",
       "label": "Titul"
+    },
+    {
+      "@id": "provozovatel-fyzicka-osoba-condition",
+      "@type": "form:condition",
+      "accepts-answer-value" : {
+        "@id" : "fyzicka-osoba"
+      },
+      "has-tested-question" : "provozovatel-section-666"
+    },
+    {
+      "@id": "provozovatel-pravnicka-osoba-condition-1",
+      "@type": "form:condition",
+      "accepts-answer-value" : [
+        "pravnicka-osoba"
+      ],
+      "has-tested-question" : "ps-type-1"
+    },
+    {
+      "@id": "provozovatel-pravnicka-osoba-condition-2",
+      "@type": "form:condition",
+      "accepts-answer-value" : [
+        "pravnicka-osoba"
+      ],
+      "has-tested-question" : "ps-type-2"
+    },
+    {
+      "@id": "provozovatel-pravnicka-osoba-condition",
+      "@type": "form:or-condition",
+      "has-sub-condition" : [ 
+	"provozovatel-pravnicka-osoba-condition-1",
+	"provozovatel-pravnicka-osoba-condition-2"
+      ]
+    },
+    {
+      "@id": "provozovatel-fyzicka-osoba-condition-1",
+      "@type": "form:condition",
+      "accepts-answer-value" : [
+        "fyzicka-osoba",
+        "fyzicka-osoba--hloupa",
+        "fyzicka-osoba--nezletila",
+        "fyzicka-osoba--chytra"
+      ],
+      "has-tested-question" : "ps-type-1"
+    },
+    {
+      "@id": "provozovatel-fyzicka-osoba-condition-2",
+      "@type": "form:condition",
+      "accepts-answer-value" : [
+        "fyzicka-osoba",
+        "fyzicka-osoba--hloupa",
+        "fyzicka-osoba--nezletila",
+        "fyzicka-osoba--chytra"
+      ],
+      "has-tested-question" : "ps-type-2"
+    },
+    {
+      "@id": "provozovatel-fyzicka-osoba-condition",
+      "@type": "form:or-condition",
+      "has-sub-condition" : [ 
+	"provozovatel-fyzicka-osoba-condition-1",
+	"provozovatel-fyzicka-osoba-condition-2"
+      ]
+    },
+    {
+      "@id": "provozovatel-fyzicka-osoba-s-iq-condition-1",
+      "@type": "form:condition",
+      "accepts-answer-value" : [
+        "fyzicka-osoba--hloupa",
+        "fyzicka-osoba--chytra"
+      ],
+      "has-tested-question" : "ps-type-1"
+    },
+    {
+      "@id": "provozovatel-fyzicka-osoba-s-iq-condition-2",
+      "@type": "form:condition",
+      "accepts-answer-value" : [
+        "fyzicka-osoba--hloupa",
+        "fyzicka-osoba--chytra"
+      ],
+      "has-tested-question" : "ps-type-2"
+    },
+    {
+      "@id": "provozovatel-fyzicka-osoba-s-iq-condition",
+      "@type": "form:or-condition",
+      "has-sub-condition" : [ 
+	"provozovatel-fyzicka-osoba-s-iq-condition-1",
+	"provozovatel-fyzicka-osoba-s-iq-condition-2"
+      ]
+    },
+    {
+      "@id": "provozovatel-fyzicka-osoba-s-vekom-condition-1",
+      "@type": "form:condition",
+      "accepts-answer-value" : [
+        "fyzicka-osoba--nezletila"
+      ],
+      "has-tested-question" : "ps-type-1"
+    },
+    {
+      "@id": "provozovatel-fyzicka-osoba-s-vekom-condition-2",
+      "@type": "form:condition",
+      "accepts-answer-value" : [
+        "fyzicka-osoba--nezletila"
+      ],
+      "has-tested-question" : "ps-type-2"
+    },
+    {
+      "@id": "provozovatel-fyzicka-osoba-s-vekom-condition",
+      "@type": "form:or-condition",
+      "has-sub-condition" : [ 
+	"provozovatel-fyzicka-osoba-s-vekom-condition-1",
+	"provozovatel-fyzicka-osoba-s-vekom-condition-2"
+      ]
     }
   ]
 }
