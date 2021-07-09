@@ -125,6 +125,39 @@ export default class Utils {
   }
 
   /**
+   * Wraps passed object into new array if it is not array already.
+   * @param object_or_array An object or array.
+   * @returns {*} New array containing passed object or passed array.
+   */
+  static asArray(object_or_array) {
+    if (!object_or_array) {
+      return [];
+    }
+    if (object_or_array.constructor === Array) {
+      return object_or_array;
+    }
+    return [object_or_array];
+  }
+
+  /**
+   * Gets array of values of the specified attribute.
+   *
+   * If the attribute value is a string, it is returned, otherwise a '@value' attribute is retrieved from the nested
+   * object.
+   * @param obj Object from which the attribute value will be extracted
+   * @param att Attribute name
+   * @param by (optional) JSON attribute to use instead of '@value' in case the att value is an object
+   * @return {*} Array of attribute values (possibly null)
+   */
+  static getJsonAttValues(obj, att, by = null) {
+    if (obj[att] === null || obj[att] === undefined) {
+      return null;
+    }
+    return Utils.asArray(obj[att]).map(v => typeof v === 'object' ? v[by ? by : '@value'] : v )
+  }
+
+
+  /**
    * @param {string[]} arr1
    * @param {string[]} arr2
    */
