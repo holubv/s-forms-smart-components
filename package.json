@@ -46,6 +46,6 @@
     "react": "~16.9.0",
     "react-bootstrap": "1.0.1",
     "react-dom": "~16.9.0",
-    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.2.6.tgz"
+    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.2.7.tgz"
   }
 }
