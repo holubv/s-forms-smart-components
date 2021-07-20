@@ -104,12 +104,12 @@ export default class Utils {
       return false;
     }
 
-    const propValue = question[property];
+    const propValue = this.getJsonAttValues(question, property, "@id");
     if (!propValue) {
       return false;
     }
 
-    if (Array.isArray(propValue) && propValue.includes(value)) {
+    if (propValue.includes(value)) {
       return true;
     }
 
