@@ -1,6 +1,6 @@
 {
   "name": "s-forms-smart-components",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "private": true,
   "scripts": {
     "dev": "parcel serve ./example/index.html --port 8082",
@@ -29,6 +29,9 @@
   ],
   "dependencies": {
     "intelligent-tree-select": "^0.8.0"
+  },
+  "peerDependencies": {
+    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.2.7.tgz"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.3",
