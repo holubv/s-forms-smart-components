@@ -52,7 +52,6 @@
     },
     "accepts-answer-value": {
       "@id": "http://onto.fel.cvut.cz/ontologies/form/accepts-answer-value",
-      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
     },
     "accepts-non-empty-answer-value": {
       "@id": "http://onto.fel.cvut.cz/ontologies/form/accepts-non-empty-answer-value",
@@ -415,7 +414,9 @@
       "@id": "provozovatel-pravnicka-osoba-condition-1",
       "@type": "form:condition",
       "accepts-answer-value" : [
-        "pravnicka-osoba"
+        {
+          "@id": "pravnicka-osoba"
+        }
       ],
       "has-tested-question" : "ps-type-1"
     },
@@ -423,7 +424,9 @@
       "@id": "provozovatel-pravnicka-osoba-condition-2",
       "@type": "form:condition",
       "accepts-answer-value" : [
-        "pravnicka-osoba"
+        {
+          "@id": "pravnicka-osoba"
+        }
       ],
       "has-tested-question" : "ps-type-2"
     },
@@ -431,18 +434,26 @@
       "@id": "provozovatel-pravnicka-osoba-condition",
       "@type": "form:or-condition",
       "has-sub-condition" : [ 
-	"provozovatel-pravnicka-osoba-condition-1",
-	"provozovatel-pravnicka-osoba-condition-2"
+        "provozovatel-pravnicka-osoba-condition-1",
+	    "provozovatel-pravnicka-osoba-condition-2"
       ]
     },
     {
       "@id": "provozovatel-fyzicka-osoba-condition-1",
       "@type": "form:condition",
       "accepts-answer-value" : [
-        "fyzicka-osoba",
-        "fyzicka-osoba--hloupa",
-        "fyzicka-osoba--nezletila",
-        "fyzicka-osoba--chytra"
+        {
+          "@id": "fyzicka-osoba"
+        },
+        {
+          "@id": "fyzicka-osoba--hloupa"
+        },
+        {
+          "@id": "fyzicka-osoba--nezletila"
+        },
+        {
+          "@id": "fyzicka-osoba--chytra"
+        }
       ],
       "has-tested-question" : "ps-type-1"
     },
@@ -450,10 +461,18 @@
       "@id": "provozovatel-fyzicka-osoba-condition-2",
       "@type": "form:condition",
       "accepts-answer-value" : [
-        "fyzicka-osoba",
-        "fyzicka-osoba--hloupa",
-        "fyzicka-osoba--nezletila",
-        "fyzicka-osoba--chytra"
+        {
+          "@id": "fyzicka-osoba"
+        },
+        {
+          "@id": "fyzicka-osoba--hloupa"
+        },
+        {
+          "@id": "fyzicka-osoba--nezletila"
+        },
+        {
+          "@id": "fyzicka-osoba--chytra"
+        }
       ],
       "has-tested-question" : "ps-type-2"
     },
@@ -461,16 +480,20 @@
       "@id": "provozovatel-fyzicka-osoba-condition",
       "@type": "form:or-condition",
       "has-sub-condition" : [ 
-	"provozovatel-fyzicka-osoba-condition-1",
-	"provozovatel-fyzicka-osoba-condition-2"
+          "provozovatel-fyzicka-osoba-condition-1",
+	      "provozovatel-fyzicka-osoba-condition-2"
       ]
     },
     {
       "@id": "provozovatel-fyzicka-osoba-s-iq-condition-1",
       "@type": "form:condition",
       "accepts-answer-value" : [
-        "fyzicka-osoba--hloupa",
-        "fyzicka-osoba--chytra"
+        {
+          "@id": "fyzicka-osoba--hloupa"
+        },
+        {
+          "@id": "fyzicka-osoba--chytra"
+        }
       ],
       "has-tested-question" : "ps-type-1"
     },
@@ -478,8 +501,12 @@
       "@id": "provozovatel-fyzicka-osoba-s-iq-condition-2",
       "@type": "form:condition",
       "accepts-answer-value" : [
-        "fyzicka-osoba--hloupa",
-        "fyzicka-osoba--chytra"
+        {
+          "@id": "fyzicka-osoba--hloupa"
+        },
+        {
+          "@id": "fyzicka-osoba--chytra"
+        }
       ],
       "has-tested-question" : "ps-type-2"
     },
@@ -487,15 +514,17 @@
       "@id": "provozovatel-fyzicka-osoba-s-iq-condition",
       "@type": "form:or-condition",
       "has-sub-condition" : [ 
-	"provozovatel-fyzicka-osoba-s-iq-condition-1",
-	"provozovatel-fyzicka-osoba-s-iq-condition-2"
+	      "provozovatel-fyzicka-osoba-s-iq-condition-1",
+	      "provozovatel-fyzicka-osoba-s-iq-condition-2"
       ]
     },
     {
       "@id": "provozovatel-fyzicka-osoba-s-vekom-condition-1",
       "@type": "form:condition",
       "accepts-answer-value" : [
-        "fyzicka-osoba--nezletila"
+        {
+          "@id": "fyzicka-osoba--nezletila"
+        }
       ],
       "has-tested-question" : "ps-type-1"
     },
@@ -503,7 +532,9 @@
       "@id": "provozovatel-fyzicka-osoba-s-vekom-condition-2",
       "@type": "form:condition",
       "accepts-answer-value" : [
-        "fyzicka-osoba--nezletila"
+        {
+          "@id": "fyzicka-osoba--nezletila"
+        }
       ],
       "has-tested-question" : "ps-type-2"
     },
@@ -511,8 +542,8 @@
       "@id": "provozovatel-fyzicka-osoba-s-vekom-condition",
       "@type": "form:or-condition",
       "has-sub-condition" : [ 
-	"provozovatel-fyzicka-osoba-s-vekom-condition-1",
-	"provozovatel-fyzicka-osoba-s-vekom-condition-2"
+	      "provozovatel-fyzicka-osoba-s-vekom-condition-1",
+	      "provozovatel-fyzicka-osoba-s-vekom-condition-2"
       ]
     }
   ]

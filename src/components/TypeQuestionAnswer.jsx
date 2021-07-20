@@ -47,8 +47,6 @@ export default class TypeQuestionAnswer extends React.Component {
       value = [value];
     }
 
-    console.log(value);
-
     this._setAnswers(value);
 
     const change = {...this.props.answer};
@@ -79,8 +77,8 @@ export default class TypeQuestionAnswer extends React.Component {
 
       if (answer) {
         typeQuestion[SConstants.HAS_ANSWER] = [{
-          [SConstants.HAS_DATA_VALUE]: {
-            '@value': answer.value
+          [SConstants.HAS_OBJECT_VALUE]: {
+            '@id': answer.value
           }
         }];
       } else {
@@ -299,8 +297,6 @@ export default class TypeQuestionAnswer extends React.Component {
 
     this._checkNonSelectableOptions(options);
 
-    console.log(options);
-
     this.setState({
       tree: options,
       singleSelect: totalDisjoint,
@@ -347,7 +343,7 @@ export default class TypeQuestionAnswer extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this._isRegenerationNeeded(prevProps.question)) {
-      console.log('regeneration needed');
+      console.debug('regeneration needed');
       this._generateOptions();
     }
 
