@@ -215,7 +215,6 @@ export default class TypeQuestionAnswer extends React.Component {
   }
 
   _generateOptions() {
-    console.log('generating tree...');
     const question = this.props.question;
     const possibleValues = question[SConstants.HAS_OPTION];
     if (!possibleValues || !possibleValues.length) {
@@ -225,19 +224,19 @@ export default class TypeQuestionAnswer extends React.Component {
     const options = {};
     const relations = [];
 
-    for (let def of possibleValues) {
+    for (let pValue of possibleValues) {
 
-      let label = JsonLdUtils.getLocalized(def[SConstants.RDFS_LABEL], this.context.options.intl);
+      let label = JsonLdUtils.getLocalized(pValue[SConstants.RDFS_LABEL], this.context.options.intl);
 
-      options[def['@id']] = {
-        value: def['@id'],
+      options[pValue['@id']] = {
+        value: pValue['@id'],
         label: label,
         children: [],
         disjoint: []
       };
 
-      if (def[Constants.DISJOINT_WITH]) {
-        let disjoints = def[Constants.DISJOINT_WITH];
+      if (pValue[Constants.DISJOINT_WITH]) {
+        let disjoints = pValue[Constants.DISJOINT_WITH];
 
         if (disjoints.length === undefined) {
           // only single disjoint without array
@@ -248,16 +247,16 @@ export default class TypeQuestionAnswer extends React.Component {
           relations.push({
             type: 'disjoint',
             a: disjoint['@id'],
-            b: def['@id']
+            b: pValue['@id']
           });
         }
       }
 
-      if (def[Constants.BROADER]) {
+      for (let parent of Utils.asArray(pValue[Constants.BROADER])) {
         relations.push({
           type: 'parent-child',
-          parent: def[Constants.BROADER]['@id'],
-          child: def['@id']
+          parent: parent['@id'],
+          child: pValue['@id']
         });
       }
     }
