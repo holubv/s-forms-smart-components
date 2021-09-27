@@ -1,6 +1,6 @@
 {
   "name": "s-forms-smart-components",
-  "version": "0.0.10",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "parcel serve ./example/index.html --port 8082",
