@@ -28,10 +28,10 @@
     "dist/"
   ],
   "dependencies": {
-    "intelligent-tree-select": "^0.8.0"
+    "intelligent-tree-select": "~0.8.3"
   },
   "peerDependencies": {
-    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.2.7.tgz"
+    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.3.0.tgz"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -46,9 +46,9 @@
     "parcel": "2.0.0-beta.3.1",
     "prop-types": "^15.7.2",
     "query-string": "^6.13.5",
-    "react": "~16.9.0",
+    "react": "^17.0.2",
     "react-bootstrap": "1.0.1",
-    "react-dom": "~16.9.0",
-    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.2.7.tgz"
+    "react-dom": "^17.0.2",
+    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.3.0.tgz"
   }
 }
