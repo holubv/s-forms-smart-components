@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SForms from 's-forms';
+import SForms, {Constants} from 's-forms';
 import SmartComponents from "../src/SmartComponents";
 
 import 's-forms/css/s-forms.min.css';
@@ -34,7 +34,15 @@ const options = {
   horizontalWizardNav: false,
   wizardStepButtons: true,
   enableForwardSkip: true,
-  startingStep: 1
+  startingStep: 1,
+  users: [
+    {id: "http://fel.cvut.cz/people/max-chopart", label: "Max Chopart"},
+    {id: "http://fel.cvut.cz/people/miroslav-blasko", label: "Miroslav Blasko"}],
+  currentUser: "http://fel.cvut.cz/people/max-chopart",
+  icons: [
+    {id: Constants.ICONS.QUESTION_HELP, behavior:  Constants.ICON_BEHAVIOR.ENABLE},
+    {id: Constants.ICONS.QUESTION_COMMENTS, behavior: Constants.ICON_BEHAVIOR.ENABLE}
+  ]
 };
 
 class ExampleApp extends React.Component {

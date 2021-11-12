@@ -74,18 +74,7 @@ export default class ShowAdvancedSwitch extends Question {
   _renderShowAdvancedHelp() {
     const {question} = this._getShowAdvancedQuestion();
 
-    if (question[SConstants.HELP_DESCRIPTION]) {
-      return (
-        <HelpIcon
-          absolutePosition={false}
-          overlayPlacement="left"
-          text={JsonLdUtils.getLocalized(question[SConstants.HELP_DESCRIPTION], this.context.options.intl)}
-          iconClassContainer="help-icon-section"
-        />
-      );
-    }
-
-    return null;
+    return Question.renderIcons(question, this.context.options, this.onCommentChange);
   }
 
   _renderSwitch() {
