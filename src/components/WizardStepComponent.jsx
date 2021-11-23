@@ -133,7 +133,7 @@ export default class WizardStepComponent extends WizardStep {
                        id={this.props.step['@id']}
           >
             {JsonLdUtils.getLocalized(this.props.step[JsonLdUtils.RDFS_LABEL], this.props.options.intl)}
-            {this._renderHelpIcon()}
+            {Question.renderIcons(this.props.step, this.props.options, this.onCommentChange)}
 
             {this._renderIdentifierText()}
             {this._renderShowAdvanced()}
@@ -150,7 +150,6 @@ export default class WizardStepComponent extends WizardStep {
     );
 
   }
-
 }
 
 WizardStepComponent.contextType = FormQuestionsContext;

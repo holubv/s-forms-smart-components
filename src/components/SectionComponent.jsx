@@ -72,6 +72,7 @@ export default class SectionComponent extends Question {
       answer: answer,
       question: question,
       onChange: this.onAnswerChange,
+      onCommentChange: this.onCommentChange,
       onSubChange: this.onSubQuestionChange,
       isInSectionHeader: true
     });

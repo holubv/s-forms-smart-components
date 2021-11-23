@@ -73,19 +73,9 @@ export default class ShowAdvancedSwitch extends Question {
 
   _renderShowAdvancedHelp() {
     const {question} = this._getShowAdvancedQuestion();
-
-    if (question[SConstants.HELP_DESCRIPTION]) {
-      return (
-        <HelpIcon
-          absolutePosition={false}
-          overlayPlacement="left"
-          text={JsonLdUtils.getLocalized(question[SConstants.HELP_DESCRIPTION], this.context.options.intl)}
-          iconClassContainer="help-icon-section"
-        />
-      );
-    }
-
-    return null;
+    // TODO: The commenting is not working since we cannot reach here component instance of showAdvancedQuestion
+    const showAdvancedQuestionComponent = this
+    return Question.renderIcons(question, this.context.options, showAdvancedQuestionComponent.onCommentChange);
   }
 
   _renderSwitch() {

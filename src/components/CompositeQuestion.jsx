@@ -30,6 +30,10 @@ export default class CompositeQuestion extends Question {
     }
   };
 
+  onCommentChange = (commentIndex, change) => {
+    this._onChange(SConstants.HAS_COMMENT, commentIndex, change);
+  };
+
   _updateExpandedParts() {
     const question = this.props.question;
     const subQuestions = this._getSubQuestions();

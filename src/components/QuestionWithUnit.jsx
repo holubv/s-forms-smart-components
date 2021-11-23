@@ -51,7 +51,7 @@ class _QuestionWithUnit extends Question {
       <div key={'row-item-0'} className={cls} id={question['@id']}>
         <div className="question-with-unit">
           <div className="base-question">
-            <Answer index={0} answer={answers[0]} question={question} onChange={this.onAnswerChange} />
+            <Answer index={0} answer={answers[0]} question={question} onChange={this.onAnswerChange} onCommentChange={this.onCommentChange}/>
             {this._renderUnits()}
             {this._renderPrefixes()}
           </div>
