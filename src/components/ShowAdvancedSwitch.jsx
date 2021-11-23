@@ -73,7 +73,7 @@ export default class ShowAdvancedSwitch extends Question {
 
   _renderShowAdvancedHelp() {
     const {question} = this._getShowAdvancedQuestion();
-    // TODO: The commenting is not working, we cannot reach here component instance of showAdvancedQuestion
+    // TODO: The commenting is not working since we cannot reach here component instance of showAdvancedQuestion
     const showAdvancedQuestionComponent = this
     return Question.renderIcons(question, this.context.options, showAdvancedQuestionComponent.onCommentChange);
   }
