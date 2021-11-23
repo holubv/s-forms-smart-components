@@ -56,6 +56,7 @@
 
 .answerable-section > .card > .card-header .answer {
     justify-content: space-between;
+    width: 100%;
 }
 
 .answerable-section > .card > .card-header .answer .show-advanced-switch {
