@@ -28,8 +28,7 @@
     "dist/"
   ],
   "dependencies": {
-    "intelligent-tree-select": "~0.8.3",
-    "react-datepicker": "^4.3.0"
+    "intelligent-tree-select": "~0.8.3"
   },
   "peerDependencies": {
     "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.3.1.tgz"
