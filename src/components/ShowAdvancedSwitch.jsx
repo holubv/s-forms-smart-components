@@ -1,11 +1,9 @@
 import React from 'react';
-import {Accordion, Card, Form} from 'react-bootstrap';
+import {Form} from 'react-bootstrap';
 import JsonLdUtils from 'jsonld-utils';
-import {Question, FormUtils, Constants as SConstants, HelpIcon, Answer, ConfigurationContext} from 's-forms';
+import {Question, Constants as SConstants, ConfigurationContext} from 's-forms';
 import Constants from "../Constants";
-import classNames from 'classnames';
 import JsonldUtils from 'jsonld-utils';
-import PropTypes from "prop-types";
 import Utils from "../Utils";
 
 export default class ShowAdvancedSwitch extends Question {
@@ -71,11 +69,14 @@ export default class ShowAdvancedSwitch extends Question {
     this._onChange(SConstants.HAS_SUBQUESTION, index, question);
   };
 
-  _renderShowAdvancedHelp() {
+  _renderIcons() {
+    const options = this.context.options;
+    const icons = options.icons.filter(i => i.id !== SConstants.ICONS.QUESTION_COMMENTS)
+    // question comment icons are not implemented (see https://github.com/kbss-cvut/s-forms-smart-components/issues/4)
+    const optionsWithoutQuestionCommentsIcon = {...options, icons};
+
     const {question} = this._getShowAdvancedQuestion();
-    // TODO: The commenting is not working since we cannot reach here component instance of showAdvancedQuestion
-    const showAdvancedQuestionComponent = this
-    return Question.renderIcons(question, this.context.options, showAdvancedQuestionComponent.onCommentChange);
+    return Question.renderIcons(question, optionsWithoutQuestionCommentsIcon);
   }
 
   _renderSwitch() {
@@ -95,7 +96,7 @@ export default class ShowAdvancedSwitch extends Question {
           inline
         />
 
-        {this._renderShowAdvancedHelp()}
+        {this._renderIcons()}
       </div>
     )
   }
