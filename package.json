@@ -28,7 +28,9 @@
     "dist/"
   ],
   "dependencies": {
-    "intelligent-tree-select": "~0.8.3",
+    "intelligent-tree-select": "~0.8.3"
+  },
+  "peerDependencies": {
     "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.3.1.tgz"
   },
   "devDependencies": {
@@ -46,6 +48,7 @@
     "query-string": "^6.13.5",
     "react": "^17.0.2",
     "react-bootstrap": "1.0.1",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.3.0.tgz"
   }
 }
