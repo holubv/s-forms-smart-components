@@ -78,10 +78,15 @@
     min-width: 370px;
 }
 
+.type-answer-group label {
+    min-width: 8.125rem;
+}
+
 .type-answer-group .Select {
     margin-top: -6px;
     flex-grow: 1;
     margin-left: 15px;
+    min-width: 15rem;
 }
 
 .type-answer-group .Select-control {
