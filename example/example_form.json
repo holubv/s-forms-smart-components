@@ -148,6 +148,10 @@
     },
     "initial-input-length": {
       "@id": "http://onto.fel.cvut.cz/ontologies/form-layout/initial-input-length"
+    },
+    "source" : {
+      "@id" : "http://purl.org/dc/elements/1.1/source",
+      "@type" : "@id"
     }
   },
   "@graph": [
@@ -570,7 +574,8 @@
       "has-layout-class" : [ "checkbox", "section", "answerable", "collapsed" ],
       "has-preceding-question": "test-section-666",
       "has_related_question": ["show-advanced-question:-test-advanced-switch","test-field-3888", "test-5279"],
-      "label": "Advanced switch test section"
+      "label": "Advanced switch test section",
+      "source" : "https://slovník.gov.cz/generický/množství/pojem/má-jednotku"
     },
     {
       "@id": "show-advanced-question:-test-advanced-switch",
@@ -616,7 +621,8 @@
       "@type": "doc:question",
       "has_related_question": [],
       "has-layout-class": "text",
-      "label": "Field test"
+      "label": "Field test",
+      "source" : "https://slovník.gov.cz/generický/množství/pojem/má-jednotku"
     }
   ]
 }
