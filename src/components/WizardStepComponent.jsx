@@ -14,6 +14,9 @@ export default class WizardStepComponent extends WizardStep {
 
   constructor(props) {
     super(props);
+    this.state = {
+      showIcon: false
+    }
 
     this.card = React.createRef();
     this.cardHeader = React.createRef();
@@ -39,6 +42,14 @@ export default class WizardStepComponent extends WizardStep {
     const question = this.props.step;
     return JsonLdUtils.hasValue(question, SConstants.LAYOUT_CLASS, Constants.LAYOUT_STICKY);
   }
+
+  _onMouseEnterHandler = () => {
+    this.setState({ showIcon: true });
+  };
+
+  _onMouseLeaveHandler = () => {
+    this.setState({ showIcon: false });
+  };
 
   _handleScroll = () => {
 
@@ -131,9 +142,11 @@ export default class WizardStepComponent extends WizardStep {
                        style={headerStyle}
                        as="h6"
                        id={this.props.step['@id']}
+                       onMouseEnter={this._onMouseEnterHandler}
+                       onMouseLeave={this._onMouseLeaveHandler}
           >
             {JsonLdUtils.getLocalized(this.props.step[JsonLdUtils.RDFS_LABEL], this.props.options.intl)}
-            {Question.renderIcons(this.props.step, this.props.options, this.onCommentChange)}
+            {Question.renderIcons(this.props.step, this.props.options, this.onCommentChange, this.state.showIcon)}
 
             {this._renderIdentifierText()}
             {this._renderShowAdvanced()}

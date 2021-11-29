@@ -73,6 +73,7 @@ export default class SectionComponent extends Question {
       question: question,
       onChange: this.onAnswerChange,
       onCommentChange: this.onCommentChange,
+      showIcon: this.state.showIcon,
       onSubChange: this.onSubQuestionChange,
       isInSectionHeader: true
     });
@@ -106,7 +107,13 @@ export default class SectionComponent extends Question {
         Question.getEmphasizedOnRelevantClass(question)
       );
       children.push(
-        <div key={'row-item-' + i} className={cls} id={question['@id']}>
+        <div
+          key={'row-item-' + i}
+          className={cls}
+          id={question['@id']}
+          onMouseEnter={this._onMouseEnterHandler}
+          onMouseLeave={this._onMouseLeaveHandler}
+        >
           <div className="answer-content" style={this._getAnswerWidthStyle()}>
             {this._renderAnswer(i, answers[i])}
             {this._renderIdentifierText()}

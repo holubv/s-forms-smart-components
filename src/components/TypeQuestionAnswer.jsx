@@ -352,13 +352,14 @@ export default class TypeQuestionAnswer extends React.Component {
     const question = this.props.question;
     const options = this.context.options;
     const onCommentChange = this.props.onCommentChange;
+    const showIcon = this.state.showIcon;
 
     if (this.props.isInSectionHeader) {
       return (
         <div className="type-answer-group">
           {this._renderLabel()}
           {this._renderSelect()}
-          {Question.renderIcons(question, options, onCommentChange)}
+          {Question.renderIcons(question, options, onCommentChange, showIcon)}
         </div>
       );
     }
@@ -367,7 +368,7 @@ export default class TypeQuestionAnswer extends React.Component {
       <FormGroup>
         {this._renderLabel()}
         {this._renderSelect()}
-        {Question.renderIcons(question, options, onCommentChange)}
+        {Question.renderIcons(question, options, onCommentChange,showIcon)}
       </FormGroup>
     );
   }
@@ -382,6 +383,7 @@ TypeQuestionAnswer.propTypes = {
   question: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   onCommentChange: PropTypes.func.isRequired,
+  showIcon: PropTypes.bool.isRequired,
   onSubChange: PropTypes.func.isRequired,
   isInSectionHeader: PropTypes.bool
 }
