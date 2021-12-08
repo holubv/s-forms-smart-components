@@ -12,10 +12,14 @@ export default class SectionComponent extends Question {
   constructor(props) {
     super(props);
 
-    const toggleCollapseSuper = this._toggleCollapse;
-    this._toggleCollapse = (e) => {
+    const toggleCollapseSuper = this.toggleCollapse;
+    this.toggleCollapse = (e) => {
       let classList = e.target.classList;
-      if (!classList.contains('answer-content') && !classList.contains('card-header')) {
+      if (!classList.contains('answer-content') && !classList.contains('card-header')
+        && !classList.contains('answer') && !classList.contains('show-advanced-switch')
+        && !classList.contains('d-inline') && !classList.contains('caret-square-down')
+        && !(classList.length === 0)
+      ) {
         return;
       }
       toggleCollapseSuper();
@@ -44,12 +48,11 @@ export default class SectionComponent extends Question {
     );
   }
 
-  _renderQuestionHelp() {
+  renderHeaderExtension() {
     return (
       <>
-        {super._renderQuestionHelp()}
         {this._renderIdentifierText()}
-        {this._renderShowAdvanced()}
+        {this.state.expanded && this._renderShowAdvanced()}
       </>
     );
   }
