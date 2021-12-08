@@ -348,14 +348,14 @@ export default class TypeQuestionAnswer extends React.Component {
     const question = this.props.question;
     const options = this.context.options;
     const onCommentChange = this.props.onCommentChange;
-    const showIcon = this.state.showIcon;
+    const showIcon = this.props.showIcon;
 
     if (this.props.isInSectionHeader) {
       return (
         <div className="type-answer-group">
           {this._renderLabel()}
-          {this._renderSelect()}
           {Question.renderIcons(question, options, onCommentChange, showIcon)}
+          {this._renderSelect()}
         </div>
       );
     }
@@ -363,8 +363,8 @@ export default class TypeQuestionAnswer extends React.Component {
     return (
       <FormGroup>
         {this._renderLabel()}
-        {this._renderSelect()}
         {Question.renderIcons(question, options, onCommentChange,showIcon)}
+        {this._renderSelect()}
       </FormGroup>
     );
   }

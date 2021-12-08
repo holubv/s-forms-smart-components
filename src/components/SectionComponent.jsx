@@ -18,6 +18,7 @@ export default class SectionComponent extends Question {
       if (!classList.contains('answer-content') && !classList.contains('card-header')
         && !classList.contains('answer') && !classList.contains('show-advanced-switch')
         && !classList.contains('d-inline') && !classList.contains('caret-square-down')
+        && !classList.contains('form-label')
         && !(classList.length === 0)
       ) {
         return;
@@ -116,6 +117,7 @@ export default class SectionComponent extends Question {
           <div className="answer-content" style={this._getAnswerWidthStyle()}>
             {this._renderAnswer(i, answers[i])}
             {this._renderIdentifierText()}
+            {this.render}
           </div>
           {this._renderUnits()}
           {this._renderPrefixes()}
