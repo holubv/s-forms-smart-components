@@ -1,6 +1,6 @@
 {
   "name": "s-forms-smart-components",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "scripts": {
     "dev": "parcel serve ./example/index.html --port 8082",
@@ -31,7 +31,7 @@
     "intelligent-tree-select": "~0.8.3"
   },
   "peerDependencies": {
-    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.3.2.tgz"
+    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.3.3.tgz"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -49,6 +49,6 @@
     "react": "^17.0.2",
     "react-bootstrap": "1.0.1",
     "react-dom": "^17.0.2",
-    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.3.2.tgz"
+    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.3.3.tgz"
   }
 }

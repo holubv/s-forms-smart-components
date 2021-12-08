@@ -1,10 +1,6 @@
 import React from 'react';
-import JsonLdUtils from 'jsonld-utils';
-import { Card, Accordion } from 'react-bootstrap';
-import {Question, FormUtils, Constants as SConstants, Answer, ConfigurationContext} from 's-forms';
-import Constants from "../Constants";
+import {Question, FormUtils, Answer, ConfigurationContext} from 's-forms';
 import classNames from 'classnames';
-import SmartComponents from "../SmartComponents";
 import ShowAdvancedSwitch from "./ShowAdvancedSwitch";
 import TypeQuestionAnswer from "./TypeQuestionAnswer";
 import SectionIdentifier from "./SectionIdentifier";
@@ -16,10 +12,15 @@ export default class SectionComponent extends Question {
   constructor(props) {
     super(props);
 
-    const toggleCollapseSuper = this._toggleCollapse;
-    this._toggleCollapse = (e) => {
+    const toggleCollapseSuper = this.toggleCollapse;
+    this.toggleCollapse = (e) => {
       let classList = e.target.classList;
-      if (!classList.contains('answer-content') && !classList.contains('card-header')) {
+      if (!classList.contains('answer-content') && !classList.contains('card-header')
+        && !classList.contains('answer') && !classList.contains('show-advanced-switch')
+        && !classList.contains('d-inline') && !classList.contains('caret-square-down')
+        && !classList.contains('form-label')
+        && !(classList.length === 0)
+      ) {
         return;
       }
       toggleCollapseSuper();
@@ -48,12 +49,11 @@ export default class SectionComponent extends Question {
     );
   }
 
-  _renderQuestionHelp() {
+  renderHeaderExtension() {
     return (
       <>
-        {super._renderQuestionHelp()}
         {this._renderIdentifierText()}
-        {this._renderShowAdvanced()}
+        {this.state.expanded && this._renderShowAdvanced()}
       </>
     );
   }
@@ -117,6 +117,7 @@ export default class SectionComponent extends Question {
           <div className="answer-content" style={this._getAnswerWidthStyle()}>
             {this._renderAnswer(i, answers[i])}
             {this._renderIdentifierText()}
+            {this.render}
           </div>
           {this._renderUnits()}
           {this._renderPrefixes()}
