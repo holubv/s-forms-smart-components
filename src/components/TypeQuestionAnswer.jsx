@@ -3,15 +3,10 @@ import {Accordion, Card, Form, FormGroup} from 'react-bootstrap';
 import JsonLdUtils from 'jsonld-utils';
 import {
   Question,
-  FormUtils,
   Constants as SConstants,
-  HelpIcon,
-  Answer,
   ConfigurationContext,
-  JsonLdObjectMap, JsonLdObjectUtils
 } from 's-forms';
 import Constants from "../Constants";
-import SmartComponents from "../SmartComponents";
 import PropTypes from "prop-types";
 import {VirtualizedTreeSelect} from "intelligent-tree-select";
 import Utils from "../Utils";

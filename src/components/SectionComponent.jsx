@@ -1,10 +1,6 @@
 import React from 'react';
-import JsonLdUtils from 'jsonld-utils';
-import { Card, Accordion } from 'react-bootstrap';
-import {Question, FormUtils, Constants as SConstants, Answer, ConfigurationContext} from 's-forms';
-import Constants from "../Constants";
+import {Question, FormUtils, Answer, ConfigurationContext} from 's-forms';
 import classNames from 'classnames';
-import SmartComponents from "../SmartComponents";
 import ShowAdvancedSwitch from "./ShowAdvancedSwitch";
 import TypeQuestionAnswer from "./TypeQuestionAnswer";
 import SectionIdentifier from "./SectionIdentifier";
