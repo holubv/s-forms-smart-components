@@ -127,6 +127,9 @@ export default class SectionComponent extends Question {
         </div>
       );
     }
+    if (children.length == 0) {
+      return null;
+    };
     return children;
   }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Accordion, Card, Form, FormGroup} from 'react-bootstrap';
+import {Form, FormGroup} from 'react-bootstrap';
 import JsonLdUtils from 'jsonld-utils';
 import {
   Question,
