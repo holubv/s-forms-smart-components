@@ -117,19 +117,14 @@ export default class SectionComponent extends Question {
           <div className="answer-content" style={this._getAnswerWidthStyle()}>
             {this._renderAnswer(i, answers[i])}
             {this._renderIdentifierText()}
-            {this.render}
           </div>
           {this._renderUnits()}
           {this._renderPrefixes()}
-
 
           {this._renderShowAdvanced()}
         </div>
       );
     }
-    if (children.length == 0) {
-      return null;
-    };
     return children;
   }
 
