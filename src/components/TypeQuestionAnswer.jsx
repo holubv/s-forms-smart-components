@@ -317,7 +317,6 @@ export default class TypeQuestionAnswer extends React.Component {
         labelKey="label"
         childrenKey="children"
         options={Object.values(this.state.tree)}
-        optionHeight={80}
         expanded={true}
         closeOnSelect={this.state.singleSelect}
         onChange={this._onChange}
