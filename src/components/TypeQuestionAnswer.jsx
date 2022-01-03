@@ -13,7 +13,7 @@ import {
 import Constants from "../Constants";
 import SmartComponents from "../SmartComponents";
 import PropTypes from "prop-types";
-import {VirtualizedTreeSelect} from "intelligent-tree-select";
+import {IntelligentTreeSelect} from "intelligent-tree-select";
 import Utils from "../Utils";
 
 export default class TypeQuestionAnswer extends React.Component {
@@ -316,17 +316,18 @@ export default class TypeQuestionAnswer extends React.Component {
     }
 
     return (
-      <VirtualizedTreeSelect
+      <IntelligentTreeSelect
         value={selectedValue}
         valueKey="value"
         labelKey="label"
         childrenKey="children"
         options={Object.values(this.state.tree)}
-        optionHeight={80}
         expanded={true}
         closeOnSelect={this.state.singleSelect}
         onChange={this._onChange}
         multi={!this.state.singleSelect}
+        showSettings={false}
+        renderAsTree={false}
       />
     );
 
