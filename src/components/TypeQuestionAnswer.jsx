@@ -327,7 +327,8 @@ export default class TypeQuestionAnswer extends React.Component {
         onChange={this._onChange}
         multi={!this.state.singleSelect}
         showSettings={false}
-        renderAsTree={false}
+        renderAsTree={true}
+        optionLeftOffset={5}
       />
     );
 
@@ -374,7 +375,6 @@ export default class TypeQuestionAnswer extends React.Component {
       </FormGroup>
     );
   }
-
 }
 
 TypeQuestionAnswer.contextType = ConfigurationContext;
