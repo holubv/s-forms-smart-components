@@ -193,6 +193,30 @@
       ]
     },
     {
+      "@id": "podtrida-fyzicka-osoby-s-velice-dlouhym-nazvem",
+      "label": "Podtřída fyzické osoby s velice dlouhým názvem",
+      "skos:broader": {
+        "@id": "fyzicka-osoba"
+      },
+      "owl:disjointWith": [
+        {
+          "@id": "pravnicka-osoba"
+        }
+      ]
+    },
+    {
+      "@id": "jeste-specifickejsi-podtrida-fyzicka-osoby-s-velice-dlouhym-nazvem",
+      "label": "Ještě specifickejší podtřída fyzické osoby s velice dlouhým názvem",
+      "skos:broader": {
+        "@id": "podtrida-fyzicka-osoby-s-velice-dlouhym-nazvem"
+      },
+      "owl:disjointWith": [
+        {
+          "@id": "pravnicka-osoba"
+        }
+      ]
+    },
+    {
       "@id": "fyzicka-osoba--hloupa",
       "label": "Fyzická osoba hloupá",
       "skos:broader": {
@@ -276,7 +300,9 @@
         "pravnicka-osoba",
         "fyzicka-osoba--nezletila",
         "fyzicka-osoba--chytra",
-        "fyzicka-osoba--hloupa"
+        "fyzicka-osoba--hloupa",
+        "podtrida-fyzicka-osoby-s-velice-dlouhym-nazvem",
+        "jeste-specifickejsi-podtrida-fyzicka-osoby-s-velice-dlouhym-nazvem"
       ],
       "has-non-selectable-value": [
         "fyzicka-osoba"
