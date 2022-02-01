@@ -8,7 +8,7 @@ import {
 } from 's-forms';
 import Constants from "../Constants";
 import PropTypes from "prop-types";
-import {VirtualizedTreeSelect} from "intelligent-tree-select";
+import {IntelligentTreeSelect} from "intelligent-tree-select";
 import Utils from "../Utils";
 
 export default class TypeQuestionAnswer extends React.Component {
@@ -311,7 +311,7 @@ export default class TypeQuestionAnswer extends React.Component {
     }
 
     return (
-      <VirtualizedTreeSelect
+      <IntelligentTreeSelect
         value={selectedValue}
         valueKey="value"
         labelKey="label"
@@ -321,6 +321,9 @@ export default class TypeQuestionAnswer extends React.Component {
         closeOnSelect={this.state.singleSelect}
         onChange={this._onChange}
         multi={!this.state.singleSelect}
+        showSettings={false}
+        renderAsTree={true}
+        optionLeftOffset={5}
       />
     );
 
@@ -367,7 +370,6 @@ export default class TypeQuestionAnswer extends React.Component {
       </FormGroup>
     );
   }
-
 }
 
 TypeQuestionAnswer.contextType = ConfigurationContext;
