@@ -31,7 +31,7 @@
     "intelligent-tree-select": "~0.8.3"
   },
   "peerDependencies": {
-    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.3.3.tgz"
+    "s-forms": "https://kbss.felk.cvut.cz/dist/s-forms-0.3.4.tgz"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.3",
