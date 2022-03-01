@@ -2,7 +2,7 @@ import React from 'react';
 import {Form, FormGroup} from 'react-bootstrap';
 import JsonLdUtils from 'jsonld-utils';
 import {
-  Question,
+  QuestionStatic,
   Constants as SConstants,
   ConfigurationContext,
 } from 's-forms';
@@ -356,7 +356,7 @@ export default class TypeQuestionAnswer extends React.Component {
       return (
         <div className="type-answer-group">
           {this._renderLabel()}
-          {Question.renderIcons(question, options, onCommentChange, showIcon)}
+          {QuestionStatic.renderIcons(question, options, onCommentChange, showIcon)}
           {this._renderSelect()}
         </div>
       );
@@ -365,7 +365,7 @@ export default class TypeQuestionAnswer extends React.Component {
     return (
       <FormGroup>
         {this._renderLabel()}
-        {Question.renderIcons(question, options, onCommentChange,showIcon)}
+        {QuestionStatic.renderIcons(question, options, onCommentChange,showIcon)}
         {this._renderSelect()}
       </FormGroup>
     );
