@@ -1,9 +1,15 @@
 import React from 'react';
-import {WizardStep, Question, Constants as SConstants, HelpIcon, FormUtils, FormQuestionsContext} from 's-forms';
-import {Card, Form} from 'react-bootstrap';
+import {
+  WizardStep,
+  Question,
+  Constants as SConstants,
+  FormUtils,
+  FormQuestionsContext,
+  QuestionStatic
+} from 's-forms';
+import {Card} from 'react-bootstrap';
 import JsonLdUtils from 'jsonld-utils';
 import ShowAdvancedSwitch from "./ShowAdvancedSwitch";
-import Utils from "../Utils";
 import Constants from "../Constants";
 import SectionIdentifier from "./SectionIdentifier";
 
@@ -146,7 +152,7 @@ export default class WizardStepComponent extends WizardStep {
                        onMouseLeave={this._onMouseLeaveHandler}
           >
             {JsonLdUtils.getLocalized(this.props.step[JsonLdUtils.RDFS_LABEL], this.props.options.intl)}
-            {Question.renderIcons(this.props.step, this.props.options, this.onCommentChange, this.state.showIcon)}
+            {QuestionStatic.renderIcons(this.props.step, this.props.options, this.onCommentChange, this.state.showIcon)}
 
             {this._renderIdentifierText()}
             {this._renderShowAdvanced()}
