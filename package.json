@@ -53,6 +53,7 @@
     "jsonld": "^0.4.12",
     "jsonld-utils": "https://kbss.felk.cvut.cz/dist/jsonld-utils-0.0.11.tgz",
     "parcel": "2.0.0-beta.3.1",
+    "prettier": "2.6.0",
     "prop-types": "^15.7.2",
     "query-string": "^6.13.5",
     "react": "^17.0.2",
