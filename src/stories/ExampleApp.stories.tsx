@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import SForms, { Constants } from "s-forms";
+import SForms, { Constants, IntlContextProvider } from "s-forms";
 import SmartComponents from "../SmartComponents";
 import exampleForm from "./assets/example_form.json";
 import exampleFormTC from "./assets/example_turisticky_cil.json";
@@ -71,12 +71,14 @@ const Template: ComponentStory<typeof SForms> = (args) => {
   };
 
   return (
-    <SForms
-      options={options}
-      componentMapping={componentMapping}
-      form={selectedForm}
-      {...args}
-    />
+    <IntlContextProvider locale={options.intl.locale}>
+      <SForms
+        options={options}
+        componentMapping={componentMapping}
+        form={selectedForm}
+        {...args}
+      />
+    </IntlContextProvider>
   );
 };
 
