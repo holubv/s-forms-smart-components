@@ -1,18 +1,21 @@
 {
   "name": "s-forms-smart-components",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": true,
   "scripts": {
     "dev": "start-storybook -p 6006",
-    "build": "parcel build ./src/lib.js --target browser",
-    "build:lib": "npm run-script build && npm pack",
+    "build": "microbundle --jsx React.createElement",
+    "build:lib": "npm run build && npm pack",
     "build-storybook": "build-storybook"
   },
   "engines": {
     "node": ">=14.17.1"
   },
-  "main": "src/lib.js",
-  "browser": "dist/lib.js",
+  "type": "module",
+  "source": "src/lib.js",
+  "exports": "./dist/s-forms-smart-components.modern.js",
+  "module": "./dist/s-forms-smart-components.js",
+  "unpkg": "./dist/s-forms-smart-components.umd.js",
   "targets": {
     "browser": {
       "distDir": "dist",
@@ -20,10 +23,6 @@
       "optimize": false
     }
   },
-  "browserslist": [
-    "> 0.2%",
-    "not dead"
-  ],
   "files": [
     "src/",
     "dist/"
@@ -52,7 +51,7 @@
     "classnames": "^2.2.6",
     "jsonld": "^0.4.12",
     "jsonld-utils": "https://kbss.felk.cvut.cz/dist/jsonld-utils-0.0.11.tgz",
-    "parcel": "2.0.0-beta.3.1",
+    "microbundle": "^0.14.2",
     "prettier": "2.6.0",
     "prop-types": "^15.7.2",
     "query-string": "^6.13.5",
