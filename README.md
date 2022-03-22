@@ -3,12 +3,10 @@
 This library is an extension of 
 [SForms](https://github.com/kbss-cvut/s-forms) - ontology based form generator.
 
-Smart components
-are displayed based on structure of provided semantic form data
+SForms components are displayed based on structure of provided semantic form data
 and extend basic functionality of SForms.
 
-Components can be easily tested using
-example form which is located in `./example` directory
+Components can be easily tested using example form which is located in `./example` directory
 
 ## Installation
 
