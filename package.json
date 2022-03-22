@@ -1,5 +1,5 @@
 {
-  "name": "s-forms-smart-components",
+  "name": "s-forms-components",
   "version": "0.1.6",
   "private": true,
   "scripts": {
@@ -13,9 +13,9 @@
   },
   "type": "module",
   "source": "src/lib.js",
-  "exports": "./dist/s-forms-smart-components.modern.js",
-  "module": "./dist/s-forms-smart-components.js",
-  "unpkg": "./dist/s-forms-smart-components.umd.js",
+  "exports": "./dist/s-forms-components.modern.js",
+  "module": "./dist/s-forms-components.js",
+  "unpkg": "./dist/s-forms-components.umd.js",
   "targets": {
     "browser": {
       "distDir": "dist",

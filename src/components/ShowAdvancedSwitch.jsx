@@ -72,7 +72,7 @@ export default class ShowAdvancedSwitch extends Question {
   _renderIcons() {
     const options = this.context.options;
     const icons = options.icons.filter(i => i.id !== SConstants.ICONS.QUESTION_COMMENTS)
-    // question comment icons are not implemented (see https://github.com/kbss-cvut/s-forms-smart-components/issues/4)
+    // question comment icons are not implemented (see https://github.com/kbss-cvut/s-forms-components/issues/4)
     const optionsWithoutQuestionCommentsIcon = {...options, icons};
 
     const {question} = this._getShowAdvancedQuestion();
