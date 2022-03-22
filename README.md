@@ -1,4 +1,4 @@
-# s-forms-smart-components
+# SForms Components
 
 This library is an extension of 
 [SForms](https://github.com/kbss-cvut/s-forms) - ontology based form generator.
