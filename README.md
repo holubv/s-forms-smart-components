@@ -1,10 +1,15 @@
 # SForms Components
+[![Netlify Status](https://api.netlify.com/api/v1/badges/004d6408-4ff5-4719-905e-5d83d5feef01/deploy-status)](https://app.netlify.com/sites/s-forms-kbss/deploys)
+
 
 This library is an extension of [SForms](https://github.com/kbss-cvut/s-forms) - a semantic form generator and processor for ontology-based smart forms.
-
 SForms components are displayed based on structure of provided semantic form data and extend basic functionality of SForms.
-
 The components can be easily tested using example form which is located in `./example` directory
+
+## Live Demo
+
+Checkout [live demo using storybook](https://s-forms-components-kbss.netlify.app).
+
 
 ## Development
 
