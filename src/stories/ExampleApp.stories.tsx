@@ -60,8 +60,6 @@ export default {
 } as ComponentMeta<typeof SForms>;
 
 const Template: ComponentStory<typeof SForms> = (args) => {
-  const [isFormValid, setIsFormValid] = useState<boolean>(false);
-  const [selectedForm, setSelectedForm] = useState<object>(exampleForm);
   const refForm = useRef();
 
   const fetchTypeAheadValues = (query) => {
@@ -74,20 +72,22 @@ const Template: ComponentStory<typeof SForms> = (args) => {
     <IntlContextProvider locale={options.intl.locale}>
       <SForms
         options={options}
-        componentMapping={componentMapping}
-        form={selectedForm}
+        ref={refForm}
+        form={exampleForm}
+        fetchTypeAheadValues={fetchTypeAheadValues}
+        componentMapRules={componentMapping}
         {...args}
       />
     </IntlContextProvider>
   );
 };
 
-export const Default = Template.bind({});
-Default.args = {
+export const Form1 = Template.bind({});
+Form1.args = {
   options: options,
 };
-export const AdvancedComponents = Template.bind({});
-AdvancedComponents.args = {
+export const TouristDestination1 = Template.bind({});
+TouristDestination1.args = {
   options: options,
   form: exampleFormTC,
 };
