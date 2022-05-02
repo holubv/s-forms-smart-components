@@ -76,7 +76,7 @@ export default class ShowAdvancedSwitch extends Question {
     const optionsWithoutQuestionCommentsIcon = {...options, icons};
 
     const {question} = this._getShowAdvancedQuestion();
-    return QuestionStatic.renderIcons(question, optionsWithoutQuestionCommentsIcon);
+    return QuestionStatic.renderIcons(question, options, handleCommentChange, showIcon);
   }
 
   _renderSwitch() {
