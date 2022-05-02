@@ -12,8 +12,8 @@ export default class CompositeQuestion extends Question {
     super(props);
   }
 
-  onAnswerChange = (answerIndex, change) => {
-    this._onChange(SConstants.HAS_ANSWER, answerIndex, change);
+  handleAnswerChange = (answerIndex, change) => {
+    this._handleChange(SConstants.HAS_ANSWER, answerIndex, change);
 
     const question = this.props.question;
     if (JsonLdUtils.getJsonAttValue(question, Constants.COMPOSITE_PATTERN)) {
@@ -22,7 +22,7 @@ export default class CompositeQuestion extends Question {
   };
 
   onSubQuestionChange = (subQuestionIndex, change) => {
-    this._onChange(SConstants.HAS_SUBQUESTION, subQuestionIndex, change);
+    this._handleChange(SConstants.HAS_SUBQUESTION, subQuestionIndex, change);
 
     const question = this.props.question;
     if (JsonLdUtils.getJsonAttValue(question, Constants.COMPOSITE_PATTERN)) {
@@ -30,8 +30,8 @@ export default class CompositeQuestion extends Question {
     }
   };
 
-  onCommentChange = (commentIndex, change) => {
-    this._onChange(SConstants.HAS_COMMENT, commentIndex, change);
+  handleCommentChange = (commentIndex, change) => {
+    this._handleChange(SConstants.HAS_COMMENT, commentIndex, change);
   };
 
   _updateExpandedParts() {
@@ -102,7 +102,7 @@ export default class CompositeQuestion extends Question {
 
     let change = {};
     change[SConstants.HAS_DATA_VALUE] = {'@value': compositePattern.trim()};
-    this._onChange(SConstants.HAS_ANSWER, 0, change);
+    this._handleChange(SConstants.HAS_ANSWER, 0, change);
   }
 
   render() {

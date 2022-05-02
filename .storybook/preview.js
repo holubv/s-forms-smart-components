@@ -1,7 +1,7 @@
 import '../src/styles/components.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 's-forms/css/s-forms.min.css';
+import 's-forms/dist/s-forms.css';
 import "intelligent-tree-select/lib/styles.css"
 
 export const parameters = {

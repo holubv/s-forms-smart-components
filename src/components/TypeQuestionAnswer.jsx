@@ -32,7 +32,7 @@ export default class TypeQuestionAnswer extends React.Component {
     }
   }
 
-  _onChange = value => {
+  _handleChange = value => {
 
     if (!value) {
       value = [];
@@ -319,7 +319,7 @@ export default class TypeQuestionAnswer extends React.Component {
         options={Object.values(this.state.tree)}
         expanded={true}
         closeOnSelect={this.state.singleSelect}
-        onChange={this._onChange}
+        onChange={this._handleChange}
         multi={!this.state.singleSelect}
         showSettings={false}
         renderAsTree={true}

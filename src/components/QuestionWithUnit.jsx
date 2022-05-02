@@ -57,8 +57,8 @@ class _QuestionWithUnit extends Question {
               index={0}
               answer={answers[0]}
               question={question}
-              onChange={this.onAnswerChange}
-              onCommentChange={this.onCommentChange}
+              onChange={this.handleAnswerChange}
+              onCommentChange={this.handleCommentChange}
               showIcon={this.state.showIcon}
             />
             {this._renderUnits()}

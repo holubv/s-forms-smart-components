@@ -71,8 +71,8 @@ export default class SectionComponent extends Question {
       index: index,
       answer: answer,
       question: question,
-      onChange: this.onAnswerChange,
-      onCommentChange: this.onCommentChange,
+      onChange: this.handleAnswerChange,
+      onCommentChange: this.handleCommentChange,
       showIcon: this.state.showIcon,
       onSubChange: this.onSubQuestionChange,
       isInSectionHeader: true
