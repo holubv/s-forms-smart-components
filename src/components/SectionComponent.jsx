@@ -1,5 +1,5 @@
 import React from 'react';
-import {Question, FormUtils, Answer, ConfigurationContext} from '@kbss-cvut/s-forms';
+import {Question, FormUtils, Answer, ConfigurationContext, Constants as SConstants} from '@kbss-cvut/s-forms';
 import classNames from 'classnames';
 import ShowAdvancedSwitch from "./ShowAdvancedSwitch";
 import TypeQuestionAnswer from "./TypeQuestionAnswer";
