@@ -5,7 +5,7 @@ import {
   QuestionStatic,
   Constants as SConstants,
   ConfigurationContext,
-} from 's-forms';
+} from '@kbss-cvut/s-forms';
 import Constants from "../Constants";
 import PropTypes from "prop-types";
 import {IntelligentTreeSelect} from "intelligent-tree-select";
@@ -349,14 +349,14 @@ export default class TypeQuestionAnswer extends React.Component {
   render() {
     const question = this.props.question;
     const options = this.context.options;
-    const handleCommentChange = this.props.handleCommentChange;
+    const onCommentChange = this.props.onCommentChange;
     const showIcon = this.props.showIcon;
 
     if (this.props.isInSectionHeader) {
       return (
         <div className="type-answer-group">
           {this._renderLabel()}
-          {QuestionStatic.renderIcons(question, options, handleCommentChange, showIcon)}
+          {QuestionStatic.renderIcons(question, options, onCommentChange, showIcon)}
           {this._renderSelect()}
         </div>
       );
@@ -365,7 +365,7 @@ export default class TypeQuestionAnswer extends React.Component {
     return (
       <FormGroup>
         {this._renderLabel()}
-        {QuestionStatic.renderIcons(question, options, handleCommentChange,showIcon)}
+        {QuestionStatic.renderIcons(question, options, onCommentChange,showIcon)}
         {this._renderSelect()}
       </FormGroup>
     );
@@ -379,7 +379,7 @@ TypeQuestionAnswer.propTypes = {
   answer: PropTypes.object.isRequired,
   question: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  handleCommentChange: PropTypes.func.isRequired,
+  onCommentChange: PropTypes.func.isRequired,
   showIcon: PropTypes.bool.isRequired,
   onSubChange: PropTypes.func.isRequired,
   isInSectionHeader: PropTypes.bool

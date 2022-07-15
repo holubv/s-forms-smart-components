@@ -1,7 +1,6 @@
 import CompositeQuestion from "./components/CompositeQuestion";
-import JsonLdUtils from "jsonld-utils";
 import Constants from "./Constants";
-import {Constants as SConstants, FormUtils} from "s-forms";
+import {Constants as SConstants} from "@kbss-cvut/s-forms";
 import WizardStepComponent from "./components/WizardStepComponent";
 import QuestionWithUnit from "./components/QuestionWithUnit";
 import NullQuestion from "./components/NullQuestion";

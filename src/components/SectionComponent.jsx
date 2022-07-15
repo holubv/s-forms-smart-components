@@ -1,5 +1,5 @@
 import React from 'react';
-import {Question, FormUtils, Answer, ConfigurationContext} from 's-forms';
+import {Question, FormUtils, Answer, ConfigurationContext} from '@kbss-cvut/s-forms';
 import classNames from 'classnames';
 import ShowAdvancedSwitch from "./ShowAdvancedSwitch";
 import TypeQuestionAnswer from "./TypeQuestionAnswer";
@@ -26,6 +26,10 @@ export default class SectionComponent extends Question {
       toggleCollapseSuper();
     }
   }
+
+  onSubQuestionChange = (subQuestionIndex, change) => {
+    this._handleChange(SConstants.HAS_SUBQUESTION, subQuestionIndex, change);
+  };
 
   _renderIdentifierText() {
     return (

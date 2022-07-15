@@ -1,4 +1,4 @@
-import {Constants as SConstants} from "s-forms";
+import {Constants as SConstants} from "@kbss-cvut/s-forms";
 import JsonLdUtils from "jsonld-utils";
 
 export default class Utils {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Question, Answer, Constants as SConstants, FormQuestionsContext } from 's-forms';
+import { Question, Answer, FormQuestionsContext } from '@kbss-cvut/s-forms';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Constants from "../Constants";

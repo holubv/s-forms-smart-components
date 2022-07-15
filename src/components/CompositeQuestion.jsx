@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card} from 'react-bootstrap';
 import JsonLdUtils from 'jsonld-utils';
-import {Question, Constants as SConstants, FormUtils} from 's-forms';
+import {Question, Constants as SConstants, FormUtils} from '@kbss-cvut/s-forms';
 import Constants from "../Constants";
 
 export default class CompositeQuestion extends Question {
@@ -18,15 +18,6 @@ export default class CompositeQuestion extends Question {
     const question = this.props.question;
     if (JsonLdUtils.getJsonAttValue(question, Constants.COMPOSITE_PATTERN)) {
       this._updateExpandedParts(change);
-    }
-  };
-
-  onSubQuestionChange = (subQuestionIndex, change) => {
-    this._handleChange(SConstants.HAS_SUBQUESTION, subQuestionIndex, change);
-
-    const question = this.props.question;
-    if (JsonLdUtils.getJsonAttValue(question, Constants.COMPOSITE_PATTERN)) {
-      this._updateCollapsedComposite();
     }
   };
 

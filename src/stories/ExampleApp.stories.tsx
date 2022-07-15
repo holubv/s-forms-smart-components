@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import SForms, { Constants, IntlContextProvider } from "s-forms";
+import React, { useRef } from "react";
+import SForms, { Constants, IntlContextProvider } from "@kbss-cvut/s-forms";
 import SmartComponents from "../SmartComponents";
 import exampleForm from "./assets/example_form.json";
 import exampleFormTC from "./assets/example_turisticky_cil.json";

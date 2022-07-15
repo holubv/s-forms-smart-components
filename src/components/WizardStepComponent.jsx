@@ -6,7 +6,7 @@ import {
   FormUtils,
   FormQuestionsContext,
   QuestionStatic
-} from 's-forms';
+} from '@kbss-cvut/s-forms';
 import {Card} from 'react-bootstrap';
 import JsonLdUtils from 'jsonld-utils';
 import ShowAdvancedSwitch from "./ShowAdvancedSwitch";

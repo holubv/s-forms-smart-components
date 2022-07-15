@@ -1,7 +1,7 @@
 import React from 'react';
 import {Form} from 'react-bootstrap';
 import JsonLdUtils from 'jsonld-utils';
-import {Question, Constants as SConstants, ConfigurationContext, QuestionStatic} from 's-forms';
+import {Question, Constants as SConstants, ConfigurationContext, QuestionStatic} from '@kbss-cvut/s-forms';
 import Constants from "../Constants";
 import JsonldUtils from 'jsonld-utils';
 import Utils from "../Utils";
@@ -76,7 +76,7 @@ export default class ShowAdvancedSwitch extends Question {
     const optionsWithoutQuestionCommentsIcon = {...options, icons};
 
     const {question} = this._getShowAdvancedQuestion();
-    return QuestionStatic.renderIcons(question, options, handleCommentChange, showIcon);
+    return QuestionStatic.renderIcons(question, options, this.handleCommentChange, this.state.showIcon);
   }
 
   _renderSwitch() {
