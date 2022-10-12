@@ -63,6 +63,7 @@
     "dev": "start-storybook -p 6006",
     "build": "microbundle --jsx React.createElement",
     "build:lib": "npm run build && npm pack",
+    "test": "jest",
     "build-storybook": "build-storybook",
     "chromatic": "npx chromatic",
     "release:patch": "npm test && standard-version --release-as patch && npm publish",
