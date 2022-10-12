@@ -1,12 +1,16 @@
-import React from 'react';
-import {Card} from 'react-bootstrap';
-import JsonLdUtils from 'jsonld-utils';
-import {Question, Constants as SConstants, FormUtils} from '@kbss-cvut/s-forms';
+import React from "react";
+import { Card } from "react-bootstrap";
+import JsonLdUtils from "jsonld-utils";
+import {
+  Question,
+  Constants as SConstants,
+  FormUtils,
+} from "@kbss-cvut/s-forms";
 import Constants from "../Constants";
 
 export default class CompositeQuestion extends Question {
-
-  static mappingRule = q => JsonLdUtils.getJsonAttValue(q, Constants.COMPOSITE_PATTERN);
+  static mappingRule = (q) =>
+    JsonLdUtils.getJsonAttValue(q, Constants.COMPOSITE_PATTERN);
 
   constructor(props) {
     super(props);
@@ -35,37 +39,35 @@ export default class CompositeQuestion extends Question {
     /**
      * @var {string} value
      */
-    let value = question[SConstants.HAS_ANSWER][0][SConstants.HAS_DATA_VALUE]['@value'];
+    let value =
+      question[SConstants.HAS_ANSWER][0][SConstants.HAS_DATA_VALUE]["@value"];
     let match = value.match(regex);
 
     if (match) {
-
       for (let i = 1; i < match.length; i++) {
         let subValue = match[i];
         if (!subValue) {
-          subValue = '';
+          subValue = "";
         }
 
         let id = patternVariables[i - 1];
         let subQuestion = this._findById(subQuestions, id);
 
         subQuestion[SConstants.HAS_ANSWER][0][SConstants.HAS_DATA_VALUE] = {
-          '@value': subValue.trim()
+          "@value": subValue.trim(),
         };
       }
-
     } else {
-      subQuestions.forEach(subQuestion => {
+      subQuestions.forEach((subQuestion) => {
         subQuestion[SConstants.HAS_ANSWER][0][SConstants.HAS_DATA_VALUE] = {
-          '@value': ''
+          "@value": "",
         };
       });
     }
-
   }
 
   _findById(arr, id) {
-    return arr.find(el => el['@id'] === id);
+    return arr.find((el) => el["@id"] === id);
   }
 
   _updateCollapsedComposite() {
@@ -79,20 +81,22 @@ export default class CompositeQuestion extends Question {
     const patternVariables = question[Constants.COMPOSITE_VARIABLES];
 
     for (let i = patternVariables.length; i >= 1; i--) {
-
       let id = patternVariables[i - 1];
       let subQuestion = this._findById(subQuestions, id);
 
-      let val = subQuestion[SConstants.HAS_ANSWER][0][SConstants.HAS_DATA_VALUE]['@value'];
+      let val =
+        subQuestion[SConstants.HAS_ANSWER][0][SConstants.HAS_DATA_VALUE][
+          "@value"
+        ];
       if (!val) {
-        val = '';
+        val = "";
       }
 
-      compositePattern = compositePattern.replace('?' + i, val.trim());
+      compositePattern = compositePattern.replace("?" + i, val.trim());
     }
 
     let change = {};
-    change[SConstants.HAS_DATA_VALUE] = {'@value': compositePattern.trim()};
+    change[SConstants.HAS_DATA_VALUE] = { "@value": compositePattern.trim() };
     this._handleChange(SConstants.HAS_ANSWER, 0, change);
   }
 
@@ -111,12 +115,9 @@ export default class CompositeQuestion extends Question {
       <Card className="mb-3">
         <div className="p-3">
           {this.renderAnswers()}
-          <div className="p-3">
-            {this.renderSubQuestions()}
-          </div>
+          <div className="p-3">{this.renderSubQuestions()}</div>
         </div>
       </Card>
     );
   }
-
 }

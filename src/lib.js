@@ -9,17 +9,15 @@ import SectionIdentifier from "./components/SectionIdentifier";
 import ShowAdvancedSwitch from "./components/ShowAdvancedSwitch";
 import TypeQuestionAnswer from "./components/TypeQuestionAnswer";
 
-
 export default SmartComponents;
 
 export {
   Constants,
-
   CompositeQuestion,
   WizardStepComponent,
   QuestionWithUnit,
   SectionComponent,
   SectionIdentifier,
   ShowAdvancedSwitch,
-  TypeQuestionAnswer
+  TypeQuestionAnswer,
 };

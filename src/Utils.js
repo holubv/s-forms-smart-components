@@ -1,20 +1,16 @@
-import {Constants as SConstants} from "@kbss-cvut/s-forms";
+import { Constants as SConstants } from "@kbss-cvut/s-forms";
 import JsonLdUtils from "jsonld-utils";
 
 export default class Utils {
-
   static findParent(root, id) {
-
     if (!root) {
       return null;
     }
 
     const subQuestions = root[SConstants.HAS_SUBQUESTION];
     if (subQuestions && subQuestions.length) {
-
       for (const subQuestion of subQuestions) {
-
-        if (subQuestion['@id'] === id) {
+        if (subQuestion["@id"] === id) {
           return root;
         }
 
@@ -29,18 +25,16 @@ export default class Utils {
   }
 
   static findChild(parent, id) {
-
     if (!parent) {
       return null;
     }
 
-    if (parent['@id'] === id) {
+    if (parent["@id"] === id) {
       return parent;
     }
 
     const subQuestions = parent[SConstants.HAS_SUBQUESTION];
     if (subQuestions && subQuestions.length) {
-
       for (let subQuestion of subQuestions) {
         let found = Utils.findChild(subQuestion, id);
         if (found) {
@@ -53,16 +47,14 @@ export default class Utils {
   }
 
   static findDirectChild(parent, id) {
-
     if (!parent) {
       return null;
     }
 
     const subQuestions = parent[SConstants.HAS_SUBQUESTION];
     if (subQuestions && subQuestions.length) {
-
       for (let i = 0; i < subQuestions.length; i++) {
-        if (subQuestions[i]['@id'] === id) {
+        if (subQuestions[i]["@id"] === id) {
           return { q: subQuestions[i], index: i };
         }
       }
@@ -72,9 +64,7 @@ export default class Utils {
   }
 
   static isReferencedByProperty(questions, questionId, property) {
-
     if (questions && questions.length) {
-
       for (const question of questions) {
         if (Utils.hasPropertyWithValue(question, property, questionId)) {
           return true;
@@ -86,7 +76,6 @@ export default class Utils {
   }
 
   static hasSubQuestionWithValue(parent, property, value) {
-
     let subQuestions = parent[SConstants.HAS_SUBQUESTION];
     if (subQuestions && subQuestions.length) {
       for (let subQuestion of subQuestions) {
@@ -117,7 +106,7 @@ export default class Utils {
       return true;
     }
 
-    if (propValue['@id'] === value) {
+    if (propValue["@id"] === value) {
       return true;
     }
 
@@ -153,16 +142,16 @@ export default class Utils {
     if (obj[att] === null || obj[att] === undefined) {
       return null;
     }
-    return Utils.asArray(obj[att]).map(v => typeof v === 'object' ? v[by ? by : '@value'] : v )
+    return Utils.asArray(obj[att]).map((v) =>
+      typeof v === "object" ? v[by ? by : "@value"] : v
+    );
   }
-
 
   /**
    * @param {string[]} arr1
    * @param {string[]} arr2
    */
   static hasArraySameValues(arr1, arr2) {
-
     if (!arr1 || !arr2) {
       return false;
     }
@@ -187,7 +176,7 @@ export default class Utils {
       set[el] = 2;
     }
 
-    return Object.values(set).every(el => el === 2);
+    return Object.values(set).every((el) => el === 2);
   }
 
   // static _findQuestion(question, id) {
@@ -209,5 +198,4 @@ export default class Utils {
   //
   //   return null;
   // }
-
 }

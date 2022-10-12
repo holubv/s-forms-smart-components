@@ -2,12 +2,6 @@
   "name": "s-forms-components",
   "version": "0.1.6",
   "private": true,
-  "scripts": {
-    "dev": "start-storybook -p 6006",
-    "build": "microbundle --jsx React.createElement",
-    "build:lib": "npm run build && npm pack",
-    "build-storybook": "build-storybook"
-  },
   "engines": {
     "node": ">=14.17.1"
   },
@@ -31,7 +25,7 @@
     "intelligent-tree-select": "~0.8.3"
   },
   "peerDependencies": {
-    "@kbss-cvut/s-forms": "^0.4.1"
+    "@kbss-cvut/s-forms": "^0.6.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.7",
@@ -49,9 +43,12 @@
     "@storybook/testing-library": "^0.0.9",
     "babel-loader": "^8.2.3",
     "bootstrap": "^4.6.0",
+    "chromatic": "^6.5.3",
     "classnames": "^2.2.6",
+    "husky": "^8.0.1",
     "jsonld": "^0.4.12",
     "jsonld-utils": "https://kbss.felk.cvut.cz/dist/jsonld-utils-0.0.11.tgz",
+    "lint-staged": "^13.0.3",
     "microbundle": "^0.14.2",
     "prettier": "2.6.0",
     "prop-types": "^15.7.2",
@@ -59,6 +56,27 @@
     "react": "^17.0.2",
     "react-bootstrap": "1.0.1",
     "react-dom": "^17.0.2",
+    "standard-version": "^9.3.2",
     "typescript": "^4.6.2"
+  },
+  "scripts": {
+    "dev": "start-storybook -p 6006",
+    "build": "microbundle --jsx React.createElement",
+    "build:lib": "npm run build && npm pack",
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic",
+    "release:patch": "npm test && standard-version --release-as patch && npm publish",
+    "release:major": "npm test && standard-version --release-as major && npm publish",
+    "release:minor": "npm test && standard-version --release-as minor && npm publish",
+    "prettier:check": "npx prettier --check .",
+    "prettier:format": "npx prettier --write .",
+    "precommit": "lint-staged",
+    "prepare": "husky install"
+  },
+  "standard-version": {
+    "releaseCommitMessageFormat": "[{{currentTag}}] Bump version"
+  },
+  "lint-staged": {
+    "*": "prettier --check"
   }
 }

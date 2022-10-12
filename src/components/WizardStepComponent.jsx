@@ -1,28 +1,26 @@
-import React from 'react';
+import React from "react";
 import {
   WizardStep,
   Question,
   Constants as SConstants,
   FormUtils,
   FormQuestionsContext,
-  QuestionStatic
-} from '@kbss-cvut/s-forms';
-import {Card} from 'react-bootstrap';
-import JsonLdUtils from 'jsonld-utils';
+  QuestionStatic,
+} from "@kbss-cvut/s-forms";
+import { Card } from "react-bootstrap";
+import JsonLdUtils from "jsonld-utils";
 import ShowAdvancedSwitch from "./ShowAdvancedSwitch";
 import Constants from "../Constants";
 import SectionIdentifier from "./SectionIdentifier";
 
-
 export default class WizardStepComponent extends WizardStep {
-
-  static mappingRule = q => FormUtils.isWizardStep(q);
+  static mappingRule = (q) => FormUtils.isWizardStep(q);
 
   constructor(props) {
     super(props);
     this.state = {
-      showIcon: false
-    }
+      showIcon: false,
+    };
 
     this.card = React.createRef();
     this.cardHeader = React.createRef();
@@ -30,23 +28,27 @@ export default class WizardStepComponent extends WizardStep {
     this.state = {
       headerFloating: false,
       headerWidth: 0,
-      headerHeight: 0
-    }
+      headerHeight: 0,
+    };
   }
 
   componentDidMount() {
     if (this._isSticky()) {
-      window.addEventListener('scroll', this._handleScroll);
+      window.addEventListener("scroll", this._handleScroll);
     }
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this._handleScroll);
+    window.removeEventListener("scroll", this._handleScroll);
   }
 
   _isSticky() {
     const question = this.props.step;
-    return JsonLdUtils.hasValue(question, SConstants.LAYOUT_CLASS, Constants.LAYOUT_STICKY);
+    return JsonLdUtils.hasValue(
+      question,
+      SConstants.LAYOUT_CLASS,
+      Constants.LAYOUT_STICKY
+    );
   }
 
   _onMouseEnterHandler = () => {
@@ -58,7 +60,6 @@ export default class WizardStepComponent extends WizardStep {
   };
 
   _handleScroll = () => {
-
     /**
      * @type {HTMLDivElement}
      */
@@ -74,38 +75,29 @@ export default class WizardStepComponent extends WizardStep {
     const box = card.getBoundingClientRect();
 
     if (box.top <= 0) {
-
       if (!this.state.headerFloating) {
-
         const headerBox = header.getBoundingClientRect();
 
         this.setState({
           headerFloating: true,
           headerWidth: headerBox.width,
-          headerHeight: headerBox.height
-        })
+          headerHeight: headerBox.height,
+        });
       }
-
     } else {
-
       if (this.state.headerFloating) {
         this.setState({
           headerFloating: false,
           headerWidth: 0,
-          headerHeight: 0
-        })
+          headerHeight: 0,
+        });
       }
-
     }
-  }
-
+  };
 
   _renderIdentifierText() {
     return (
-      <SectionIdentifier question={this.props.step}
-                         prefix="("
-                         suffix=")"
-      />
+      <SectionIdentifier question={this.props.step} prefix="(" suffix=")" />
     );
   }
 
@@ -126,48 +118,61 @@ export default class WizardStepComponent extends WizardStep {
   }
 
   render() {
-
     const categoryClass = Question._getQuestionCategoryClass(this.props.step);
 
-    let headerClass = 'bg-primary text-white wizard-step-header';
+    let headerClass = "bg-primary text-white wizard-step-header";
     let headerStyle = null;
 
     if (this.state.headerFloating) {
-      headerClass += ' floating';
+      headerClass += " floating";
       headerStyle = {
-        width: this.state.headerWidth
-      }
+        width: this.state.headerWidth,
+      };
     }
-
 
     return (
       <div className="wizard-step">
-        <Card ref={this.card} className="wizard-step-content" >
-          <Card.Header ref={this.cardHeader}
-                       className={headerClass}
-                       style={headerStyle}
-                       as="h6"
-                       id={this.props.step['@id']}
-                       onMouseEnter={this._onMouseEnterHandler}
-                       onMouseLeave={this._onMouseLeaveHandler}
+        <Card ref={this.card} className="wizard-step-content">
+          <Card.Header
+            ref={this.cardHeader}
+            className={headerClass}
+            style={headerStyle}
+            as="h6"
+            id={this.props.step["@id"]}
+            onMouseEnter={this._onMouseEnterHandler}
+            onMouseLeave={this._onMouseLeaveHandler}
           >
-            {JsonLdUtils.getLocalized(this.props.step[JsonLdUtils.RDFS_LABEL], this.props.options.intl)}
-            {QuestionStatic.renderIcons(this.props.step, this.props.options, this.onCommentChange, this.state.showIcon)}
+            {JsonLdUtils.getLocalized(
+              this.props.step[JsonLdUtils.RDFS_LABEL],
+              this.props.options.intl
+            )}
+            {QuestionStatic.renderIcons(
+              this.props.step,
+              this.props.options,
+              this.onCommentChange,
+              this.state.showIcon
+            )}
 
             {this._renderIdentifierText()}
             {this._renderShowAdvanced()}
-
           </Card.Header>
-          <Card.Body className={categoryClass} style={{marginTop: this.state.headerHeight}}>
-            <Question question={this.props.step} onChange={this.onChange} withoutCard={true}
-                      index={this.props.stepIndex}/>
+          <Card.Body
+            className={categoryClass}
+            style={{ marginTop: this.state.headerHeight }}
+          >
+            <Question
+              question={this.props.step}
+              onChange={this.onChange}
+              withoutCard={true}
+              index={this.props.stepIndex}
+            />
           </Card.Body>
         </Card>
 
-        {this.props.options.wizardStepButtons && this._renderWizardStepButtons()}
+        {this.props.options.wizardStepButtons &&
+          this._renderWizardStepButtons()}
       </div>
     );
-
   }
 }
 

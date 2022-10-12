@@ -1,28 +1,36 @@
-import React from 'react';
+import React from "react";
 import PropTypes from "prop-types";
-import {FormUtils, Constants as SConstants, JsonLdObjectMap, ConfigurationContext} from "@kbss-cvut/s-forms";
+import {
+  FormUtils,
+  Constants as SConstants,
+  JsonLdObjectMap,
+  ConfigurationContext,
+} from "@kbss-cvut/s-forms";
 import Constants from "../Constants";
 import Utils from "../Utils";
 import JsonLdUtils from "jsonld-utils";
 
 export default class SectionIdentifier extends React.Component {
-
   static contextType = ConfigurationContext;
 
   static propTypes = {
     question: PropTypes.object.isRequired,
     prefix: PropTypes.string,
-    suffix: PropTypes.string
-  }
+    suffix: PropTypes.string,
+  };
 
   static defaultProps = {
-    prefix: '',
-    suffix: ''
-  }
+    prefix: "",
+    suffix: "",
+  };
 
   _getIdentifyingQuestionId() {
     const question = this.props.question;
-    const id  = JsonLdUtils.getJsonAttValue(question, Constants.HAS_IDENTIFYING_QUESTION, '@id');
+    const id = JsonLdUtils.getJsonAttValue(
+      question,
+      Constants.HAS_IDENTIFYING_QUESTION,
+      "@id"
+    );
 
     if (!id) {
       return null;
@@ -53,23 +61,28 @@ export default class SectionIdentifier extends React.Component {
       return null;
     }
 
-    if (answer['@value']) {
-
+    if (answer["@value"]) {
       if (FormUtils.isCheckbox(identifyingQuestion)) {
-        return JsonLdUtils.getLocalized(identifyingQuestion[SConstants.RDFS_LABEL], this.context.options.intl);
+        return JsonLdUtils.getLocalized(
+          identifyingQuestion[SConstants.RDFS_LABEL],
+          this.context.options.intl
+        );
       }
 
-      return answer['@value'];
+      return answer["@value"];
     }
 
-    if (answer['@id']) {
+    if (answer["@id"]) {
       // answer is object with id
       let def = JsonLdObjectMap.getObject(id);
       if (!def) {
         return null;
       }
 
-      let label = JsonLdUtils.getLocalized(def[SConstants.RDFS_LABEL], this.context.options.intl);
+      let label = JsonLdUtils.getLocalized(
+        def[SConstants.RDFS_LABEL],
+        this.context.options.intl
+      );
       if (label) {
         return label;
       }
@@ -82,13 +95,14 @@ export default class SectionIdentifier extends React.Component {
     const text = this._getLabelText();
     if (text) {
       return (
-        <span className="section-identifier">{this.props.prefix}{text}{this.props.suffix}</span>
+        <span className="section-identifier">
+          {this.props.prefix}
+          {text}
+          {this.props.suffix}
+        </span>
       );
     }
 
     return null;
   }
-
-
 }
-

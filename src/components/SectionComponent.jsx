@@ -1,13 +1,19 @@
-import React from 'react';
-import {Question, FormUtils, Answer, ConfigurationContext, Constants as SConstants} from '@kbss-cvut/s-forms';
-import classNames from 'classnames';
+import React from "react";
+import {
+  Question,
+  FormUtils,
+  Answer,
+  ConfigurationContext,
+  Constants as SConstants,
+} from "@kbss-cvut/s-forms";
+import classNames from "classnames";
 import ShowAdvancedSwitch from "./ShowAdvancedSwitch";
 import TypeQuestionAnswer from "./TypeQuestionAnswer";
 import SectionIdentifier from "./SectionIdentifier";
 
 export default class SectionComponent extends Question {
-
-  static mappingRule = q => FormUtils.isSection(q) && !FormUtils.isWizardStep(q);
+  static mappingRule = (q) =>
+    FormUtils.isSection(q) && !FormUtils.isWizardStep(q);
 
   constructor(props) {
     super(props);
@@ -15,16 +21,20 @@ export default class SectionComponent extends Question {
     const toggleCollapseSuper = this.toggleCollapse;
     this.toggleCollapse = (e) => {
       let classList = e.target.classList;
-      if (!classList.contains('answer-content') && !classList.contains('card-header')
-        && !classList.contains('answer') && !classList.contains('show-advanced-switch')
-        && !classList.contains('d-inline') && !classList.contains('caret-square-down')
-        && !classList.contains('form-label')
-        && !(classList.length === 0)
+      if (
+        !classList.contains("answer-content") &&
+        !classList.contains("card-header") &&
+        !classList.contains("answer") &&
+        !classList.contains("show-advanced-switch") &&
+        !classList.contains("d-inline") &&
+        !classList.contains("caret-square-down") &&
+        !classList.contains("form-label") &&
+        !(classList.length === 0)
       ) {
         return;
       }
       toggleCollapseSuper();
-    }
+    };
   }
 
   onSubQuestionChange = (subQuestionIndex, change) => {
@@ -33,11 +43,7 @@ export default class SectionComponent extends Question {
 
   _renderIdentifierText() {
     return (
-      <SectionIdentifier
-        question={this.props.question}
-        prefix="("
-        suffix=")"
-      />
+      <SectionIdentifier question={this.props.question} prefix="(" suffix=")" />
     );
   }
 
@@ -48,9 +54,7 @@ export default class SectionComponent extends Question {
       return null;
     }
 
-    return (
-      <ShowAdvancedSwitch {...this.props} />
-    );
+    return <ShowAdvancedSwitch {...this.props} />;
   }
 
   renderHeaderExtension() {
@@ -79,15 +83,15 @@ export default class SectionComponent extends Question {
       onCommentChange: this.handleCommentChange,
       showIcon: this.state.showIcon,
       onSubChange: this.onSubQuestionChange,
-      isInSectionHeader: true
+      isInSectionHeader: true,
     });
   }
 
   _getAnswerWidthStyle() {
     if (TypeQuestionAnswer.mappingRule(this.props.question)) {
       return {
-        maxWidth: 'none'
-      }
+        maxWidth: "none",
+      };
     }
 
     return super._getAnswerWidthStyle();
@@ -106,15 +110,15 @@ export default class SectionComponent extends Question {
         FormUtils.isSparqlInput(question) ||
         FormUtils.isTurtleInput(question);
       cls = classNames(
-        'answer',
+        "answer",
         Question._getQuestionCategoryClass(question),
         Question.getEmphasizedOnRelevantClass(question)
       );
       children.push(
         <div
-          key={'row-item-' + i}
+          key={"row-item-" + i}
           className={cls}
-          id={question['@id']}
+          id={question["@id"]}
           onMouseEnter={this._onMouseEnterHandler}
           onMouseLeave={this._onMouseLeaveHandler}
         >
@@ -137,7 +141,6 @@ export default class SectionComponent extends Question {
 
     return sub;
   }
-
 }
 
 SectionComponent.contextType = ConfigurationContext;

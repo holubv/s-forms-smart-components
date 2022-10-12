@@ -1,19 +1,23 @@
-import React from 'react';
-import {Form, FormGroup} from 'react-bootstrap';
-import JsonLdUtils from 'jsonld-utils';
+import React from "react";
+import { Form, FormGroup } from "react-bootstrap";
+import JsonLdUtils from "jsonld-utils";
 import {
   QuestionStatic,
   Constants as SConstants,
   ConfigurationContext,
-} from '@kbss-cvut/s-forms';
+} from "@kbss-cvut/s-forms";
 import Constants from "../Constants";
 import PropTypes from "prop-types";
-import {IntelligentTreeSelect} from "intelligent-tree-select";
+import { IntelligentTreeSelect } from "intelligent-tree-select";
 import Utils from "../Utils";
 
 export default class TypeQuestionAnswer extends React.Component {
-
-  static mappingRule = q => JsonLdUtils.hasValue(q, SConstants.LAYOUT_CLASS, Constants.LAYOUT_TYPE_QUESTION);
+  static mappingRule = (q) =>
+    JsonLdUtils.hasValue(
+      q,
+      SConstants.LAYOUT_CLASS,
+      Constants.LAYOUT_TYPE_QUESTION
+    );
 
   constructor(props) {
     super(props);
@@ -28,12 +32,11 @@ export default class TypeQuestionAnswer extends React.Component {
       tree: {},
       selected: [],
       singleSelect: false,
-      update: 0
-    }
+      update: 0,
+    };
   }
 
-  _handleChange = value => {
-
+  _handleChange = (value) => {
     if (!value) {
       value = [];
     }
@@ -44,26 +47,27 @@ export default class TypeQuestionAnswer extends React.Component {
 
     this._setAnswers(value);
 
-    const change = {...this.props.answer};
+    const change = { ...this.props.answer };
 
     change[SConstants.HAS_DATA_VALUE] = {
-      '@value': !!(value && value.length)
+      "@value": !!(value && value.length),
     };
 
     if (!this.state.singleSelect) {
-      this.setState({tree: this._checkDisjointOptions(this.state.tree, value)});
+      this.setState({
+        tree: this._checkDisjointOptions(this.state.tree, value),
+      });
     }
 
     this.setState({
       selected: value,
-      update: this.state.update + 1
+      update: this.state.update + 1,
     });
 
     this.props.onChange(this.props.index, change);
-  }
+  };
 
   _setAnswers(answers) {
-
     let typeQuestions = this._findTypeQuestions();
 
     for (let i = 0; i < typeQuestions.length; i++) {
@@ -71,11 +75,13 @@ export default class TypeQuestionAnswer extends React.Component {
       const answer = answers[i];
 
       if (answer) {
-        typeQuestion[SConstants.HAS_ANSWER] = [{
-          [SConstants.HAS_OBJECT_VALUE]: {
-            '@id': answer.value
-          }
-        }];
+        typeQuestion[SConstants.HAS_ANSWER] = [
+          {
+            [SConstants.HAS_OBJECT_VALUE]: {
+              "@id": answer.value,
+            },
+          },
+        ];
       } else {
         typeQuestion[SConstants.HAS_ANSWER] = [];
       }
@@ -85,7 +91,6 @@ export default class TypeQuestionAnswer extends React.Component {
   }
 
   _loadAnswers(options) {
-
     let values = [];
     let typeQuestions = this._findTypeQuestions();
 
@@ -96,26 +101,30 @@ export default class TypeQuestionAnswer extends React.Component {
         answer = answer[0];
 
         if (answer[SConstants.HAS_DATA_VALUE]) {
-          values.push(answer[SConstants.HAS_DATA_VALUE]['@value']);
+          values.push(answer[SConstants.HAS_DATA_VALUE]["@value"]);
         }
       }
     }
 
-    return values.map(id => options[id]).filter(v => !!v);
+    return values.map((id) => options[id]).filter((v) => !!v);
   }
 
   _findTypeQuestions() {
     const question = this.props.question;
-    const ids = Utils.getJsonAttValues(question, Constants.HAS_TYPE_QUESTION, '@id');
+    const ids = Utils.getJsonAttValues(
+      question,
+      Constants.HAS_TYPE_QUESTION,
+      "@id"
+    );
     const subQuestions = question[SConstants.HAS_SUBQUESTION];
     const typeQuestions = [];
 
     for (let i = 0; i < subQuestions.length; i++) {
       const subQuestion = subQuestions[i];
-      if (ids.includes(subQuestion['@id'])) {
+      if (ids.includes(subQuestion["@id"])) {
         typeQuestions.push({
           index: i,
-          question: subQuestion
+          question: subQuestion,
         });
       }
     }
@@ -140,7 +149,7 @@ export default class TypeQuestionAnswer extends React.Component {
   _checkMaxNumberOfAnswers(tree, selected) {
     const maxAnswerCount = this._getMaxNumberOfAnswers();
 
-    selected = selected.map(o => o.value);
+    selected = selected.map((o) => o.value);
 
     if (selected.length >= maxAnswerCount) {
       for (let o of Object.values(tree)) {
@@ -155,14 +164,19 @@ export default class TypeQuestionAnswer extends React.Component {
     const question = this.props.question;
 
     for (let o of Object.values(tree)) {
-      if (JsonLdUtils.hasValue(question, Constants.HAS_NON_SELECTABLE_VALUE, o.value)) {
+      if (
+        JsonLdUtils.hasValue(
+          question,
+          Constants.HAS_NON_SELECTABLE_VALUE,
+          o.value
+        )
+      ) {
         o.disabled = true;
       }
     }
   }
 
   _checkDisjointOptions(tree, selected) {
-
     for (let o of Object.values(tree)) {
       o.disabled = false;
     }
@@ -189,7 +203,6 @@ export default class TypeQuestionAnswer extends React.Component {
   }
 
   _isTotalDisjoint(tree) {
-
     const options = Object.values(tree);
 
     for (let option of options) {
@@ -206,7 +219,10 @@ export default class TypeQuestionAnswer extends React.Component {
       return true;
     }
     const question = this.props.question;
-    return !Utils.hasArraySameValues(previousQuestion[SConstants.HAS_OPTION], question[SConstants.HAS_OPTION]);
+    return !Utils.hasArraySameValues(
+      previousQuestion[SConstants.HAS_OPTION],
+      question[SConstants.HAS_OPTION]
+    );
   }
 
   _generateOptions() {
@@ -220,14 +236,16 @@ export default class TypeQuestionAnswer extends React.Component {
     const relations = [];
 
     for (let pValue of possibleValues) {
+      let label = JsonLdUtils.getLocalized(
+        pValue[SConstants.RDFS_LABEL],
+        this.context.options.intl
+      );
 
-      let label = JsonLdUtils.getLocalized(pValue[SConstants.RDFS_LABEL], this.context.options.intl);
-
-      options[pValue['@id']] = {
-        value: pValue['@id'],
+      options[pValue["@id"]] = {
+        value: pValue["@id"],
         label: label,
         children: [],
-        disjoint: []
+        disjoint: [],
       };
 
       if (pValue[Constants.DISJOINT_WITH]) {
@@ -240,18 +258,18 @@ export default class TypeQuestionAnswer extends React.Component {
 
         for (let disjoint of disjoints) {
           relations.push({
-            type: 'disjoint',
-            a: disjoint['@id'],
-            b: pValue['@id']
+            type: "disjoint",
+            a: disjoint["@id"],
+            b: pValue["@id"],
           });
         }
       }
 
       for (let parent of Utils.asArray(pValue[Constants.BROADER])) {
         relations.push({
-          type: 'parent-child',
-          parent: parent['@id'],
-          child: pValue['@id']
+          type: "parent-child",
+          parent: parent["@id"],
+          child: pValue["@id"],
         });
       }
     }
@@ -260,15 +278,14 @@ export default class TypeQuestionAnswer extends React.Component {
       if (!options[a].disjoint.includes(b)) {
         options[a].disjoint.push(b);
       }
-    }
+    };
 
     for (let relation of relations) {
-
-      if (relation.type === 'parent-child') {
+      if (relation.type === "parent-child") {
         options[relation.parent]?.children.push(relation.child);
       }
 
-      if (relation.type === 'disjoint') {
+      if (relation.type === "disjoint") {
         if (options[relation.a] && options[relation.b]) {
           pushDisjoint(relation.a, relation.b);
           pushDisjoint(relation.b, relation.a);
@@ -295,12 +312,11 @@ export default class TypeQuestionAnswer extends React.Component {
       tree: options,
       singleSelect: totalDisjoint,
       update: this.state.update + 1,
-      selected: answers
+      selected: answers,
     });
   }
 
   _renderSelect() {
-
     if (!Object.values(this.state.tree).length) {
       return null;
     }
@@ -326,11 +342,13 @@ export default class TypeQuestionAnswer extends React.Component {
         optionLeftOffset={5}
       />
     );
-
   }
 
   _renderLabel() {
-    const label = JsonLdUtils.getLocalized(this.props.question[SConstants.RDFS_LABEL], this.context.options.intl);
+    const label = JsonLdUtils.getLocalized(
+      this.props.question[SConstants.RDFS_LABEL],
+      this.context.options.intl
+    );
     return <Form.Label>{label}</Form.Label>;
   }
 
@@ -340,10 +358,9 @@ export default class TypeQuestionAnswer extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this._isRegenerationNeeded(prevProps.question)) {
-      console.debug('regeneration needed');
+      console.debug("regeneration needed");
       this._generateOptions();
     }
-
   }
 
   render() {
@@ -356,7 +373,12 @@ export default class TypeQuestionAnswer extends React.Component {
       return (
         <div className="type-answer-group">
           {this._renderLabel()}
-          {QuestionStatic.renderIcons(question, options, onCommentChange, showIcon)}
+          {QuestionStatic.renderIcons(
+            question,
+            options,
+            onCommentChange,
+            showIcon
+          )}
           {this._renderSelect()}
         </div>
       );
@@ -365,7 +387,12 @@ export default class TypeQuestionAnswer extends React.Component {
     return (
       <FormGroup>
         {this._renderLabel()}
-        {QuestionStatic.renderIcons(question, options, onCommentChange,showIcon)}
+        {QuestionStatic.renderIcons(
+          question,
+          options,
+          onCommentChange,
+          showIcon
+        )}
         {this._renderSelect()}
       </FormGroup>
     );
@@ -382,5 +409,5 @@ TypeQuestionAnswer.propTypes = {
   onCommentChange: PropTypes.func.isRequired,
   showIcon: PropTypes.bool.isRequired,
   onSubChange: PropTypes.func.isRequired,
-  isInSectionHeader: PropTypes.bool
-}
+  isInSectionHeader: PropTypes.bool,
+};
