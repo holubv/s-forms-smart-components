@@ -5,20 +5,14 @@
     "node": ">=14.17.1"
   },
   "type": "module",
-  "source": "src/lib.js",
+  "source": "src/s-forms-components.js",
+  "main": "dist/s-forms-components.js",
   "exports": "./dist/s-forms-components.modern.js",
   "module": "./dist/s-forms-components.js",
   "unpkg": "./dist/s-forms-components.umd.js",
-  "targets": {
-    "browser": {
-      "distDir": "dist",
-      "outputFormat": "commonjs",
-      "optimize": false
-    }
-  },
   "files": [
-    "src/",
-    "dist/"
+    "dist/*.*",
+    "dist/**/*"
   ],
   "dependencies": {
     "intelligent-tree-select": "~0.8.3"

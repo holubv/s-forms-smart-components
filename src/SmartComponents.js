@@ -6,6 +6,7 @@ import QuestionWithUnit from "./components/QuestionWithUnit";
 import NullQuestion from "./components/NullQuestion";
 import Utils from "./Utils";
 import SectionComponent from "./components/SectionComponent";
+import "./styles/components.css";
 
 export default class SmartComponents {
   static componentCache = {};
