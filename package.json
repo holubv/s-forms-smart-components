@@ -1,7 +1,6 @@
 {
   "name": "s-forms-components",
   "version": "0.1.6",
-  "private": true,
   "engines": {
     "node": ">=14.17.1"
   },
