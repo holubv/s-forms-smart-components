@@ -103,7 +103,7 @@ export default class ShowAdvancedSwitch extends Question {
     const question = this.props.question;
     const showAdvancedQuestion =
       this._getShowAdvancedQuestion(question).question;
-    const advancedQuestionLabel = JsonldUtils.getLocalized(
+    const advancedQuestionLabel = JsonLdUtils.getLocalized(
       showAdvancedQuestion[SConstants.RDFS_LABEL],
       this.context.options.intl
     );

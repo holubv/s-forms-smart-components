@@ -43,7 +43,7 @@ export default class WizardStepComponent extends WizardStep {
   }
 
   _isSticky() {
-    const question = this.props.step;
+    const question = this.props.question;
     return JsonLdUtils.hasValue(
       question,
       SConstants.LAYOUT_CLASS,
@@ -97,12 +97,12 @@ export default class WizardStepComponent extends WizardStep {
 
   _renderIdentifierText() {
     return (
-      <SectionIdentifier question={this.props.step} prefix="(" suffix=")" />
+      <SectionIdentifier question={this.props.question} prefix="(" suffix=")" />
     );
   }
 
   _renderShowAdvanced() {
-    const question = this.props.step;
+    const question = this.props.question;
 
     if (!ShowAdvancedSwitch.mappingRule(question)) {
       return null;
@@ -110,7 +110,7 @@ export default class WizardStepComponent extends WizardStep {
 
     return (
       <ShowAdvancedSwitch
-        question={this.props.step}
+        question={this.props.question}
         onChange={this.onChange}
         index={this.props.stepIndex}
       />
@@ -118,7 +118,9 @@ export default class WizardStepComponent extends WizardStep {
   }
 
   render() {
-    const categoryClass = Question._getQuestionCategoryClass(this.props.step);
+    const categoryClass = Question._getQuestionCategoryClass(
+      this.props.question
+    );
 
     let headerClass = "bg-primary text-white wizard-step-header";
     let headerStyle = null;
@@ -138,16 +140,16 @@ export default class WizardStepComponent extends WizardStep {
             className={headerClass}
             style={headerStyle}
             as="h6"
-            id={this.props.step["@id"]}
+            id={this.props.question["@id"]}
             onMouseEnter={this._onMouseEnterHandler}
             onMouseLeave={this._onMouseLeaveHandler}
           >
             {JsonLdUtils.getLocalized(
-              this.props.step[JsonLdUtils.RDFS_LABEL],
+              this.props.question[JsonLdUtils.RDFS_LABEL],
               this.props.options.intl
             )}
             {QuestionStatic.renderIcons(
-              this.props.step,
+              this.props.question,
               this.props.options,
               this.onCommentChange,
               this.state.showIcon
@@ -161,7 +163,7 @@ export default class WizardStepComponent extends WizardStep {
             style={{ marginTop: this.state.headerHeight }}
           >
             <Question
-              question={this.props.step}
+              question={this.props.question}
               onChange={this.onChange}
               withoutCard={true}
               index={this.props.stepIndex}
