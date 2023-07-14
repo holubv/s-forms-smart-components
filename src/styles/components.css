@@ -73,7 +73,7 @@
   min-height: 24px;
 }
 
-.Select-control:hover {
+.css-13cymwt-control:hover {
   box-shadow: none;
 }
 
@@ -87,14 +87,14 @@
   min-width: 2rem;
 }
 
-.type-answer-group .Select {
+.type-answer-group .css-b62m3t-container {
   margin-top: -6px;
   flex-grow: 1;
   margin-left: 15px;
   min-width: 15rem;
 }
 
-.type-answer-group .Select-control {
+.type-answer-group .css-13cymwt-control {
   height: 37px;
 }
 
@@ -102,7 +102,7 @@
   margin-top: 4px;
 }
 
-.type-answer .Select-control {
+.type-answer .css-13cymwt-control {
   height: 37px;
 }
 
