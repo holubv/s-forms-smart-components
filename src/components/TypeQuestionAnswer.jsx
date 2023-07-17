@@ -30,6 +30,7 @@ export default class TypeQuestionAnswer extends React.Component {
       //   {id: '2', value: '2', label: 'Two', children: []},
       // ],
       tree: {},
+      optionsList: [],
       selected: [],
       singleSelect: false,
       update: 0,
@@ -154,7 +155,7 @@ export default class TypeQuestionAnswer extends React.Component {
     if (selected.length >= maxAnswerCount) {
       for (let o of Object.values(tree)) {
         if (!selected.includes(o.value)) {
-          o.disabled = true;
+          o.isDisabled = true;
         }
       }
     }
@@ -171,14 +172,14 @@ export default class TypeQuestionAnswer extends React.Component {
           o.value
         )
       ) {
-        o.disabled = true;
+        o.isDisabled = true;
       }
     }
   }
 
   _checkDisjointOptions(tree, selected) {
     for (let o of Object.values(tree)) {
-      o.disabled = false;
+      o.isDisabled = false;
     }
 
     if (selected === undefined) {
@@ -189,7 +190,7 @@ export default class TypeQuestionAnswer extends React.Component {
       for (let selectedOption of selected) {
         for (let d of selectedOption.disjoint) {
           if (tree[d]) {
-            tree[d].disabled = true;
+            tree[d].isDisabled = true;
           }
         }
       }
@@ -198,6 +199,9 @@ export default class TypeQuestionAnswer extends React.Component {
     }
 
     this._checkNonSelectableOptions(tree);
+    this.setState({
+      optionsList: Object.values(tree),
+    });
 
     return tree;
   }
@@ -310,6 +314,7 @@ export default class TypeQuestionAnswer extends React.Component {
 
     this.setState({
       tree: options,
+      optionsList: Object.values(options),
       singleSelect: totalDisjoint,
       update: this.state.update + 1,
       selected: answers,
@@ -317,7 +322,7 @@ export default class TypeQuestionAnswer extends React.Component {
   }
 
   _renderSelect() {
-    if (!Object.values(this.state.tree).length) {
+    if (!this.state.optionsList.length) {
       return null;
     }
 
@@ -332,9 +337,9 @@ export default class TypeQuestionAnswer extends React.Component {
         valueKey="value"
         labelKey="label"
         childrenKey="children"
-        options={Object.values(this.state.tree)}
+        options={this.state.optionsList}
         expanded={true}
-        closeOnSelect={this.state.singleSelect}
+        closeMenuOnSelect={this.state.singleSelect}
         onChange={this._handleChange}
         multi={!this.state.singleSelect}
         showSettings={false}
