@@ -33,7 +33,6 @@ export default class TypeQuestionAnswer extends React.Component {
       optionsList: [],
       selected: [],
       singleSelect: false,
-      update: 0,
     };
   }
 
@@ -62,7 +61,6 @@ export default class TypeQuestionAnswer extends React.Component {
 
     this.setState({
       selected: value,
-      update: this.state.update + 1,
     });
 
     this.props.onChange(this.props.index, change);
@@ -199,9 +197,11 @@ export default class TypeQuestionAnswer extends React.Component {
     }
 
     this._checkNonSelectableOptions(tree);
-    this.setState({
-      optionsList: Object.values(tree),
-    });
+    if (this.state.tree !== tree) {
+      this.setState({
+        optionsList: Object.values(tree),
+      });
+    }
 
     return tree;
   }
@@ -316,7 +316,6 @@ export default class TypeQuestionAnswer extends React.Component {
       tree: options,
       optionsList: Object.values(options),
       singleSelect: totalDisjoint,
-      update: this.state.update + 1,
       selected: answers,
     });
   }
