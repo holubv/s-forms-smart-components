@@ -333,6 +333,8 @@ export default class TypeQuestionAnswer extends React.Component {
     return (
       <IntelligentTreeSelect
         value={selectedValue}
+        className="react-select-container"
+        classNamePrefix="react-select"
         valueKey="value"
         labelKey="label"
         childrenKey="children"

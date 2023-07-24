@@ -87,18 +87,22 @@
   min-width: 2rem;
 }
 
-.type-answer-group .css-b62m3t-container {
+.type-answer-group .react-select-container {
   margin-top: -6px;
   flex-grow: 1;
   margin-left: 15px;
   min-width: 15rem;
 }
 
-.type-answer-group .css-13cymwt-control {
+.type-answer-group .react-select__control {
   height: 37px;
 }
 
-.type-answer .css-13cymwt-control {
+.react-select__multi-value__remove {
+  margin-left: 4px;
+}
+
+.type-answer .react-select__control {
   height: 37px;
 }
 
