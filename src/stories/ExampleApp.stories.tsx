@@ -55,7 +55,7 @@ const options = {
 };
 
 export default {
-  title: "SForms Smart Component",
+  title: "Stories/Forms",
   component: SForms,
 } as ComponentMeta<typeof SForms>;
 

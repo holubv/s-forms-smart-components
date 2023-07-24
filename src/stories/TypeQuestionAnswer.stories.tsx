@@ -2,7 +2,8 @@ import React, { useRef } from "react";
 import SForms, { Constants, IntlContextProvider } from "@kbss-cvut/s-forms";
 import SmartComponents from "../SmartComponents";
 import possibleValues from "./assets/possibleValues.json";
-import testData from "./assets/type_question_answer.json";
+import multiSelectForm from "./assets/type_question_answer.json";
+import singleSelectForm from "./assets/type_question_answer_single.json";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 const componentMapping = SmartComponents.getComponentMapping();
@@ -54,7 +55,7 @@ const options = {
 };
 
 export default {
-  title: "Components/TypeQuestionAnswer/Multi",
+  title: "Components/Section with typeahead tree answer",
   component: SForms,
 } as ComponentMeta<typeof SForms>;
 
@@ -72,7 +73,7 @@ const Template: ComponentStory<typeof SForms> = (args) => {
       <SForms
         options={options}
         ref={refForm}
-        form={testData}
+        form={multiSelectForm}
         fetchTypeAheadValues={fetchTypeAheadValues}
         componentMapRules={componentMapping}
         {...args}
@@ -81,12 +82,12 @@ const Template: ComponentStory<typeof SForms> = (args) => {
   );
 };
 
-export const TypeQuestionAnswerInSectionHeader = Template.bind({});
-TypeQuestionAnswerInSectionHeader.args = {
+export const SingleSelect = Template.bind({});
+SingleSelect.args = {
   options: options,
+  form: singleSelectForm,
 };
-export const TypeQuestionAnswerInSectionBody = Template.bind({});
-TypeQuestionAnswerInSectionBody.args = {
+export const MultiSelect = Template.bind({});
+MultiSelect.args = {
   options: options,
-  isInSectionHeader: false,
 };
