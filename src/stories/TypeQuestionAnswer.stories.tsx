@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import SForms, { Constants, IntlContextProvider } from "@kbss-cvut/s-forms";
 import SmartComponents from "../SmartComponents";
-import exampleForm from "./assets/example_form.json";
-import exampleFormTC from "./assets/example_turisticky_cil.json";
 import possibleValues from "./assets/possibleValues.json";
+import multiSelectForm from "./assets/type_question_answer.json";
+import singleSelectForm from "./assets/type_question_answer_single.json";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 const componentMapping = SmartComponents.getComponentMapping();
@@ -55,7 +55,7 @@ const options = {
 };
 
 export default {
-  title: "Stories/Forms",
+  title: "Components/Section with typeahead tree answer",
   component: SForms,
 } as ComponentMeta<typeof SForms>;
 
@@ -73,7 +73,7 @@ const Template: ComponentStory<typeof SForms> = (args) => {
       <SForms
         options={options}
         ref={refForm}
-        form={exampleForm}
+        form={multiSelectForm}
         fetchTypeAheadValues={fetchTypeAheadValues}
         componentMapRules={componentMapping}
         {...args}
@@ -82,12 +82,12 @@ const Template: ComponentStory<typeof SForms> = (args) => {
   );
 };
 
-export const Form1 = Template.bind({});
-Form1.args = {
+export const SingleSelect = Template.bind({});
+SingleSelect.args = {
   options: options,
+  form: singleSelectForm,
 };
-export const TouristDestination1 = Template.bind({});
-TouristDestination1.args = {
+export const MultiSelect = Template.bind({});
+MultiSelect.args = {
   options: options,
-  form: exampleFormTC,
 };

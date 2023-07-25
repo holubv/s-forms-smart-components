@@ -73,7 +73,7 @@
   min-height: 24px;
 }
 
-.Select-control:hover {
+.react-select__control:hover {
   box-shadow: none;
 }
 
@@ -87,27 +87,23 @@
   min-width: 2rem;
 }
 
-.type-answer-group .Select {
+.type-answer-group .react-select-container {
   margin-top: -6px;
   flex-grow: 1;
   margin-left: 15px;
   min-width: 15rem;
 }
 
-.type-answer-group .Select-control {
+.type-answer-group .react-select__control {
   height: 37px;
 }
 
-.type-answer-group .Select--multi .Select-value {
-  margin-top: 4px;
+.react-select__multi-value__remove {
+  margin-left: 4px;
 }
 
-.type-answer .Select-control {
+.type-answer .react-select__control {
   height: 37px;
-}
-
-.type-answer .Select--multi .Select-value {
-  margin-top: 4px;
 }
 
 .section-identifier {
