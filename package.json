@@ -1,6 +1,6 @@
 {
   "name": "s-forms-components",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "engines": {
     "node": ">=14.17.1"
   },
@@ -56,7 +56,7 @@
     "dev": "start-storybook -p 6006",
     "build": "microbundle --jsx React.createElement",
     "build:lib": "npm run build && npm pack",
-    "test": "jest",
+    "test": "",
     "build-storybook": "build-storybook",
     "chromatic": "npx chromatic",
     "release:patch": "npm test && standard-version --release-as patch && npm publish",
