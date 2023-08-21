@@ -7,7 +7,7 @@ import NullQuestion from "./components/NullQuestion";
 import Utils from "./Utils";
 import SectionComponent from "./components/SectionComponent";
 import "./styles/components.css";
-import SimpleTreeTypeaheadQuestion from "./components/SimpleTreeTypeaheadQuestion.jsx";
+import SimpleTreeTypeaheadQuestion from "./components/SimpleTreeTypeaheadQuestion";
 
 export default class SmartComponents {
   static componentCache = {};
